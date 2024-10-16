@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS stockearte;
-USE stockearte;
+CREATE DATABASE IF NOT EXISTS catalogoearte;
+USE catalogoearte;
 CREATE TABLE IF NOT EXISTS tienda (
     codigo BIGINT PRIMARY KEY,  -- Código único de tienda
     direccion VARCHAR(255) NOT NULL, -- Dirección de la tienda
@@ -28,11 +28,16 @@ CREATE TABLE IF NOT EXISTS producto (
     color VARCHAR(50) NOT NULL        -- Color del producto
 );
 
-CREATE TABLE IF NOT EXISTS stock (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,  -- ID único autoincremental
-    tienda_id BIGINT NOT NULL,        -- Relación con la tienda
-    producto_codigo BIGINT NOT NULL,  -- Relación con el producto
-    cantidad INT NOT NULL,                 -- Cantidad de stock disponible
-    FOREIGN KEY (tienda_id) REFERENCES tienda(codigo), -- Clave foránea a tienda
-    FOREIGN KEY (producto_codigo) REFERENCES producto(codigo) -- Clave foránea a producto
+CREATE TABLE catalogo (
+    id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,	-- ID único autoincremental
+    tienda_id BIGINT(10) NOT NULL,	-- Relación con la tienda (puede ser null)
+    CONSTRAINT fk_catalogo_tienda FOREIGN KEY (tienda_id) REFERENCES Tienda(codigo)
+);
+
+CREATE TABLE catalogo_producto (
+    catalogo_id BIGINT(20) NOT NULL,	-- Relación con el catalogo
+    producto_codigo BIGINT(10) NOT NULL,	-- Relación con el producto
+    PRIMARY KEY (catalogo_id, producto_codigo),
+    CONSTRAINT fk_catalogo_producto_catalogo FOREIGN KEY (catalogo_id) REFERENCES Catalogo(id),
+    CONSTRAINT fk_catalogo_producto_producto FOREIGN KEY (producto_codigo) REFERENCES Producto(codigo)
 );
