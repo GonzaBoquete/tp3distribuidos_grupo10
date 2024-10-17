@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtros Personalizados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Guardar Filtro Personalizado</h1>
+    <form method="POST" action="/filtros">
+        <label for="filter_name">Nombre del Filtro:</label>
+        <input type="text" id="filter_name" name="filter_name">
+
+        <!-- Reutilizamos los mismos filtros que en la pantalla de informe -->
+        <label for="product_code">Código de Producto:</label>
+        <input type="text" id="product_code" name="product_code">
+
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date">
+
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date">
+
+        <label for="status">Estado:</label>
+        <input type="text" id="status" name="status">
+
+        <label for="store_code">Código de Tienda:</label>
+        <input type="text" id="store_code" name="store_code">
+
+        <button type="submit">Guardar Filtro</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

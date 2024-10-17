@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Órdenes de Compra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Informe de Órdenes de Compra</h1>
+    <form method="POST" action="/informe">
+        <label for="product_code">Código de Producto:</label>
+        <input type="text" id="product_code" name="product_code">
+
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date">
+
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date">
+
+        <label for="status">Estado:</label>
+        <input type="text" id="status" name="status">
+
+        <label for="store_code">Código de Tienda:</label>
+        <input type="text" id="store_code" name="store_code">
+
+        <button type="submit">Consultar</button>
+    </form>
+
+    {% if orders %}
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Estado</th>
+                <th>Tienda</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.productCode }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.storeCode }}</td>
+                <td>{{ order.totalQuantity }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
