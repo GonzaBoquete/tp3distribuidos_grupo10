@@ -3,6 +3,8 @@ package com.stockearte.tp3_grupo10.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
