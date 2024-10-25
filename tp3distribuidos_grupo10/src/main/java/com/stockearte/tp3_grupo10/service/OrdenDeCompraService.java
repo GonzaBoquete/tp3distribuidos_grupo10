@@ -12,10 +12,10 @@ public interface OrdenDeCompraService {
 	
 	OrdenDeCompra eliminarItemOrdenDeCompra(Long idOrdenDeCompra, Long idItemOrdenDeCompra);
 
-	OrdenDeCompra getOneById(Long id);
+	OrdenDeCompra getOneById(Long idOrdenDeCompra);
 
 	List<OrdenDeCompra> getAll();
 	
-	void delete(Long id);
+	void delete(Long idOrdenDeCompra);
 	
 }

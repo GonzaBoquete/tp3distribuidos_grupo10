@@ -6,13 +6,13 @@ import com.stockearte.tp3_grupo10.model.Producto;
 
 public interface ProductoService {
 
-	Producto add(Producto producto);
+	Producto add(Long codigoProducto, String nombre, String talle, String foto, String color);
 
-	Producto getOneById(Long codigo);
+	Producto getOneById(Long codigoProducto);
 
 	List<Producto> getAll();
 
-	Producto update(Producto producto, Long codigo);
+	Producto update(Long codigoProducto, String nombre, String talle, String foto, String color);
 	
-	List<Producto> buscarProducto(String nombre, Long codigo, String talle, String color);
+	List<Producto> buscarProducto(String nombre, Long codigoProducto, String talle, String color);
 }

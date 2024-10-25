@@ -6,14 +6,17 @@ import com.stockearte.tp3_grupo10.model.Catalogo;
 
 public interface CatalogoService {
 	
-	Catalogo add(Catalogo catalogo, Long idTienda);
+	Catalogo add(Long idTienda);
 
-	Catalogo getOneById(Long id);
+	Catalogo getOneById(Long idCatalogo);
 
 	List<Catalogo> getAll();
 
-	Catalogo update(Catalogo catalogo, Long id);
+	Catalogo updateTienda(Long idCatalogo, Long codigoTienda);
 	
-	void delete(Long id);
+	void delete(Long idCatalogo);
 	
+	Catalogo agregarProducto(Long codigoCatalogo, Long codigoProducto);
+	
+	Catalogo eliminarProducto(Long codigoCatalogo, Long codigoProducto);
 }

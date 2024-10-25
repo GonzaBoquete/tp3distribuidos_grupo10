@@ -77,8 +77,8 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 	}
 
 	@Override
-	public void delete(Long id) {
-		Optional<OrdenDeCompra> foundOrdenDeCompra = getOrdenDeCompraRepository().findById(id);
+	public void delete(Long idOrdenDeCompra) {
+		Optional<OrdenDeCompra> foundOrdenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
 		if (!foundOrdenDeCompra.isEmpty()) {
 			getOrdenDeCompraRepository().delete(foundOrdenDeCompra.get());
 		} else {
@@ -87,8 +87,8 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 	}
 
 	@Override
-	public OrdenDeCompra getOneById(Long id) {
-		Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraRepository().findById(id);
+	public OrdenDeCompra getOneById(Long idOrdenDeCompra) {
+		Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
 		return ordenDeCompra.isEmpty() ? null : ordenDeCompra.get();
 	}
 
