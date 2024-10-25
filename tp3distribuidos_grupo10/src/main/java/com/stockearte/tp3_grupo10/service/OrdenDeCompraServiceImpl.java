@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
+import com.stockearte.tp3_grupo10.model.ItemOrdenDeCompra;
 import com.stockearte.tp3_grupo10.model.OrdenDeCompra;
+import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.model.Tienda;
+import com.stockearte.tp3_grupo10.repository.ItemOrdenDeCompraRepository;
 import com.stockearte.tp3_grupo10.repository.OrdenDeCompraRepository;
 
 @Service("ordenDeCompraService")
@@ -22,13 +25,14 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 	private OrdenDeCompraRepository ordenDeCompraRepository;
 
 	@Autowired
+	@Qualifier("itemOrdenDeCompraRepository")
+	private ItemOrdenDeCompraRepository itemOrdenDeCompraRepository;
+
+	@Autowired
 	private ProductoService productoService;
 
 	@Autowired
 	private TiendaService tiendaService;
-
-	@Autowired
-	private ItemOrdenDeCompraService itemOrdenDeCompraService;
 
 	@Override
 	public OrdenDeCompra add(Long codigoTienda) {
@@ -41,16 +45,20 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 		} else {
 			throw new ServiceException("No se encontro la tienda");
 		}
-		return ordenDeCompraRepository.save(ordenDeCompra);
+		return getOrdenDeCompraRepository().save(ordenDeCompra);
 	}
 
 	@Override
 	public OrdenDeCompra agregarItemOrdenDeCompra(Long idOrdenDeCompra, int cantidad, Long codigoProducto) {
-		Optional<OrdenDeCompra> foundOrdenDeCompra = ordenDeCompraRepository.findById(idOrdenDeCompra);
+		Optional<OrdenDeCompra> foundOrdenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
 		if (!foundOrdenDeCompra.isEmpty()) {
+			Producto producto = getProductoService().getOneById(codigoProducto);
+			if (producto == null) {
+				throw new ServiceException("No se encontro la tienda");
+			}
 			foundOrdenDeCompra.get().getItemsOrdenCompra()
-					.add(getItemOrdenDeCompraService().add(cantidad, codigoProducto, idOrdenDeCompra));
-			return ordenDeCompraRepository.save(foundOrdenDeCompra.get());
+					.add(new ItemOrdenDeCompra(cantidad, producto, foundOrdenDeCompra.get()));
+			return getOrdenDeCompraRepository().save(foundOrdenDeCompra.get());
 		} else {
 			throw new ServiceException("No se encontro la orden de compra");
 		}
@@ -58,12 +66,11 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 
 	@Override
 	public OrdenDeCompra eliminarItemOrdenDeCompra(Long idOrdenDeCompra, Long idItemOrdenDeCompra) {
-		Optional<OrdenDeCompra> foundOrdenDeCompra = ordenDeCompraRepository.findById(idOrdenDeCompra);
+		Optional<OrdenDeCompra> foundOrdenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
 		if (!foundOrdenDeCompra.isEmpty()) {
 			foundOrdenDeCompra.get().getItemsOrdenCompra()
-					.remove(getItemOrdenDeCompraService().getOneById(idItemOrdenDeCompra));
-			getItemOrdenDeCompraService().delete(idItemOrdenDeCompra);
-			return ordenDeCompraRepository.save(foundOrdenDeCompra.get());
+					.remove(getItemOrdenDeCompraRepository().getReferenceById(idItemOrdenDeCompra));
+			return getOrdenDeCompraRepository().save(foundOrdenDeCompra.get());
 		} else {
 			throw new ServiceException("No se encontro la orden de compra");
 		}
@@ -71,9 +78,9 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 
 	@Override
 	public void delete(Long id) {
-		Optional<OrdenDeCompra> foundOrdenDeCompra = ordenDeCompraRepository.findById(id);
+		Optional<OrdenDeCompra> foundOrdenDeCompra = getOrdenDeCompraRepository().findById(id);
 		if (!foundOrdenDeCompra.isEmpty()) {
-			ordenDeCompraRepository.delete(foundOrdenDeCompra.get());
+			getOrdenDeCompraRepository().delete(foundOrdenDeCompra.get());
 		} else {
 			throw new ServiceException("No se encontro la orden de compra");
 		}
@@ -81,13 +88,13 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 
 	@Override
 	public OrdenDeCompra getOneById(Long id) {
-		Optional<OrdenDeCompra> ordenDeCompra = ordenDeCompraRepository.findById(id);
+		Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraRepository().findById(id);
 		return ordenDeCompra.isEmpty() ? null : ordenDeCompra.get();
 	}
 
 	@Override
 	public List<OrdenDeCompra> getAll() {
-		return (List<OrdenDeCompra>) ordenDeCompraRepository.findAll();
+		return (List<OrdenDeCompra>) getOrdenDeCompraRepository().findAll();
 	}
 
 	public ProductoService getProductoService() {
@@ -98,20 +105,28 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 		this.productoService = productoService;
 	}
 
-	public ItemOrdenDeCompraService getItemOrdenDeCompraService() {
-		return itemOrdenDeCompraService;
-	}
-
-	public void setItemOrdenDeCompraService(ItemOrdenDeCompraService itemOrdenDeCompraService) {
-		this.itemOrdenDeCompraService = itemOrdenDeCompraService;
-	}
-
 	public TiendaService getTiendaService() {
 		return tiendaService;
 	}
 
 	public void setTiendaService(TiendaService tiendaService) {
 		this.tiendaService = tiendaService;
+	}
+
+	public OrdenDeCompraRepository getOrdenDeCompraRepository() {
+		return ordenDeCompraRepository;
+	}
+
+	public void setOrdenDeCompraRepository(OrdenDeCompraRepository ordenDeCompraRepository) {
+		this.ordenDeCompraRepository = ordenDeCompraRepository;
+	}
+
+	public ItemOrdenDeCompraRepository getItemOrdenDeCompraRepository() {
+		return itemOrdenDeCompraRepository;
+	}
+
+	public void setItemOrdenDeCompraRepository(ItemOrdenDeCompraRepository itemOrdenDeCompraRepository) {
+		this.itemOrdenDeCompraRepository = itemOrdenDeCompraRepository;
 	}
 
 }

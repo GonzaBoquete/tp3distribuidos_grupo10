@@ -33,9 +33,8 @@ public class ItemOrdenDeCompra {
 		super();
 	}
 
-	public ItemOrdenDeCompra(Long codigo, int cantidad, Producto producto, OrdenDeCompra OrdenDeCompra) {
+	public ItemOrdenDeCompra(int cantidad, Producto producto, OrdenDeCompra OrdenDeCompra) {
 		super();
-		this.id = codigo;
 		this.cantidad = cantidad;
 		this.producto = producto;
 		this.OrdenDeCompra = OrdenDeCompra;
