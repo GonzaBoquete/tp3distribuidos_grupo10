@@ -45,10 +45,9 @@ public class Usuario {
 	@Column(name = "habilitado", nullable = false)
 	private boolean habilitado;
 
-	public Usuario(Long id, String nombreUsuario, String contrasena, Tienda tienda, String nombre, String apellido,
+	public Usuario(String nombreUsuario, String contrasena, Tienda tienda, String nombre, String apellido,
 			Rol rol, boolean habilitado) {
 		super();
-		this.id = id;
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
 		this.tienda = tienda;

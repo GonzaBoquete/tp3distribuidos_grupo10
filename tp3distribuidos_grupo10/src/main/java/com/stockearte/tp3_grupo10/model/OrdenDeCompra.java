@@ -1,7 +1,10 @@
 package com.stockearte.tp3_grupo10.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -36,13 +39,12 @@ public class OrdenDeCompra {
 	@JoinColumn(name = "tienda_codigod", nullable = false)
 	private Tienda tienda;
 
-	@OneToMany(mappedBy = "OrdenDeCompra", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "OrdenDeCompra", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemOrdenDeCompra> itemsOrdenCompra;
 
-	public OrdenDeCompra(Long id, LocalDate fecha, EstadoOrden estado, Tienda tienda,
+	public OrdenDeCompra(LocalDate fecha, EstadoOrden estado, Tienda tienda,
 			List<ItemOrdenDeCompra> itemsOrdenCompra) {
 		super();
-		this.id = id;
 		this.fecha = fecha;
 		this.estado = estado;
 		this.tienda = tienda;
@@ -51,6 +53,7 @@ public class OrdenDeCompra {
 
 	public OrdenDeCompra() {
 		super();
+		this.itemsOrdenCompra = new ArrayList<>();
 		// TODO Auto-generated constructor stub
 	}
 

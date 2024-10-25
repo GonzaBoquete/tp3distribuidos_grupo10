@@ -3,6 +3,7 @@ package com.stockearte.tp3_grupo10.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,24 @@ public class TiendaServiceImpl implements TiendaService {
 	private TiendaRepository tiendaRepository;
 	
 	@Override
-	public Tienda add(Tienda tienda) {
-		return tiendaRepository.save(tienda);
+	public Tienda add(Long codigoTienda, String direccion, String ciudad, String provincia, boolean habilitada) {
+		Tienda tienda = this.getOneById(codigoTienda);
+		if (tienda != null) {
+			throw new ServiceException("Ya existe una tienda con ese codigo");
+		} else {
+			tienda = new Tienda();
+			tienda.setCodigo(codigoTienda);
+			tienda.setDireccion(direccion);
+			tienda.setCiudad(ciudad);
+			tienda.setProvincia(provincia);
+			tienda.setHabilitada(habilitada);
+			return tiendaRepository.save(tienda);
+		}
 	}
 
 	@Override
-	public Tienda getOneById(Long codigo) {
-		Optional<Tienda> tienda = tiendaRepository.findById(codigo);
+	public Tienda getOneById(Long codigoTienda) {
+		Optional<Tienda> tienda = tiendaRepository.findById(codigoTienda);
 		return tienda.isEmpty() ? null : tienda.get();
 	}
 	
@@ -34,21 +46,22 @@ public class TiendaServiceImpl implements TiendaService {
 	}
 
 	@Override
-	public Tienda update(Tienda tienda, Long codigo) {
-		Optional<Tienda> foundTienda = tiendaRepository.findById(codigo);
-		if (!foundTienda.isEmpty()) {
-			foundTienda.get().setDireccion(tienda.getDireccion());
-			foundTienda.get().setCiudad(tienda.getCiudad());
-			foundTienda.get().setProvincia(tienda.getProvincia());
-			foundTienda.get().setHabilitada(tienda.isHabilitada());
-			return tiendaRepository.save(foundTienda.get());
+	public Tienda update(Long codigoTienda, String direccion, String ciudad, String provincia, boolean habilitada) {
+		Tienda tienda = this.getOneById(codigoTienda);
+		if (tienda != null) {
+			tienda.setDireccion(direccion);
+			tienda.setCiudad(ciudad);
+			tienda.setProvincia(provincia);
+			tienda.setHabilitada(habilitada);
+			return tiendaRepository.save(tienda);
+		} else {
+			throw new ServiceException("No se encontro ninguna tienda con ese codigo.");
 		}
-		return null;
 	}
 	
 	@Override
-	public List<Tienda> buscarTienda(Long codigo, boolean habilitada) {
-		return tiendaRepository.findByCodigoAndHabilitada(codigo, habilitada);
+	public List<Tienda> buscarTienda(Long codigoTienda, boolean habilitada) {
+		return tiendaRepository.findByCodigoAndHabilitada(codigoTienda, habilitada);
 	}
 
 }

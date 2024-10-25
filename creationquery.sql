@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS item_orden_compra (
 );
 
 CREATE TABLE IF NOT EXISTS filtro (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,      -- ID único autoincremental
     nombre VARCHAR(255) NOT NULL UNIQUE,
     usuario_id BIGINT(20) NOT NULL,
     tienda_codigo BIGINT(20) NOT NULL,
     producto_codigo BIGINT(20) NOT NULL,
-    PRIMARY KEY (nombre),
     CONSTRAINT fk_filtro_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     CONSTRAINT fk_filtro_tienda FOREIGN KEY (tienda_codigo) REFERENCES tienda(codigo),
     CONSTRAINT fk_filtro_producto FOREIGN KEY (producto_codigo) REFERENCES producto(codigo)
