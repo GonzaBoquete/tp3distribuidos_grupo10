@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="3.0" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.26 a las 03:58:45 PM ART 
+
+  -->
+  <jaxb:bindings scd="x-schema::">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="com.stockearte.tp3_grupo10.soap.interfaces"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings scd="addCatalogoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addCatalogoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~catalogoServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.CatalogoServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~catalogoInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.CatalogoInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneCatalogoByIdRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneCatalogoByIdResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllCatalogosRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllCatalogosResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateTiendaDeCatalogoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateTiendaDeCatalogoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteCatalogoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteCatalogoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="agregarProductoACatalogoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="agregarProductoACatalogoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="eliminarProductoDeCatalogoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="eliminarProductoDeCatalogoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addFiltroRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~filtroInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.FiltroInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addFiltroResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~filtroServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.FiltroServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneFiltroByCodeRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneFiltroByCodeResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneFiltroByIdRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneFiltroByIdResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllFiltrosRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllFiltrosResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateProductoDeFiltroRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateProductoDeFiltroResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteFiltroRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteFiltroResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addOrdenDeCompraRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddOrdenDeCompraRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~ordenDeCompraInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addOrdenDeCompraResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddOrdenDeCompraResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~ordenDeCompraServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneOrdenDeCompraByCodeRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByCodeRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneOrdenDeCompraByCodeResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByCodeResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllOrdenesDeCompraRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllOrdenesDeCompraResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateOrdenDeCompraRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateOrdenDeCompraRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateOrdenDeCompraResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateOrdenDeCompraResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteOrdenDeCompraRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteOrdenDeCompraResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addProductoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddProductoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~productoInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.ProductoInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addProductoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddProductoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~productoServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneProductoByCodeRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneProductoByCodeResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllProductosRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllProductosResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateProductoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateProductoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteProductoRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteProductoRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteProductoResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteProductoResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addTiendaRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddTiendaRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tiendaInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.TiendaInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addTiendaResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddTiendaResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tiendaServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneTiendaByCodeRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneTiendaByCodeResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllTiendasRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllTiendasResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateTiendaRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateTiendaResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteTiendaRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteTiendaRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteTiendaResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteTiendaResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addUsuarioRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddUsuarioRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~usuarioInfo">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="addUsuarioResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddUsuarioResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~usuarioServiceStatus">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UsuarioServiceStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneUsuarioByIdRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getOneUsuarioByIdResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllUsuariosRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllUsuariosRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="getAllUsuariosResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllUsuariosResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateUsuarioRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="updateUsuarioResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteUsuarioRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteUsuarioRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="deleteUsuarioResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteUsuarioResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="loginRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.LoginRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="loginResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.LoginResponse"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="buscarUsuarioRequest">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.BuscarUsuarioRequest"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="buscarUsuarioResponse">
+      <jaxb:class ref="com.stockearte.tp3_grupo10.soap.interfaces.BuscarUsuarioResponse"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
+

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.stockearte.tp3_grupo10.Tp3Grupo10ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.725 s -- in com.stockearte.tp3_grupo10.Tp3Grupo10ApplicationTests

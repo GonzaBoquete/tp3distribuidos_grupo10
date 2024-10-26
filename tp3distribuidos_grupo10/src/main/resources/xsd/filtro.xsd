@@ -1,0 +1,125 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<!-- Filtro Complex Type -->
+	<xs:complexType name="filtroInfo">
+		<xs:sequence>
+			<xs:element name="codigo" type="xs:string" />
+			<xs:element name="idUsuario" type="xs:long" />
+			<xs:element name="codigoTienda" type="xs:long" />
+			<xs:element name="codigoProducto" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Service Status Complex Type -->
+	<xs:complexType name="filtroServiceStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Filtro Service Requests and Responses -->
+
+	<!-- Add Filtro -->
+	<xs:element name="addFiltroRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtro" type="filtroInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addFiltroResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+				<xs:element name="filtro" type="filtroInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get Filtro by Code -->
+	<xs:element name="getOneFiltroByCodeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOneFiltroByCodeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtro" type="filtroInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get Filtro by Id -->
+	<xs:element name="getOneFiltroByIdRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOneFiltroByIdResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtro" type="filtroInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get All Filtros -->
+	<xs:element name="getAllFiltrosRequest">
+		<xs:complexType />
+	</xs:element>
+
+	<xs:element name="getAllFiltrosResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtros" type="filtroInfo"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Update Filtro -->
+	<xs:element name="updateProductoDeFiltroRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigoFiltro" type="xs:string" />
+				<xs:element name="codigoProducto" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateProductoDeFiltroResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Delete Filtro -->
+	<xs:element name="deleteFiltroRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigoFiltro" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleteFiltroResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
