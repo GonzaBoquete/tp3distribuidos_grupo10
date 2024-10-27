@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Carga Masiva de Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Carga Masiva de Usuarios</h1>
+
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('bulk_upload_users') }}">
+        <label>Archivo CSV:</label>
+        <input type="file" name="file" accept=".csv" required>
+        <button type="submit">Cargar Usuarios</button>
+    </form>
+
+</body>
+</html>

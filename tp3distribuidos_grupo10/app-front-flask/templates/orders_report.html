@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Informe de Órdenes de Compra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Informe de Órdenes de Compra</h1>
+
+    <form method="get" action="{{ url_for('orders_report') }}">
+        <label>Código de Producto:</label>
+        <input type="text" name="product_code">
+        
+        <label>Rango de Fechas:</label>
+        <input type="date" name="start_date"> a 
+        <input type="date" name="end_date">
+        
+        <label>Estado:</label>
+        <select name="status">
+            <option value="">Todos</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="completado">Completado</option>
+        </select>
+
+        <label>Tienda:</label>
+        <input type="text" name="store">
+        
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <ul>
+    {% for order in orders %}
+        <li>{{ order.product_code }} - {{ order.status }} - {{ order.store }}: {{ order.quantity }}</li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

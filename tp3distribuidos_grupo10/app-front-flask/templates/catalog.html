@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Catálogo de Productos</h1>
+
+    <form method="post" action="{{ url_for('catalog') }}">
+        <label>Nombre del Producto:</label>
+        <input type="text" name="product_name" required>
+
+        <label>Color:</label>
+        <input type="text" name="color" required>
+
+        <label>Talle:</label>
+        <input type="text" name="size" required>
+        
+        <button type="submit">Agregar al Catálogo</button>
+    </form>
+
+    <h2>Productos</h2>
+    <ul>
+    {% for item in catalog %}
+        <li>{{ item.product_name }} - {{ item.color }} - {{ item.size }}</li>
+    {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('download_catalog_pdf') }}" method="get">
+        <button type="submit">Descargar PDF</button>
+    </form>
+
+</body>
+</html>
