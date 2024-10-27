@@ -1,5 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	elementFormDefault="qualified">
+           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           elementFormDefault="qualified">
 
 	<!-- Filtro Complex Type -->
 	<xs:complexType name="filtroInfo">

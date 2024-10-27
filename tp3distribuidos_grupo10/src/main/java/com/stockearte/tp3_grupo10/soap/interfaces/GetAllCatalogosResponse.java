@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.26 a las 03:58:45 PM ART 
+// Generado el: 2024.10.27 a las 03:07:08 PM ART 
 //
 
 
@@ -27,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="catalogos" type="{}catalogoInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="catalogos" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}catalogoInfo" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
