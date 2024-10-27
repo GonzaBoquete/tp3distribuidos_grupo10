@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           elementFormDefault="qualified">
+
+	<!-- OrdenDeCompra Complex Type -->
+	<xs:complexType name="ordenDeCompraInfo">
+		<xs:sequence>
+			<xs:element name="codigo" type="xs:string" />
+			<xs:element name="idUsuario" type="xs:long" />
+			<xs:element name="idTienda" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Service Status Complex Type -->
+	<xs:complexType name="ordenDeCompraServiceStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- OrdenDeCompra Service Requests and Responses -->
+
+	<!-- Add OrdenDeCompra -->
+	<xs:element name="addOrdenDeCompraRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addOrdenDeCompraResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get OrdenDeCompra by Code -->
+	<xs:element name="getOneOrdenDeCompraByCodeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOneOrdenDeCompraByCodeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get All OrdenesDeCompra -->
+	<xs:element name="getAllOrdenesDeCompraRequest">
+		<xs:complexType />
+	</xs:element>
+
+	<xs:element name="getAllOrdenesDeCompraResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenesDeCompra" type="ordenDeCompraInfo"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Update OrdenDeCompra -->
+	<xs:element name="updateOrdenDeCompraRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+				<xs:element name="idTienda" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateOrdenDeCompraResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Delete OrdenDeCompra -->
+	<xs:element name="deleteOrdenDeCompraRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleteOrdenDeCompraResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

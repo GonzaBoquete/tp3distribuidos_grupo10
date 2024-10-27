@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.27 a las 06:26:11 PM ART 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.stockearte.com/tp3_grupo10/soap/interfaces">
+    <schemaBindings map="false">
+      <package name="com.stockearte.tp3_grupo10.soap.interfaces"/>
+    </schemaBindings>
+    <bindings scd="tns:addCatalogoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoRequest"/>
+    </bindings>
+    <bindings scd="tns:addCatalogoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoResponse"/>
+    </bindings>
+    <bindings scd="~tns:catalogoServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.CatalogoServiceStatus"/>
+    </bindings>
+    <bindings scd="~tns:catalogoInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.CatalogoInfo"/>
+    </bindings>
+    <bindings scd="tns:getOneCatalogoByIdRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneCatalogoByIdResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllCatalogosRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllCatalogosResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosResponse"/>
+    </bindings>
+    <bindings scd="tns:updateTiendaDeCatalogoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest"/>
+    </bindings>
+    <bindings scd="tns:updateTiendaDeCatalogoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteCatalogoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteCatalogoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoResponse"/>
+    </bindings>
+    <bindings scd="tns:agregarProductoACatalogoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoRequest"/>
+    </bindings>
+    <bindings scd="tns:agregarProductoACatalogoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoResponse"/>
+    </bindings>
+    <bindings scd="tns:eliminarProductoDeCatalogoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoRequest"/>
+    </bindings>
+    <bindings scd="tns:eliminarProductoDeCatalogoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoResponse"/>
+    </bindings>
+    <bindings scd="tns:addFiltroRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroRequest"/>
+    </bindings>
+    <bindings scd="~tns:filtroInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.FiltroInfo"/>
+    </bindings>
+    <bindings scd="tns:addFiltroResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroResponse"/>
+    </bindings>
+    <bindings scd="~tns:filtroServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.FiltroServiceStatus"/>
+    </bindings>
+    <bindings scd="tns:getOneFiltroByCodeRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneFiltroByCodeResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeResponse"/>
+    </bindings>
+    <bindings scd="tns:getOneFiltroByIdRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneFiltroByIdResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllFiltrosRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllFiltrosResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosResponse"/>
+    </bindings>
+    <bindings scd="tns:updateProductoDeFiltroRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroRequest"/>
+    </bindings>
+    <bindings scd="tns:updateProductoDeFiltroResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteFiltroRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteFiltroResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroResponse"/>
+    </bindings>
+    <bindings scd="tns:addOrdenDeCompraRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddOrdenDeCompraRequest"/>
+    </bindings>
+    <bindings scd="~tns:ordenDeCompraInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo"/>
+    </bindings>
+    <bindings scd="tns:addOrdenDeCompraResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddOrdenDeCompraResponse"/>
+    </bindings>
+    <bindings scd="~tns:ordenDeCompraServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraServiceStatus"/>
+    </bindings>
+    <bindings scd="tns:getOneOrdenDeCompraByCodeRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByCodeRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneOrdenDeCompraByCodeResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByCodeResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllOrdenesDeCompraRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllOrdenesDeCompraResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraResponse"/>
+    </bindings>
+    <bindings scd="tns:updateOrdenDeCompraRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateOrdenDeCompraRequest"/>
+    </bindings>
+    <bindings scd="tns:updateOrdenDeCompraResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateOrdenDeCompraResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteOrdenDeCompraRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteOrdenDeCompraResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraResponse"/>
+    </bindings>
+    <bindings scd="tns:addProductoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddProductoRequest"/>
+    </bindings>
+    <bindings scd="~tns:productoInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.ProductoInfo"/>
+    </bindings>
+    <bindings scd="tns:addProductoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddProductoResponse"/>
+    </bindings>
+    <bindings scd="~tns:productoServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus"/>
+    </bindings>
+    <bindings scd="tns:getOneProductoByCodeRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneProductoByCodeResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllProductosRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllProductosResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosResponse"/>
+    </bindings>
+    <bindings scd="tns:updateProductoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoRequest"/>
+    </bindings>
+    <bindings scd="tns:updateProductoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteProductoRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteProductoRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteProductoResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteProductoResponse"/>
+    </bindings>
+    <bindings scd="tns:addTiendaRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddTiendaRequest"/>
+    </bindings>
+    <bindings scd="~tns:tiendaInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.TiendaInfo"/>
+    </bindings>
+    <bindings scd="tns:addTiendaResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddTiendaResponse"/>
+    </bindings>
+    <bindings scd="~tns:tiendaServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus"/>
+    </bindings>
+    <bindings scd="tns:getOneTiendaByCodeRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneTiendaByCodeResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllTiendasRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllTiendasResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasResponse"/>
+    </bindings>
+    <bindings scd="tns:updateTiendaRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaRequest"/>
+    </bindings>
+    <bindings scd="tns:updateTiendaResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteTiendaRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteTiendaRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteTiendaResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteTiendaResponse"/>
+    </bindings>
+    <bindings scd="tns:addUsuarioRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddUsuarioRequest"/>
+    </bindings>
+    <bindings scd="~tns:usuarioInfo">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo"/>
+    </bindings>
+    <bindings scd="tns:addUsuarioResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.AddUsuarioResponse"/>
+    </bindings>
+    <bindings scd="~tns:usuarioServiceStatus">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UsuarioServiceStatus"/>
+    </bindings>
+    <bindings scd="tns:getOneUsuarioByIdRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdRequest"/>
+    </bindings>
+    <bindings scd="tns:getOneUsuarioByIdResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdResponse"/>
+    </bindings>
+    <bindings scd="tns:getAllUsuariosRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllUsuariosRequest"/>
+    </bindings>
+    <bindings scd="tns:getAllUsuariosResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.GetAllUsuariosResponse"/>
+    </bindings>
+    <bindings scd="tns:updateUsuarioRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioRequest"/>
+    </bindings>
+    <bindings scd="tns:updateUsuarioResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioResponse"/>
+    </bindings>
+    <bindings scd="tns:deleteUsuarioRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteUsuarioRequest"/>
+    </bindings>
+    <bindings scd="tns:deleteUsuarioResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.DeleteUsuarioResponse"/>
+    </bindings>
+    <bindings scd="tns:loginRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.LoginRequest"/>
+    </bindings>
+    <bindings scd="tns:loginResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.LoginResponse"/>
+    </bindings>
+    <bindings scd="tns:buscarUsuarioRequest">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.BuscarUsuarioRequest"/>
+    </bindings>
+    <bindings scd="tns:buscarUsuarioResponse">
+      <class ref="com.stockearte.tp3_grupo10.soap.interfaces.BuscarUsuarioResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

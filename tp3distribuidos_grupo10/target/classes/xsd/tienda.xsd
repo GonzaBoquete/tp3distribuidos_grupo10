@@ -1,0 +1,114 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+           elementFormDefault="qualified">
+
+	<!-- Tienda Complex Type -->
+	<xs:complexType name="tiendaInfo">
+		<xs:sequence>
+			<xs:element name="codigo" type="xs:long" />
+			<xs:element name="direccion" type="xs:string" />
+			<xs:element name="ciudad" type="xs:string" />
+			<xs:element name="provincia" type="xs:string" />
+			<xs:element name="habilitada" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Service Status Complex Type -->
+	<xs:complexType name="tiendaServiceStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Tienda Service Requests and Responses -->
+
+	<!-- Add Tienda -->
+	<xs:element name="addTiendaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tienda" type="tiendaInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="addTiendaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+				<xs:element name="tienda" type="tiendaInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get Tienda by Code -->
+	<xs:element name="getOneTiendaByCodeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOneTiendaByCodeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tienda" type="tiendaInfo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Get All Tiendas -->
+	<xs:element name="getAllTiendasRequest">
+		<xs:complexType />
+	</xs:element>
+
+	<xs:element name="getAllTiendasResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tiendas" type="tiendaInfo"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Update Tienda -->
+	<xs:element name="updateTiendaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:long" />
+				<xs:element name="direccion" type="xs:string" />
+				<xs:element name="ciudad" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="habilitada" type="xs:boolean" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="updateTiendaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Delete Tienda -->
+	<xs:element name="deleteTiendaRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigo" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleteTiendaResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
