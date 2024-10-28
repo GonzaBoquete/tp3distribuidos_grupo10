@@ -8,8 +8,6 @@
 
 package com.stockearte.tp3_grupo10.soap.interfaces;
 
-import java.util.ArrayList;
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -27,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="tiendas" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}tiendaInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="ordenDeCompra" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}ordenDeCompraInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,41 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tiendas"
+    "ordenDeCompra"
 })
-@XmlRootElement(name = "getAllTiendasResponse")
-public class GetAllTiendasResponse {
+@XmlRootElement(name = "getOneOrdenDeCompraByIdResponse")
+public class GetOneOrdenDeCompraByIdResponse {
 
     @XmlElement(required = true)
-    protected List<TiendaInfo> tiendas;
+    protected OrdenDeCompraInfo ordenDeCompra;
 
     /**
-     * Gets the value of the tiendas property.
+     * Obtiene el valor de la propiedad ordenDeCompra.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the tiendas property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTiendas().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TiendaInfo }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link OrdenDeCompraInfo }
+     *     
      */
-    public List<TiendaInfo> getTiendas() {
-        if (tiendas == null) {
-            tiendas = new ArrayList<TiendaInfo>();
-        }
-        return this.tiendas;
+    public OrdenDeCompraInfo getOrdenDeCompra() {
+        return ordenDeCompra;
+    }
+
+    /**
+     * Define el valor de la propiedad ordenDeCompra.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link OrdenDeCompraInfo }
+     *     
+     */
+    public void setOrdenDeCompra(OrdenDeCompraInfo value) {
+        this.ordenDeCompra = value;
     }
 
 }

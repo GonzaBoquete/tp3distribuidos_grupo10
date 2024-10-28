@@ -10,7 +10,6 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="usuarioServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}usuarioServiceStatus"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +35,27 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "usuarioServiceStatus"
+    "id"
 })
-@XmlRootElement(name = "updateUsuarioResponse")
-public class UpdateUsuarioResponse {
+@XmlRootElement(name = "getOneOrdenDeCompraByIdRequest")
+public class GetOneOrdenDeCompraByIdRequest {
 
-    @XmlElement(required = true)
-    protected UsuarioServiceStatus usuarioServiceStatus;
+    protected long id;
 
     /**
-     * Obtiene el valor de la propiedad usuarioServiceStatus.
+     * Obtiene el valor de la propiedad id.
      * 
-     * @return
-     *     possible object is
-     *     {@link UsuarioServiceStatus }
-     *     
      */
-    public UsuarioServiceStatus getUsuarioServiceStatus() {
-        return usuarioServiceStatus;
+    public long getId() {
+        return id;
     }
 
     /**
-     * Define el valor de la propiedad usuarioServiceStatus.
+     * Define el valor de la propiedad id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link UsuarioServiceStatus }
-     *     
      */
-    public void setUsuarioServiceStatus(UsuarioServiceStatus value) {
-        this.usuarioServiceStatus = value;
+    public void setId(long value) {
+        this.id = value;
     }
 
 }

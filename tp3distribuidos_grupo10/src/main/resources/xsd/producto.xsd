@@ -37,8 +37,6 @@
 	<xs:element name="addProductoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="productoServiceStatus"
-					type="productoServiceStatus" />
 				<xs:element name="producto" type="productoInfo" />
 			</xs:sequence>
 		</xs:complexType>

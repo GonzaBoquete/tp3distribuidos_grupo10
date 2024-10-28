@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 05:44:00 PM ART 
+// Generado el: 2024.10.28 a las 06:52:59 PM ART 
 //
 
 
@@ -27,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="usuarios" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}usuarioInfo" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="usuario" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}usuarioInfo" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,27 +38,27 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "usuarios"
+    "usuario"
 })
 @XmlRootElement(name = "buscarUsuarioResponse")
 public class BuscarUsuarioResponse {
 
     @XmlElement(required = true)
-    protected List<UsuarioInfo> usuarios;
+    protected List<UsuarioInfo> usuario;
 
     /**
-     * Gets the value of the usuarios property.
+     * Gets the value of the usuario property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the usuarios property.
+     * This is why there is not a <CODE>set</CODE> method for the usuario property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getUsuarios().add(newItem);
+     *    getUsuario().add(newItem);
      * </pre>
      * 
      * 
@@ -68,11 +68,11 @@ public class BuscarUsuarioResponse {
      * 
      * 
      */
-    public List<UsuarioInfo> getUsuarios() {
-        if (usuarios == null) {
-            usuarios = new ArrayList<UsuarioInfo>();
+    public List<UsuarioInfo> getUsuario() {
+        if (usuario == null) {
+            usuario = new ArrayList<UsuarioInfo>();
         }
-        return this.usuarios;
+        return this.usuario;
     }
 
 }

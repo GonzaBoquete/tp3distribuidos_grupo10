@@ -141,4 +141,13 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="buscarUsuarioResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="usuario" type="usuarioInfo"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 </xs:schema>

@@ -111,7 +111,7 @@ public class UsuarioEndpoint {
 		List<UsuarioInfo> usuarios = this.getUsuarioConverter().convertUsuariosToInfos(
 				this.getUsuarioService().buscarUsuario(request.getNombreUsuario(), request.getCodigoTienda()));
 		for (UsuarioInfo usuario : usuarios) {
-			response.getUsuarios().add(usuario);
+			response.getUsuario().add(usuario);
 		}
 		return response;
 	}
