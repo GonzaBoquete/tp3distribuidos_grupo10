@@ -94,19 +94,21 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Delete Tienda -->
-	<xs:element name="deleteTiendaRequest">
+	<!-- Buscar Tienda -->
+	<xs:element name="buscarTiendaRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="codigo" type="xs:long" />
+				<xs:element name="habilitada" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="deleteTiendaResponse">
+	<xs:element name="buscarTiendaResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+				<xs:element name="tiendas" type="tiendaInfo"
+					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

@@ -1,12 +1,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- Service Status -->
 	<xs:complexType name="usuarioServiceStatus">
 		<xs:sequence>
-			<xs:element name="code" type="xs:int" />
+			<xs:element name="status" type="xs:string" />
 			<xs:element name="message" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
@@ -29,6 +29,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuario" type="usuarioInfo" />
+				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -36,7 +37,8 @@
 	<xs:element name="addUsuarioResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuarioServiceStatus" type="usuarioServiceStatus" />
+				<xs:element name="usuarioServiceStatus"
+					type="usuarioServiceStatus" />
 				<xs:element name="usuario" type="usuarioInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -78,6 +80,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuario" type="usuarioInfo" />
+				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -85,7 +88,8 @@
 	<xs:element name="updateUsuarioResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuarioServiceStatus" type="usuarioServiceStatus" />
+				<xs:element name="usuarioServiceStatus"
+					type="usuarioServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -102,7 +106,8 @@
 	<xs:element name="deleteUsuarioResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuarioServiceStatus" type="usuarioServiceStatus" />
+				<xs:element name="usuarioServiceStatus"
+					type="usuarioServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -120,7 +125,8 @@
 	<xs:element name="loginResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuarioServiceStatus" type="usuarioServiceStatus" />
+				<xs:element name="usuarioServiceStatus"
+					type="usuarioServiceStatus" />
 				<xs:element name="usuario" type="usuarioInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
@@ -131,6 +137,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="nombreUsuario" type="xs:string" />
+				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -138,8 +145,8 @@
 	<xs:element name="buscarUsuarioResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuarioServiceStatus" type="usuarioServiceStatus" />
-				<xs:element name="usuario" type="usuarioInfo" minOccurs="0" />
+				<xs:element name="usuarios" type="usuarioInfo"
+					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

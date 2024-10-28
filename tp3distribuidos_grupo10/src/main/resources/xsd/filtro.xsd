@@ -93,7 +93,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Update Filtro -->
+	<!-- Update Producto de Filtro -->
 	<xs:element name="updateProductoDeFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
@@ -104,6 +104,25 @@
 	</xs:element>
 
 	<xs:element name="updateProductoDeFiltroResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filtroServiceStatus"
+					type="filtroServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Update Tienda de Filtro -->
+	<xs:element name="UpdateTiendaDeFiltroRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="codigoFiltro" type="xs:string" />
+				<xs:element name="codigoTienda" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="UpdateTiendaDeFiltroResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"

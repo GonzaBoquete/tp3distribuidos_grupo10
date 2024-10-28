@@ -25,7 +25,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="filtro" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}filtroInfo"/&gt;
+ *         &lt;element name="codigoFiltro" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +37,54 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "filtro"
+    "codigoFiltro",
+    "codigoTienda"
 })
-@XmlRootElement(name = "addFiltroRequest")
-public class AddFiltroRequest {
+@XmlRootElement(name = "UpdateTiendaDeFiltroRequest")
+public class UpdateTiendaDeFiltroRequest {
 
     @XmlElement(required = true)
-    protected FiltroInfo filtro;
+    protected String codigoFiltro;
+    protected long codigoTienda;
 
     /**
-     * Obtiene el valor de la propiedad filtro.
+     * Obtiene el valor de la propiedad codigoFiltro.
      * 
      * @return
      *     possible object is
-     *     {@link FiltroInfo }
+     *     {@link String }
      *     
      */
-    public FiltroInfo getFiltro() {
-        return filtro;
+    public String getCodigoFiltro() {
+        return codigoFiltro;
     }
 
     /**
-     * Define el valor de la propiedad filtro.
+     * Define el valor de la propiedad codigoFiltro.
      * 
      * @param value
      *     allowed object is
-     *     {@link FiltroInfo }
+     *     {@link String }
      *     
      */
-    public void setFiltro(FiltroInfo value) {
-        this.filtro = value;
+    public void setCodigoFiltro(String value) {
+        this.codigoFiltro = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad codigoTienda.
+     * 
+     */
+    public long getCodigoTienda() {
+        return codigoTienda;
+    }
+
+    /**
+     * Define el valor de la propiedad codigoTienda.
+     * 
+     */
+    public void setCodigoTienda(long value) {
+        this.codigoTienda = value;
     }
 
 }

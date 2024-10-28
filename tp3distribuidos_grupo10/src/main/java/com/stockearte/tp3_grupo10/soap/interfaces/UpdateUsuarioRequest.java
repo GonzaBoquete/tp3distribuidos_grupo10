@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 11:37:03 PM ART 
+// Generado el: 2024.10.28 a las 01:07:45 AM ART 
 //
 
 
@@ -26,6 +26,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="usuario" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}usuarioInfo"/&gt;
+ *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,13 +37,15 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "usuario"
+    "usuario",
+    "codigoTienda"
 })
 @XmlRootElement(name = "updateUsuarioRequest")
 public class UpdateUsuarioRequest {
 
     @XmlElement(required = true)
     protected UsuarioInfo usuario;
+    protected long codigoTienda;
 
     /**
      * Obtiene el valor de la propiedad usuario.
@@ -66,6 +69,22 @@ public class UpdateUsuarioRequest {
      */
     public void setUsuario(UsuarioInfo value) {
         this.usuario = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad codigoTienda.
+     * 
+     */
+    public long getCodigoTienda() {
+        return codigoTienda;
+    }
+
+    /**
+     * Define el valor de la propiedad codigoTienda.
+     * 
+     */
+    public void setCodigoTienda(long value) {
+        this.codigoTienda = value;
     }
 
 }

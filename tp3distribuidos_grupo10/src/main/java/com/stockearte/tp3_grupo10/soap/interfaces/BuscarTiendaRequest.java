@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 11:37:03 PM ART 
+// Generado el: 2024.10.28 a las 01:07:45 AM ART 
 //
 
 
@@ -10,7 +10,6 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="tiendaServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}tiendaServiceStatus"/&gt;
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="habilitada" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,45 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tiendaServiceStatus"
+    "codigo",
+    "habilitada"
 })
-@XmlRootElement(name = "deleteTiendaResponse")
-public class DeleteTiendaResponse {
+@XmlRootElement(name = "buscarTiendaRequest")
+public class BuscarTiendaRequest {
 
-    @XmlElement(required = true)
-    protected TiendaServiceStatus tiendaServiceStatus;
+    protected long codigo;
+    protected boolean habilitada;
 
     /**
-     * Obtiene el valor de la propiedad tiendaServiceStatus.
+     * Obtiene el valor de la propiedad codigo.
      * 
-     * @return
-     *     possible object is
-     *     {@link TiendaServiceStatus }
-     *     
      */
-    public TiendaServiceStatus getTiendaServiceStatus() {
-        return tiendaServiceStatus;
+    public long getCodigo() {
+        return codigo;
     }
 
     /**
-     * Define el valor de la propiedad tiendaServiceStatus.
+     * Define el valor de la propiedad codigo.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link TiendaServiceStatus }
-     *     
      */
-    public void setTiendaServiceStatus(TiendaServiceStatus value) {
-        this.tiendaServiceStatus = value;
+    public void setCodigo(long value) {
+        this.codigo = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad habilitada.
+     * 
+     */
+    public boolean isHabilitada() {
+        return habilitada;
+    }
+
+    /**
+     * Define el valor de la propiedad habilitada.
+     * 
+     */
+    public void setHabilitada(boolean value) {
+        this.habilitada = value;
     }
 
 }
