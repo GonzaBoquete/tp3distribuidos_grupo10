@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
+
+	<!-- ItemOrdenDeCompra Info -->
+	<xs:complexType name="itemOrdenDeCompraInfo">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" />
+			<xs:element name="cantidad" type="xs:int" />
+			<xs:element name="productoCodigo" type="xs:long" />
+			<xs:element name="ordenDeCompraId" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Service Status Complex Type -->
+	<xs:complexType name="itemOrdenDeCompraServiceStatus">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="message" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+</xs:schema>
