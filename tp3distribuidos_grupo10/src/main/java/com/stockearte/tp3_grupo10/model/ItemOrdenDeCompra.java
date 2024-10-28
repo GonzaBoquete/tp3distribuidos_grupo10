@@ -41,12 +41,12 @@ public class ItemOrdenDeCompra {
 	}
 
 	// Getters and Setters
-	public Long getCodigo() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.id = codigo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getCantidad() {

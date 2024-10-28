@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 03:46:18 PM ART 
+// Generado el: 2024.10.27 a las 08:24:50 PM ART 
 //
 
 
@@ -28,6 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="talle" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="foto" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -42,6 +43,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "codigo",
     "nombre",
     "talle",
+    "foto",
     "color"
 })
 @XmlRootElement(name = "updateProductoRequest")
@@ -52,6 +54,8 @@ public class UpdateProductoRequest {
     protected String nombre;
     @XmlElement(required = true)
     protected String talle;
+    @XmlElement(required = true)
+    protected String foto;
     @XmlElement(required = true)
     protected String color;
 
@@ -117,6 +121,30 @@ public class UpdateProductoRequest {
      */
     public void setTalle(String value) {
         this.talle = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad foto.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFoto() {
+        return foto;
+    }
+
+    /**
+     * Define el valor de la propiedad foto.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFoto(String value) {
+        this.foto = value;
     }
 
     /**

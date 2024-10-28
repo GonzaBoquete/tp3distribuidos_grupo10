@@ -11,4 +11,14 @@ public class ProductoEndpoint {
 
     @Autowired
     private ProductoService productoService;
+    
+    
+
+	public ProductoService getProductoService() {
+		return productoService;
+	}
+
+	public void setProductoService(ProductoService productoService) {
+		this.productoService = productoService;
+	}
 }

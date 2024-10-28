@@ -1,12 +1,15 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- Filtro Complex Type -->
 	<xs:complexType name="filtroInfo">
 		<xs:sequence>
-			<xs:element name="codigo" type="xs:string" />
+			<xs:element name="id" type="xs:long" /> <!-- Refleja el atributo 'id'
+			de Filtro -->
+			<xs:element name="nombre" type="xs:string" /> <!-- Refleja el
+			atributo 'nombre' de Filtro -->
 			<xs:element name="idUsuario" type="xs:long" />
 			<xs:element name="codigoTienda" type="xs:long" />
 			<xs:element name="codigoProducto" type="xs:long" />
@@ -35,7 +38,8 @@
 	<xs:element name="addFiltroResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+				<xs:element name="filtroServiceStatus"
+					type="filtroServiceStatus" />
 				<xs:element name="filtro" type="filtroInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -102,7 +106,8 @@
 	<xs:element name="updateProductoDeFiltroResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+				<xs:element name="filtroServiceStatus"
+					type="filtroServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -119,7 +124,8 @@
 	<xs:element name="deleteFiltroResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtroServiceStatus" type="filtroServiceStatus" />
+				<xs:element name="filtroServiceStatus"
+					type="filtroServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

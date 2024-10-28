@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 03:46:18 PM ART 
+// Generado el: 2024.10.27 a las 08:24:50 PM ART 
 //
 
 
@@ -24,7 +24,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="idUsuario" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="codigoProducto" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
@@ -38,41 +39,59 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "filtroInfo", propOrder = {
-    "codigo",
+    "id",
+    "nombre",
     "idUsuario",
     "codigoTienda",
     "codigoProducto"
 })
 public class FiltroInfo {
 
+    protected long id;
     @XmlElement(required = true)
-    protected String codigo;
+    protected String nombre;
     protected long idUsuario;
     protected long codigoTienda;
     protected long codigoProducto;
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Obtiene el valor de la propiedad id.
+     * 
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Define el valor de la propiedad id.
+     * 
+     */
+    public void setId(long value) {
+        this.id = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCodigo() {
-        return codigo;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * Define el valor de la propiedad codigo.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCodigo(String value) {
-        this.codigo = value;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**

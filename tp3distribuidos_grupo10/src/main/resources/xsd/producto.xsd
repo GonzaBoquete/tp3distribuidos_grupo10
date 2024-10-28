@@ -9,6 +9,7 @@
 			<xs:element name="codigo" type="xs:long" />
 			<xs:element name="nombre" type="xs:string" />
 			<xs:element name="talle" type="xs:string" />
+			<xs:element name="foto" type="xs:string" />
 			<xs:element name="color" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
@@ -79,6 +80,7 @@
 				<xs:element name="codigo" type="xs:long" />
 				<xs:element name="nombre" type="xs:string" />
 				<xs:element name="talle" type="xs:string" />
+				<xs:element name="foto" type="xs:string" />
 				<xs:element name="color" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>

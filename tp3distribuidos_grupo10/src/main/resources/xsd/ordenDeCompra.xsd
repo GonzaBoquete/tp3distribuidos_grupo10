@@ -1,16 +1,33 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- OrdenDeCompra Complex Type -->
 	<xs:complexType name="ordenDeCompraInfo">
 		<xs:sequence>
-			<xs:element name="codigo" type="xs:string" />
-			<xs:element name="idUsuario" type="xs:long" />
+			<xs:element name="id" type="xs:long" />
+			<xs:element name="fecha" type="xs:date" />
+			<xs:element name="estado" type="EstadoOrdenInfo" />
 			<xs:element name="idTienda" type="xs:long" />
+			<xs:element name="itemsOrdenCompra" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="itemOrdenDeCompraId" type="xs:long" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:simpleType name="EstadoOrdenInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SOLICITADA" />
+			<xs:enumeration value="RECHAZADA" />
+			<xs:enumeration value="ACEPTADA" />
+		</xs:restriction>
+	</xs:simpleType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="ordenDeCompraServiceStatus">
@@ -34,7 +51,8 @@
 	<xs:element name="addOrdenDeCompraResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+				<xs:element name="ordenDeCompraServiceStatus"
+					type="ordenDeCompraServiceStatus" />
 				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -84,7 +102,8 @@
 	<xs:element name="updateOrdenDeCompraResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+				<xs:element name="ordenDeCompraServiceStatus"
+					type="ordenDeCompraServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -101,7 +120,8 @@
 	<xs:element name="deleteOrdenDeCompraResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="ordenDeCompraServiceStatus" type="ordenDeCompraServiceStatus" />
+				<xs:element name="ordenDeCompraServiceStatus"
+					type="ordenDeCompraServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

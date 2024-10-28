@@ -17,7 +17,7 @@ public class Filtro {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Long id;
-	
+
 	@Column(name = "nombre", nullable = false, unique = true)
 	private String nombre;
 
@@ -44,6 +44,14 @@ public class Filtro {
 	public Filtro() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {

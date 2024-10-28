@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 03:46:18 PM ART 
+// Generado el: 2024.10.27 a las 08:24:50 PM ART 
 //
 
 
@@ -37,6 +37,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OrdenDeCompraInfo }
+     * 
+     */
+    public OrdenDeCompraInfo createOrdenDeCompraInfo() {
+        return new OrdenDeCompraInfo();
+    }
+
+    /**
+     * Create an instance of {@link CatalogoInfo }
+     * 
+     */
+    public CatalogoInfo createCatalogoInfo() {
+        return new CatalogoInfo();
+    }
+
+    /**
      * Create an instance of {@link AddCatalogoRequest }
      * 
      */
@@ -58,14 +74,6 @@ public class ObjectFactory {
      */
     public CatalogoServiceStatus createCatalogoServiceStatus() {
         return new CatalogoServiceStatus();
-    }
-
-    /**
-     * Create an instance of {@link CatalogoInfo }
-     * 
-     */
-    public CatalogoInfo createCatalogoInfo() {
-        return new CatalogoInfo();
     }
 
     /**
@@ -282,14 +290,6 @@ public class ObjectFactory {
      */
     public AddOrdenDeCompraRequest createAddOrdenDeCompraRequest() {
         return new AddOrdenDeCompraRequest();
-    }
-
-    /**
-     * Create an instance of {@link OrdenDeCompraInfo }
-     * 
-     */
-    public OrdenDeCompraInfo createOrdenDeCompraInfo() {
-        return new OrdenDeCompraInfo();
     }
 
     /**
@@ -690,6 +690,38 @@ public class ObjectFactory {
      */
     public BuscarUsuarioResponse createBuscarUsuarioResponse() {
         return new BuscarUsuarioResponse();
+    }
+
+    /**
+     * Create an instance of {@link ItemOrdenDeCompraInfo }
+     * 
+     */
+    public ItemOrdenDeCompraInfo createItemOrdenDeCompraInfo() {
+        return new ItemOrdenDeCompraInfo();
+    }
+
+    /**
+     * Create an instance of {@link ItemOrdenDeCompraServiceStatus }
+     * 
+     */
+    public ItemOrdenDeCompraServiceStatus createItemOrdenDeCompraServiceStatus() {
+        return new ItemOrdenDeCompraServiceStatus();
+    }
+
+    /**
+     * Create an instance of {@link OrdenDeCompraInfo.ItemsOrdenCompra }
+     * 
+     */
+    public OrdenDeCompraInfo.ItemsOrdenCompra createOrdenDeCompraInfoItemsOrdenCompra() {
+        return new OrdenDeCompraInfo.ItemsOrdenCompra();
+    }
+
+    /**
+     * Create an instance of {@link CatalogoInfo.Productos }
+     * 
+     */
+    public CatalogoInfo.Productos createCatalogoInfoProductos() {
+        return new CatalogoInfo.Productos();
     }
 
 }

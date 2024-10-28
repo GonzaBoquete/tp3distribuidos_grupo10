@@ -1,13 +1,22 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- Catalogo Complex Type -->
 	<xs:complexType name="catalogoInfo">
 		<xs:sequence>
 			<xs:element name="idCatalogo" type="xs:long" />
 			<xs:element name="idTienda" type="xs:long" />
+			<xs:element name="productos" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="productoCodigo" type="xs:string" />
+						<!-- Agrega otros elementos según los atributos de
+						Producto -->
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -33,7 +42,8 @@
 	<xs:element name="addCatalogoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogoServiceStatus" type="catalogoServiceStatus" />
+				<xs:element name="catalogoServiceStatus"
+					type="catalogoServiceStatus" />
 				<xs:element name="catalogo" type="catalogoInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -83,7 +93,8 @@
 	<xs:element name="updateTiendaDeCatalogoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogoServiceStatus" type="catalogoServiceStatus" />
+				<xs:element name="catalogoServiceStatus"
+					type="catalogoServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -100,7 +111,8 @@
 	<xs:element name="deleteCatalogoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogoServiceStatus" type="catalogoServiceStatus" />
+				<xs:element name="catalogoServiceStatus"
+					type="catalogoServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -118,7 +130,8 @@
 	<xs:element name="agregarProductoACatalogoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogoServiceStatus" type="catalogoServiceStatus" />
+				<xs:element name="catalogoServiceStatus"
+					type="catalogoServiceStatus" />
 				<xs:element name="catalogo" type="catalogoInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -137,7 +150,8 @@
 	<xs:element name="eliminarProductoDeCatalogoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogoServiceStatus" type="catalogoServiceStatus" />
+				<xs:element name="catalogoServiceStatus"
+					type="catalogoServiceStatus" />
 				<xs:element name="catalogo" type="catalogoInfo" />
 			</xs:sequence>
 		</xs:complexType>
