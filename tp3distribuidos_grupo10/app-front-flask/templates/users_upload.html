@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Carga Masiva de Usuarios</h2>
-    <form action="{{ url_for('users_upload') }}" method="POST" enctype="multipart/form-data">
-        <label for="file">Archivo CSV:</label>
-        <input type="file" name="file" id="file" accept=".csv" required>
+    <form action="{{ url_for('users_upload') }}" method="post" enctype="multipart/form-data">
+        <label for="archivo">Subir archivo CSV:</label>
+        <input type="file" name="archivo" id="archivo" accept=".csv">
         <button type="submit">Cargar Usuarios</button>
     </form>
+    <a href="{{ url_for('index') }}">Volver al Inicio</a>
 
     {% if errors %}
         <h3>Errores de Carga</h3>

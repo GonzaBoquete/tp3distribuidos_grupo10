@@ -2,12 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from config import Config
 from models import db, UserFilter
 from forms import OrderFilterForm, SaveFilterForm
-import requests
+import requests, os, csv
 import pandas as pd
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 #Pagina home  - INDEX
 @app.route('/')
@@ -83,24 +87,43 @@ def catalog():
     return render_template("catalog.html", catalogs=catalogs)
 
 # Ruta para carga masiva de usuarios
-@app.route("/users_upload", methods=["POST"])
+@app.route("/users_upload", methods=['GET', 'POST'])
 def users_upload():
-    file = request.files["file"]
-    if file:
-        data = pd.read_csv(file)
-        errors = []
-        for i, row in data.iterrows():
-            user = {
-                "nombreUsuario": row["usuario"],
-                "contrasena": row["contraseña"],
-                "nombre": row["nombre"],
-                "apellido": row["apellido"],
-                "codigoTienda": row["codigo de tienda"]
-            }
-            response = requests.post("http://localhost:8080/api/usuario/add", data=user)
-            if response.status_code != 200:
-                errors.append(f"Line {i+1}: Error adding user.")
-        return render_template("users_upload.html", errors=errors)
+    if request.method == 'POST':
+        archivo = request.files.get('archivo')
+        errores = []
+        # Verifica que se haya subido un archivo y que sea un CSV
+        if archivo and archivo.filename.endswith('.csv'):
+            ruta_archivo = os.path.join(app.config['UPLOAD_FOLDER'], archivo.filename)
+            archivo.save(ruta_archivo) # Procesa el archivo CSV
+   
+            with open(ruta_archivo, newline='', encoding='utf-8') as csvfile:
+                csv_reader = csv.reader(csvfile, delimiter=';')
+
+            for linea_num, linea in enumerate(csv_reader, start=1):
+                try:
+                    user = {
+                            "nombreUsuario": linea["usuario"],
+                            "contrasena": linea["contraseña"],
+                            "nombre": linea["nombre"],
+                            "apellido": linea["apellido"],
+                            "codigoTienda": linea["codigo de tienda"]
+                            }
+                    if not "usuario" or not "contraseña" or not "nombre" or not "apellido" or not "codigo_tienda":
+                            errores.append(f"Línea {linea_num}: Faltan campos.")
+                            continue
+                    response = requests.post("http://localhost:8080/api/usuario/add", data=user)
+                except Exception as e:
+                        errores.append(f"Línea {linea_num}: Error al procesar - {e}")
+            if errores:
+                flash("Se encontraron errores en el archivo CSV: " + ", ".join(errores))
+            else:
+                flash("Carga masiva completada exitosamente.")
+            return redirect(url_for('index'))
+        flash("No se subió un archivo o el archivo no es válido.")
+        return redirect(url_for('users_upload'))
+                
+    return render_template("users_upload.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
