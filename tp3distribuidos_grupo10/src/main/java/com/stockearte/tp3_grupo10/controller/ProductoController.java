@@ -30,8 +30,6 @@ public class ProductoController {
 	@PostMapping("/add")
 	public ResponseEntity<Producto> addProducto(@RequestParam Long codigoProducto, @RequestParam String nombre,
 			@RequestParam String talle, @RequestParam String foto, @RequestParam String color) {
-		// Producto producto = productoService.add(codigoProducto, nombre, talle, foto,
-		// color);
 		AddProductoRequest addProductoRequest = new AddProductoRequest();
 		addProductoRequest.setProducto(productoConverter
 				.convertProductoToProductoInfo(new Producto(codigoProducto, nombre, talle, foto, color)));
