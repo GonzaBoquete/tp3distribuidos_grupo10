@@ -8,6 +8,7 @@
 		<xs:sequence>
 			<xs:element name="status" type="xs:string" />
 			<xs:element name="message" type="xs:string" />
+			<xs:element name="usuario" type="usuarioInfo" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -39,7 +40,6 @@
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
 					type="usuarioServiceStatus" />
-				<xs:element name="usuario" type="usuarioInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -127,7 +127,6 @@
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
 					type="usuarioServiceStatus" />
-				<xs:element name="usuario" type="usuarioInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -138,15 +137,6 @@
 			<xs:sequence>
 				<xs:element name="nombreUsuario" type="xs:string" />
 				<xs:element name="codigoTienda" type="xs:long" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="buscarUsuarioResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="usuarios" type="usuarioInfo"
-					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

@@ -21,6 +21,4 @@ public interface UsuarioService {
 	
 	List<Usuario> buscarUsuario(String nombre, Long codigoTienda);
 	
-	List<Usuario> buscarUsuario(String nombre);
-
 }

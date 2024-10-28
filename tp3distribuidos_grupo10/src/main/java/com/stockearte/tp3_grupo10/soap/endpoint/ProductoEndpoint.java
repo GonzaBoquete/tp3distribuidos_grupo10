@@ -20,7 +20,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.ProductoInfo;
-import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoResponse;
 
@@ -87,7 +86,8 @@ public class ProductoEndpoint {
 			Producto producto = this.getProductoService().update(request.getCodigo(), request.getNombre(),
 					request.getTalle(), request.getFoto(), request.getColor());
 			response.getProductoServiceStatus().setStatus("OK");
-			response.getProductoServiceStatus().setMessage(producto.toString());
+			response.getProductoServiceStatus()
+					.setProducto(this.getProductoConverter().convertProductoToProductoInfo(producto));
 		} catch (Exception e) {
 			response.getProductoServiceStatus().setStatus("ERROR");
 			response.getProductoServiceStatus().setMessage(e.getLocalizedMessage());

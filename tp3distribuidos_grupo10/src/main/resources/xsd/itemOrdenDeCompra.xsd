@@ -18,6 +18,7 @@
 		<xs:sequence>
 			<xs:element name="status" type="xs:string" />
 			<xs:element name="message" type="xs:string" />
+			<xs:element name="itemOrdenDeCompra" type="itemOrdenDeCompraInfo"/>
 		</xs:sequence>
 	</xs:complexType>
 

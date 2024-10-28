@@ -100,13 +100,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (tienda != null) {
 			return usuarioRepository.findByNombreAndTienda(nombre, tienda);
 		} else {
-			throw new ServiceException("No se encontro la tienda");
+			return usuarioRepository.findByNombre(nombre);
 		}
-	}
-
-	@Override
-	public List<Usuario> buscarUsuario(String nombre) {
-		return usuarioRepository.findByNombre(nombre);
 	}
 
 	public TiendaService getTiendaService() {

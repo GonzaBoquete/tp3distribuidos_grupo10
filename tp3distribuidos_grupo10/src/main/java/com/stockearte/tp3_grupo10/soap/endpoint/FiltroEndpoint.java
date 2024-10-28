@@ -86,7 +86,7 @@ public class FiltroEndpoint {
 			Filtro filtro = this.getFiltroService().updateProducto(request.getCodigoFiltro(),
 					request.getCodigoProducto());
 			response.getFiltroServiceStatus().setStatus("OK");
-			response.getFiltroServiceStatus().setMessage(filtro.toString());
+			response.getFiltroServiceStatus().setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
 		} catch (Exception e) {
 			response.getFiltroServiceStatus().setStatus("ERROR");
 			response.getFiltroServiceStatus().setMessage(e.getLocalizedMessage());
@@ -101,7 +101,7 @@ public class FiltroEndpoint {
 		try {
 			Filtro filtro = this.getFiltroService().updateTienda(request.getCodigoFiltro(), request.getCodigoTienda());
 			response.getFiltroServiceStatus().setStatus("OK");
-			response.getFiltroServiceStatus().setMessage(filtro.toString());
+			response.getFiltroServiceStatus().setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
 		} catch (Exception e) {
 			response.getFiltroServiceStatus().setStatus("ERROR");
 			response.getFiltroServiceStatus().setMessage(e.getLocalizedMessage());

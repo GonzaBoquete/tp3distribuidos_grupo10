@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 01:07:45 AM ART 
+// Generado el: 2024.10.28 a las 06:19:31 PM ART 
 //
 
 
@@ -26,6 +26,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="filtro" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}filtroInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,7 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "filtroServiceStatus", propOrder = {
     "status",
-    "message"
+    "message",
+    "filtro"
 })
 public class FiltroServiceStatus {
 
@@ -45,6 +47,8 @@ public class FiltroServiceStatus {
     protected String status;
     @XmlElement(required = true)
     protected String message;
+    @XmlElement(required = true)
+    protected FiltroInfo filtro;
 
     /**
      * Obtiene el valor de la propiedad status.
@@ -92,6 +96,30 @@ public class FiltroServiceStatus {
      */
     public void setMessage(String value) {
         this.message = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad filtro.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FiltroInfo }
+     *     
+     */
+    public FiltroInfo getFiltro() {
+        return filtro;
+    }
+
+    /**
+     * Define el valor de la propiedad filtro.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FiltroInfo }
+     *     
+     */
+    public void setFiltro(FiltroInfo value) {
+        this.filtro = value;
     }
 
 }

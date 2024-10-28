@@ -84,7 +84,7 @@ public class TiendaEndpoint {
 			Tienda tienda = this.getTiendaService().update(request.getCodigo(), request.getDireccion(),
 					request.getCiudad(), request.getProvincia(), request.isHabilitada());
 			response.getTiendaServiceStatus().setStatus("OK");
-			response.getTiendaServiceStatus().setMessage(tienda.toString());
+			response.getTiendaServiceStatus().setTienda(this.getTiendaConverter().convertTiendaToInfo(tienda));
 		} catch (Exception e) {
 			response.getTiendaServiceStatus().setStatus("ERROR");
 			response.getTiendaServiceStatus().setMessage(e.getLocalizedMessage());

@@ -61,11 +61,12 @@ public class UsuarioEndpoint {
 	@ResponsePayload
 	public AddUsuarioResponse addUsuario(@RequestPayload AddUsuarioRequest request) {
 		AddUsuarioResponse response = new AddUsuarioResponse();
-		response.setUsuario(this.getUsuarioConverter()
-				.convertUsuarioToInfo(this.getUsuarioService().add(request.getUsuario().getNombreUsuario(),
-						request.getUsuario().getContrasena(), request.getUsuario().getNombre(),
-						request.getUsuario().getApellido(), Rol.valueOf(request.getUsuario().getRol()),
-						request.getUsuario().isHabilitado(), request.getCodigoTienda())));
+		response.getUsuarioServiceStatus()
+				.setUsuario(this.getUsuarioConverter()
+						.convertUsuarioToInfo(this.getUsuarioService().add(request.getUsuario().getNombreUsuario(),
+								request.getUsuario().getContrasena(), request.getUsuario().getNombre(),
+								request.getUsuario().getApellido(), Rol.valueOf(request.getUsuario().getRol()),
+								request.getUsuario().isHabilitado(), request.getCodigoTienda())));
 		return response;
 	}
 
@@ -80,7 +81,7 @@ public class UsuarioEndpoint {
 					Rol.valueOf(request.getUsuario().getRol()), request.getUsuario().isHabilitado(),
 					request.getCodigoTienda());
 			response.getUsuarioServiceStatus().setStatus("OK");
-			response.getUsuarioServiceStatus().setMessage(usuario.toString());
+			response.getUsuarioServiceStatus().setUsuario(this.getUsuarioConverter().convertUsuarioToInfo(usuario));
 		} catch (Exception e) {
 			response.getUsuarioServiceStatus().setStatus("ERROR");
 			response.getUsuarioServiceStatus().setMessage(e.getLocalizedMessage());
@@ -90,16 +91,22 @@ public class UsuarioEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "LoginRequest")
 	@ResponsePayload
-	public LoginResponse GetOneUsuarioByCode(@RequestPayload LoginRequest request) {
+	public LoginResponse login(@RequestPayload LoginRequest request) {
 		LoginResponse response = new LoginResponse();
-		Usuario usuario = this.getUsuarioService().login(request.getNombreUsuario(), request.getContrasena());
-		response.setUsuario(this.getUsuarioConverter().convertUsuarioToInfo(usuario));
+		try {
+			Usuario usuario = this.getUsuarioService().login(request.getNombreUsuario(), request.getContrasena());
+			response.getUsuarioServiceStatus().setStatus("OK");
+			response.getUsuarioServiceStatus().setUsuario(this.getUsuarioConverter().convertUsuarioToInfo(usuario));
+		} catch (Exception e) {
+			response.getUsuarioServiceStatus().setStatus("ERROR");
+			response.getUsuarioServiceStatus().setMessage(e.getLocalizedMessage());
+		}
 		return response;
 	}
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "BuscarUsuarioRequest")
 	@ResponsePayload
-	public BuscarUsuarioResponse getAllUsuarios(@RequestPayload BuscarUsuarioRequest request) {
+	public BuscarUsuarioResponse buscarUsuario(@RequestPayload BuscarUsuarioRequest request) {
 		BuscarUsuarioResponse response = new BuscarUsuarioResponse();
 		List<UsuarioInfo> usuarios = this.getUsuarioConverter().convertUsuariosToInfos(
 				this.getUsuarioService().buscarUsuario(request.getNombreUsuario(), request.getCodigoTienda()));
