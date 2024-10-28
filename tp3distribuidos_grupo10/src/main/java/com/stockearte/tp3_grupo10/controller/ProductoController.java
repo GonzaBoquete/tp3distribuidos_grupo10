@@ -23,12 +23,14 @@ public class ProductoController {
 		return ResponseEntity.ok(producto);
 	}
 
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getById")
 	public ResponseEntity<Producto> getProductoById(@RequestParam Long codigoProducto) {
 		Producto producto = productoService.getOneById(codigoProducto);
 		return ResponseEntity.ok(producto);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Producto>> getAllProductos() {
 		List<Producto> productos = productoService.getAll();
@@ -41,7 +43,8 @@ public class ProductoController {
 		Producto producto = productoService.update(codigoProducto, nombre, talle, foto, color);
 		return ResponseEntity.ok(producto);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/buscar")
 	public ResponseEntity<List<Producto>> buscarProducto(@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) Long codigoProducto, @RequestParam(required = false) String talle,

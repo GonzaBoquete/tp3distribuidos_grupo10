@@ -2,8 +2,8 @@
 {% block content %}
     <h2>Informe de Órdenes de Compra</h2>
     <form method="POST">
-        <label for="product_code">Código de Producto:</label>
-        <input type="text" name="product_code" id="product_code" value="{{ form.product_code.data }}">
+        <label for="codigoProducto">Código de Producto:</label>
+        <input type="text" name="codigoProducto" id="codigoProducto" value="{{ form.codigoProducto.data }}">
 
         <label for="start_date">Fecha de Inicio:</label>
         <input type="date" name="start_date" id="start_date" value="{{ form.start_date.data }}">
@@ -11,15 +11,16 @@
         <label for="end_date">Fecha de Fin:</label>
         <input type="date" name="end_date" id="end_date" value="{{ form.end_date.data }}">
 
-        <label for="status">Estado:</label>
-        <select name="status" id="status">
+        <label for="estado">Estado:</label>
+        <select name="estado" id="status">
             <option value="">Seleccione</option>
-            <option value="pending" {% if form.status.data == 'pending' %}selected{% endif %}>Pendiente</option>
-            <option value="completed" {% if form.status.data == 'completed' %}selected{% endif %}>Completada</option>
+            <option value="pendiente" {% if form.estado.data == 'pendiente' %}selected{% endif %}>Pendiente</option>
+            <option value="completed" {% if form.estado.data == 'completado' %}selected{% endif %}>Completada</option>
+            <option value="cancelada" {% if form.estado.data == 'cancelada' %}selected{% endif %}>Cancelada</option>
         </select>
 
-        <label for="store_code">Código de Tienda:</label>
-        <input type="text" name="store_code" id="store_code" value="{{ form.store_code.data }}">
+        <label for="codigoTienda">Código de Tienda:</label>
+        <input type="text" name="codigoTienda" id="codigoTienda" value="{{ form.codigoTienda.data }}">
 
         <button type="submit">Filtrar</button>
     </form>
@@ -38,10 +39,10 @@
             <tbody>
                 {% for order in orders %}
                     <tr>
-                        <td>{{ order['product_code'] }}</td>
-                        <td>{{ order['status'] }}</td>
-                        <td>{{ order['store_code'] }}</td>
-                        <td>{{ order['quantity'] }}</td>
+                        <td>{{ order['codigoProducto'] }}</td>
+                        <td>{{ order['estado'] }}</td>
+                        <td>{{ order['codigoTienda'] }}</td>
+                        <td>{{ order['cantidad'] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

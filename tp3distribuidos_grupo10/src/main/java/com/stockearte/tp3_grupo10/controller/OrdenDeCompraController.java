@@ -37,13 +37,15 @@ public class OrdenDeCompraController {
 				idItemOrdenDeCompra);
 		return ResponseEntity.ok(ordenDeCompra);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getById")
 	public ResponseEntity<OrdenDeCompra> getOrdenDeCompraById(@RequestParam Long idOrdenDeCompra) {
 		OrdenDeCompra ordenDeCompra = ordenDeCompraService.getOneById(idOrdenDeCompra);
 		return ResponseEntity.ok(ordenDeCompra);
 	}
 
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<OrdenDeCompra>> getAllOrdenesDeCompra() {
 		List<OrdenDeCompra> ordenesDeCompra = ordenDeCompraService.getAll();

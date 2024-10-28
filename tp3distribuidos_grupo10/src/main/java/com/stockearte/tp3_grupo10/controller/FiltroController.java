@@ -22,19 +22,22 @@ public class FiltroController {
 		Filtro filtro = filtroService.add(codigoFiltro, idUsuario, codigoTienda, codigoProducto);
 		return ResponseEntity.ok(filtro);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getByCode")
 	public ResponseEntity<Filtro> getFiltroByCode(@RequestParam String codigo) {
 		Filtro filtro = filtroService.getOneByCode(codigo);
 		return ResponseEntity.ok(filtro);
 	}
 
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getById")
 	public ResponseEntity<Filtro> getFiltroById(@RequestParam Long id) {
 		Filtro filtro = filtroService.getOneById(id);
 		return ResponseEntity.ok(filtro);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Filtro>> getAllFiltros() {
 		List<Filtro> filtros = filtroService.getAll();

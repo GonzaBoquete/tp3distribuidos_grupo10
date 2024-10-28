@@ -25,13 +25,15 @@ public class UsuarioController {
 				codigoTienda);
 		return ResponseEntity.ok(usuario);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getById")
 	public ResponseEntity<Usuario> getUsuarioById(@RequestParam Long id) {
 		Usuario usuario = usuarioService.getOneById(id);
 		return ResponseEntity.ok(usuario);
 	}
 
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Usuario>> getAllUsuarios() {
 		List<Usuario> usuarios = usuarioService.getAll();
@@ -52,7 +54,8 @@ public class UsuarioController {
 		Usuario usuario = usuarioService.login(nombreUsuario, contrasena);
 		return ResponseEntity.ok(usuario);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/buscar")
 	public ResponseEntity<List<Usuario>> buscarUsuario(@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) Long codigoTienda) {

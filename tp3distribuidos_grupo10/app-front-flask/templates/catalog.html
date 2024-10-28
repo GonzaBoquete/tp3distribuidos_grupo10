@@ -1,26 +1,53 @@
-{% extends "base.html" %}
-{% block content %}
-    <h2>Catálogo de Productos</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Código de Catálogo</th>
-                <th>Nombre de Producto</th>
-                <th>Colores Disponibles</th>
-                <th>Talles Disponibles</th>
-                <th>Foto</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for catalog in catalogs %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Órdenes y Catálogos</h1>
+        <nav>
+            <ul>
+                <a href="{{ url_for('orders') }}">Órdenes de Compra</a>
+                <a href="{{ url_for('catalog') }}">Catálogo</a>
+                <a href="{{ url_for('users_upload') }}">Carga Masiva</a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Productos disponibles</h2>
+     {% if catalogs.productos%}
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ catalog['codigoCatalogo'] }}</td>
-                    <td>{{ catalog['nombreProducto'] }}</td>
-                    <td>{{ catalog['colores'] | join(", ") }}</td>
-                    <td>{{ catalog['talles'] | join(", ") }}</td>
-                    <td><img src="{{ catalog['foto'] }}" alt="Foto de {{ catalog['nombreProducto'] }}" width="100"></td>
+                    <th>Código Producto</th>
+                    <th>Nombre</th>
+                    <th>Talle</th>
+                    <th>Color</th>
+                    <th>Foto</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+            </thead>
+            <tbody>
+                {% for producto in catalogs.productos %}
+                    <tr>
+                        <td>{{ producto.codigoProducto}}</td>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.talle }}</td>
+                        <td>{{ producto.color }}</td>
+                        <td>
+                            <img src="{{ producto.foto }}" alt="{{ producto.nombre }}" width="100" />
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay productos en este catálogo.</p>
+    {% endif %}
+    </main>
+
+</body>
+</html>

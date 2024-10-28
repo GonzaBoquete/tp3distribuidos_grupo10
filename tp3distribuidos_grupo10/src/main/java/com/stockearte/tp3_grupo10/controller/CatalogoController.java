@@ -22,12 +22,14 @@ public class CatalogoController {
 		return ResponseEntity.ok(catalogo);
 	}
 
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getById")
 	public ResponseEntity<Catalogo> getCatalogoById(@RequestParam Long idCatalogo) {
 		Catalogo catalogo = catalogoService.getOneById(idCatalogo);
 		return ResponseEntity.ok(catalogo);
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:5000")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Catalogo>> getAllCatalogos() {
 		List<Catalogo> catalogos = catalogoService.getAll();

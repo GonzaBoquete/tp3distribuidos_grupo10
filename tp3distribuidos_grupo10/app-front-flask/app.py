@@ -25,11 +25,11 @@ def orders():
     if form.validate_on_submit():
         # Capturar los datos de filtro
         params = {
-            "product_code": form.product_code.data,
+            "codigoProducto": form.codigoProducto.data,
             "start_date": form.start_date.data,
             "end_date": form.end_date.data,
-            "status": form.status.data,
-            "store_code": form.store_code.data
+            "estado": form.estado.data,
+            "codigoTienda": form.codigoTienda.data
         }
         # Realizar solicitud a la API de Spring Boot
         response = requests.get("http://localhost:8080/api/ordenDeCompra/getAll", params=params)
@@ -37,7 +37,7 @@ def orders():
         
         # Agrupación de resultados
         df = pd.DataFrame(orders)
-        grouped_orders = df.groupby(["product_code", "status", "store_code"])["quantity"].sum().reset_index()
+        grouped_orders = df.groupby(["id", "estado", "codigoTienda"])["cantidad"].sum().reset_index()#
 
         return render_template("orders.html", form=form, orders=grouped_orders)
     return render_template("orders.html", form=form)
@@ -48,11 +48,11 @@ def save_filter():
     form = SaveFilterForm()
     if form.validate_on_submit():
         new_filter = UserFilter(
-            name=form.name.data,
-            product_code=form.product_code.data,
+            name=form.nombre.data,
+            product_code=form.codigoProducto.data,
             date_range=f"{form.start_date.data} - {form.end_date.data}",
             status=form.status.data,
-            store_code=form.store_code.data,
+            store_code=form.codigoTienda.data,
             user_id=1  # ID de usuario de ejemplo
         )
         db.session.add(new_filter)
@@ -83,8 +83,8 @@ def load_filter(filter_id):
 def catalog():
     # Lógica de acceso a catálogo solo para usuarios de tienda
     response = requests.get("http://localhost:8080/api/catalogo/getAll")
-    catalogs = response.json() if response.status_code == 200 else []
-    return render_template("catalog.html", catalogs=catalogs)
+    catalogos = response.json() if response.status_code == 200 else []
+    return render_template("catalog.html", catalogs=catalogos)
 
 # Ruta para carga masiva de usuarios
 @app.route("/users_upload", methods=['GET', 'POST'])

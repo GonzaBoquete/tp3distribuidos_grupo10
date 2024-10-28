@@ -3,16 +3,16 @@ from wtforms import StringField, SelectField, DateField, IntegerField, BooleanFi
 from wtforms.validators import DataRequired
 
 class OrderFilterForm(FlaskForm):
-    product_code = StringField("Product Code")
+    codigoProducto = StringField("Producto Codigo")
     start_date = DateField("Start Date")
     end_date = DateField("End Date")
-    status = SelectField("Status", choices=[("pending", "Pending"), ("completed", "Completed")])
-    store_code = StringField("Store Code")
+    estado = SelectField("Estado", choices=[("pendiente", "Pendiente"), ("completada", "Completada"),("cancelada", "Cancelada")])
+    codigoTienda = StringField("Tienda Codigo")
 
 class SaveFilterForm(FlaskForm):
     name = StringField("Filter Name", validators=[DataRequired()])
-    product_code = StringField("Product Code")
+    codigoProducto = StringField("Product Code")
     start_date = DateField("Start Date")
     end_date = DateField("End Date")
-    status = SelectField("Status", choices=[("pending", "Pending"), ("completed", "Completed")])
-    store_code = StringField("Store Code")
+    estado = SelectField("Status", choices=[("pendiente", "Pendiente"), ("completada", "Completada"), ("cancelada", "Cancelada")])
+    codigoTienda = StringField("Tienda Codigo")
