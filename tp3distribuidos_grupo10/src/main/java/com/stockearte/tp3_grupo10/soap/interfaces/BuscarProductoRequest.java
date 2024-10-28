@@ -46,8 +46,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "foto",
     "color"
 })
-@XmlRootElement(name = "updateProductoRequest")
-public class UpdateProductoRequest {
+@XmlRootElement(name = "buscarProductoRequest")
+public class BuscarProductoRequest {
 
     protected long codigo;
     @XmlElement(required = true)

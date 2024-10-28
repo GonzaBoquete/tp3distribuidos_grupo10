@@ -1,7 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- Producto Complex Type -->
 	<xs:complexType name="productoInfo">
@@ -36,7 +36,8 @@
 	<xs:element name="addProductoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="productoServiceStatus" type="productoServiceStatus" />
+				<xs:element name="productoServiceStatus"
+					type="productoServiceStatus" />
 				<xs:element name="producto" type="productoInfo" />
 			</xs:sequence>
 		</xs:complexType>
@@ -89,24 +90,30 @@
 	<xs:element name="updateProductoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="productoServiceStatus" type="productoServiceStatus" />
+				<xs:element name="productoServiceStatus"
+					type="productoServiceStatus" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Delete Producto -->
-	<xs:element name="deleteProductoRequest">
+	<!-- Encontrar Productos -->
+	<xs:element name="buscarProductoRequest">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="codigo" type="xs:long" />
+				<xs:element name="nombre" type="xs:string" />
+				<xs:element name="talle" type="xs:string" />
+				<xs:element name="foto" type="xs:string" />
+				<xs:element name="color" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="deleteProductoResponse">
+	<xs:element name="buscarProductoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="productoServiceStatus" type="productoServiceStatus" />
+				<xs:element name="productos" type="productoInfo"
+					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

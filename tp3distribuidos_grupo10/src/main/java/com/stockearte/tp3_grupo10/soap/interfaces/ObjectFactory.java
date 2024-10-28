@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.27 a las 11:37:03 PM ART 
 //
 
 
@@ -453,19 +453,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteProductoRequest }
+     * Create an instance of {@link BuscarProductoRequest }
      * 
      */
-    public DeleteProductoRequest createDeleteProductoRequest() {
-        return new DeleteProductoRequest();
+    public BuscarProductoRequest createBuscarProductoRequest() {
+        return new BuscarProductoRequest();
     }
 
     /**
-     * Create an instance of {@link DeleteProductoResponse }
+     * Create an instance of {@link BuscarProductoResponse }
      * 
      */
-    public DeleteProductoResponse createDeleteProductoResponse() {
-        return new DeleteProductoResponse();
+    public BuscarProductoResponse createBuscarProductoResponse() {
+        return new BuscarProductoResponse();
     }
 
     /**
