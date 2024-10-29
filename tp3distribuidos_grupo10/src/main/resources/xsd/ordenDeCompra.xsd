@@ -44,7 +44,7 @@
 	<xs:element name="addOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -54,7 +54,6 @@
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
 					type="ordenDeCompraServiceStatus" />
-				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -109,7 +108,7 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<!-- Eliminar item a OrdenDeCompra -->
 	<xs:element name="eliminarItemOrdenDeCompraRequest">
 		<xs:complexType>

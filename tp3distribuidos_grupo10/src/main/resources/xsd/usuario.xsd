@@ -29,7 +29,12 @@
 	<xs:element name="addUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuario" type="usuarioInfo" />
+				<xs:element name="nombreUsuario" type="xs:string" />
+				<xs:element name="contrasena" type="xs:string" />
+				<xs:element name="nombre" type="xs:string" />
+				<xs:element name="apellido" type="xs:string" />
+				<xs:element name="rol" type="xs:string" />
+				<xs:element name="habilitado" type="xs:boolean" />
 				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
@@ -79,7 +84,13 @@
 	<xs:element name="updateUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuario" type="usuarioInfo" />
+				<xs:element name="id" type="xs:long" />
+				<xs:element name="nombreUsuario" type="xs:string" />
+				<xs:element name="contrasena" type="xs:string" />
+				<xs:element name="nombre" type="xs:string" />
+				<xs:element name="apellido" type="xs:string" />
+				<xs:element name="rol" type="xs:string" />
+				<xs:element name="habilitado" type="xs:boolean" />
 				<xs:element name="codigoTienda" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>

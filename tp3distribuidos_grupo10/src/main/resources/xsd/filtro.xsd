@@ -31,7 +31,10 @@
 	<xs:element name="addFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtro" type="filtroInfo" />
+				<xs:element name="codigoFiltro" type="xs:string" />
+				<xs:element name="idUsuario" type="xs:long" />
+				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="codigoProducto" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

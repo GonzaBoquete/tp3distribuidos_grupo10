@@ -39,7 +39,7 @@ public class OrdenDeCompraEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOneOrdenDeCompraByIdRequest")
 	@ResponsePayload
-	public GetOneOrdenDeCompraByIdResponse GetOneOrdenDeCompraByCode(
+	public GetOneOrdenDeCompraByIdResponse GetOneOrdenDeCompraById(
 			@RequestPayload GetOneOrdenDeCompraByIdRequest request) throws DatatypeConfigurationException {
 		GetOneOrdenDeCompraByIdResponse response = new GetOneOrdenDeCompraByIdResponse();
 		OrdenDeCompra ordenDeCompra = this.getOrdenDeCompraService().getOneById(request.getId());
@@ -65,8 +65,8 @@ public class OrdenDeCompraEndpoint {
 	public AddOrdenDeCompraResponse addOrdenDeCompra(@RequestPayload AddOrdenDeCompraRequest request)
 			throws DatatypeConfigurationException {
 		AddOrdenDeCompraResponse response = new AddOrdenDeCompraResponse();
-		response.setOrdenDeCompra(this.getOrdenDeCompraConverter().convertOrdenDeCompraToInfo(
-				this.getOrdenDeCompraService().add(request.getOrdenDeCompra().getIdTienda())));
+		response.getOrdenDeCompraServiceStatus().setOrdenDeCompra(this.getOrdenDeCompraConverter()
+				.convertOrdenDeCompraToInfo(this.getOrdenDeCompraService().add(request.getCodigoTienda())));
 		return response;
 	}
 
@@ -106,7 +106,7 @@ public class OrdenDeCompraEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "eliminarItemOrdenDeCompraRequest")
 	@ResponsePayload
-	public EliminarItemOrdenDeCompraResponse agregarItemOrdenDeCompra(
+	public EliminarItemOrdenDeCompraResponse eliminarItemOrdenDeCompra(
 			@RequestPayload EliminarItemOrdenDeCompraRequest request) {
 		EliminarItemOrdenDeCompraResponse response = new EliminarItemOrdenDeCompraResponse();
 		try {

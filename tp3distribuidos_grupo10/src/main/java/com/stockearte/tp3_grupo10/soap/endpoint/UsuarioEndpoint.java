@@ -63,10 +63,9 @@ public class UsuarioEndpoint {
 		AddUsuarioResponse response = new AddUsuarioResponse();
 		response.getUsuarioServiceStatus()
 				.setUsuario(this.getUsuarioConverter()
-						.convertUsuarioToInfo(this.getUsuarioService().add(request.getUsuario().getNombreUsuario(),
-								request.getUsuario().getContrasena(), request.getUsuario().getNombre(),
-								request.getUsuario().getApellido(), Rol.valueOf(request.getUsuario().getRol()),
-								request.getUsuario().isHabilitado(), request.getCodigoTienda())));
+						.convertUsuarioToInfo(this.getUsuarioService().add(request.getNombreUsuario(),
+								request.getContrasena(), request.getNombre(), request.getApellido(),
+								Rol.valueOf(request.getRol()), request.isHabilitado(), request.getCodigoTienda())));
 		return response;
 	}
 
@@ -75,11 +74,9 @@ public class UsuarioEndpoint {
 	public UpdateUsuarioResponse updateUsuario(@RequestPayload UpdateUsuarioRequest request) {
 		UpdateUsuarioResponse response = new UpdateUsuarioResponse();
 		try {
-			Usuario usuario = this.getUsuarioService().update(request.getUsuario().getId(),
-					request.getUsuario().getNombreUsuario(), request.getUsuario().getContrasena(),
-					request.getUsuario().getNombre(), request.getUsuario().getApellido(),
-					Rol.valueOf(request.getUsuario().getRol()), request.getUsuario().isHabilitado(),
-					request.getCodigoTienda());
+			Usuario usuario = this.getUsuarioService().update(request.getId(), request.getNombreUsuario(),
+					request.getContrasena(), request.getNombre(), request.getApellido(), Rol.valueOf(request.getRol()),
+					request.isHabilitado(), request.getCodigoTienda());
 			response.getUsuarioServiceStatus().setStatus("OK");
 			response.getUsuarioServiceStatus().setUsuario(this.getUsuarioConverter().convertUsuarioToInfo(usuario));
 		} catch (Exception e) {

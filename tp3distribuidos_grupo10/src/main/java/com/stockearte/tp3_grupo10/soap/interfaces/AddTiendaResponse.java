@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 07:31:15 PM ART 
+// Generado el: 2024.10.29 a las 12:15:25 AM ART 
 //
 
 
@@ -26,7 +26,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="tiendaServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}tiendaServiceStatus"/&gt;
- *         &lt;element name="tienda" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}tiendaInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,16 +36,13 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "tiendaServiceStatus",
-    "tienda"
+    "tiendaServiceStatus"
 })
 @XmlRootElement(name = "addTiendaResponse")
 public class AddTiendaResponse {
 
     @XmlElement(required = true)
     protected TiendaServiceStatus tiendaServiceStatus;
-    @XmlElement(required = true)
-    protected TiendaInfo tienda;
 
     /**
      * Obtiene el valor de la propiedad tiendaServiceStatus.
@@ -70,30 +66,6 @@ public class AddTiendaResponse {
      */
     public void setTiendaServiceStatus(TiendaServiceStatus value) {
         this.tiendaServiceStatus = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad tienda.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TiendaInfo }
-     *     
-     */
-    public TiendaInfo getTienda() {
-        return tienda;
-    }
-
-    /**
-     * Define el valor de la propiedad tienda.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TiendaInfo }
-     *     
-     */
-    public void setTienda(TiendaInfo value) {
-        this.tienda = value;
     }
 
 }

@@ -29,7 +29,11 @@
 	<xs:element name="addTiendaRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tienda" type="tiendaInfo" />
+				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="direccion" type="xs:string" />
+				<xs:element name="ciudad" type="xs:string" />
+				<xs:element name="provincia" type="xs:string" />
+				<xs:element name="habilitada" type="xs:boolean" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -38,7 +42,6 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
-				<xs:element name="tienda" type="tiendaInfo" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

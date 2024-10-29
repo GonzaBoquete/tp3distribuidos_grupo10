@@ -1,5 +1,8 @@
 package com.stockearte.tp3_grupo10.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +14,6 @@ import com.stockearte.tp3_grupo10.service.ProductoService;
 import com.stockearte.tp3_grupo10.service.TiendaService;
 import com.stockearte.tp3_grupo10.service.UsuarioService;
 import com.stockearte.tp3_grupo10.soap.interfaces.FiltroInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class FiltroConverter {
@@ -67,8 +67,7 @@ public class FiltroConverter {
 	}
 
 	// Convertir lista de FiltroInfo a lista de Filtro
-	public List<Filtro> convertFiltroInfosToFiltros(List<FiltroInfo> filtroInfos, List<Usuario> usuarios,
-			List<Tienda> tiendas, List<Producto> productos) {
+	public List<Filtro> convertFiltroInfosToFiltros(List<FiltroInfo> filtroInfos) {
 		List<Filtro> filtros = new ArrayList<>();
 		for (FiltroInfo filtroInfo : filtroInfos) {
 			filtros.add(convertFiltroInfoToFiltro(filtroInfo));

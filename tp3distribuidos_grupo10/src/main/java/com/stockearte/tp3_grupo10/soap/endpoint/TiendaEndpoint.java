@@ -55,7 +55,7 @@ public class TiendaEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "buscarTiendaRequest")
 	@ResponsePayload
-	public BuscarTiendaResponse buscarProducto(@RequestPayload BuscarTiendaRequest request) {
+	public BuscarTiendaResponse buscarTienda(@RequestPayload BuscarTiendaRequest request) {
 		BuscarTiendaResponse response = new BuscarTiendaResponse();
 		List<TiendaInfo> tiendas = this.getTiendaConverter().convertTiendasToInfos(
 				this.getTiendaService().buscarTienda(request.getCodigo(), request.isHabilitada()));
@@ -69,10 +69,9 @@ public class TiendaEndpoint {
 	@ResponsePayload
 	public AddTiendaResponse addTienda(@RequestPayload AddTiendaRequest request) {
 		AddTiendaResponse response = new AddTiendaResponse();
-		response.setTienda(this.getTiendaConverter()
-				.convertTiendaToInfo(this.getTiendaService().add(request.getTienda().getCodigo(),
-						request.getTienda().getDireccion(), request.getTienda().getCiudad(),
-						request.getTienda().getProvincia(), request.getTienda().isHabilitada())));
+		response.getTiendaServiceStatus().setTienda(
+				this.getTiendaConverter().convertTiendaToInfo(this.getTiendaService().add(request.getCodigoTienda(),
+						request.getDireccion(), request.getCiudad(), request.getProvincia(), request.isHabilitada())));
 		return response;
 	}
 

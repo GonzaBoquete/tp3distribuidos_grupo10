@@ -1,13 +1,13 @@
 package com.stockearte.tp3_grupo10.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.enumerators.Rol;
 import com.stockearte.tp3_grupo10.model.Usuario;
 import com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class UsuarioConverter {

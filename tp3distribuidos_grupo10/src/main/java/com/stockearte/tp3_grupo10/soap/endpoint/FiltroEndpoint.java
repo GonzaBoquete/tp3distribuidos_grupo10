@@ -48,9 +48,9 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOneFiltroByIdResponse")
 	@ResponsePayload
-	public GetOneFiltroByIdResponse GetOneFiltroById(@RequestPayload GetOneFiltroByIdResponse request) {
+	public GetOneFiltroByIdResponse GetOneFiltroById(@RequestPayload GetOneFiltroByIdRequest request) {
 		GetOneFiltroByIdResponse response = new GetOneFiltroByIdResponse();
-		Filtro filtro = this.getFiltroService().getOneById(request.getFiltro().getId());
+		Filtro filtro = this.getFiltroService().getOneById(request.getId());
 		response.setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
 		return response;
 	}
@@ -71,9 +71,9 @@ public class FiltroEndpoint {
 	@ResponsePayload
 	public AddFiltroResponse addFiltro(@RequestPayload AddFiltroRequest request) {
 		AddFiltroResponse response = new AddFiltroResponse();
-		response.setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(
-				this.getFiltroService().add(request.getFiltro().getNombre(), request.getFiltro().getIdUsuario(),
-						request.getFiltro().getCodigoTienda(), request.getFiltro().getCodigoProducto())));
+		response.setFiltro(this.getFiltroConverter()
+				.convertFiltroToFiltroInfo(this.getFiltroService().add(request.getCodigoFiltro(),
+						request.getIdUsuario(), request.getCodigoTienda(), request.getCodigoProducto())));
 		return response;
 	}
 
@@ -111,7 +111,7 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteFiltroRequest")
 	@ResponsePayload
-	public DeleteFiltroResponse GetOneFiltroByCode(@RequestPayload DeleteFiltroRequest request) {
+	public DeleteFiltroResponse deleteFiltro(@RequestPayload DeleteFiltroRequest request) {
 		DeleteFiltroResponse response = new DeleteFiltroResponse();
 		try {
 			this.getFiltroService().delete(request.getCodigoFiltro());

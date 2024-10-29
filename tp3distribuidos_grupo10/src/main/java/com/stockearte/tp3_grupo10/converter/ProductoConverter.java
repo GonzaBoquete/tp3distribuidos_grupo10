@@ -1,12 +1,12 @@
 package com.stockearte.tp3_grupo10.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.soap.interfaces.ProductoInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class ProductoConverter {

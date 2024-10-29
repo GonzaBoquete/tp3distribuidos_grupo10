@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.28 a las 07:31:15 PM ART 
+// Generado el: 2024.10.29 a las 12:15:25 AM ART 
 //
 
 
@@ -181,14 +181,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FiltroInfo }
-     * 
-     */
-    public FiltroInfo createFiltroInfo() {
-        return new FiltroInfo();
-    }
-
-    /**
      * Create an instance of {@link AddFiltroResponse }
      * 
      */
@@ -202,6 +194,14 @@ public class ObjectFactory {
      */
     public FiltroServiceStatus createFiltroServiceStatus() {
         return new FiltroServiceStatus();
+    }
+
+    /**
+     * Create an instance of {@link FiltroInfo }
+     * 
+     */
+    public FiltroInfo createFiltroInfo() {
+        return new FiltroInfo();
     }
 
     /**
@@ -509,14 +509,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TiendaInfo }
-     * 
-     */
-    public TiendaInfo createTiendaInfo() {
-        return new TiendaInfo();
-    }
-
-    /**
      * Create an instance of {@link AddTiendaResponse }
      * 
      */
@@ -546,6 +538,14 @@ public class ObjectFactory {
      */
     public GetOneTiendaByCodeResponse createGetOneTiendaByCodeResponse() {
         return new GetOneTiendaByCodeResponse();
+    }
+
+    /**
+     * Create an instance of {@link TiendaInfo }
+     * 
+     */
+    public TiendaInfo createTiendaInfo() {
+        return new TiendaInfo();
     }
 
     /**
@@ -605,14 +605,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UsuarioInfo }
-     * 
-     */
-    public UsuarioInfo createUsuarioInfo() {
-        return new UsuarioInfo();
-    }
-
-    /**
      * Create an instance of {@link AddUsuarioResponse }
      * 
      */
@@ -642,6 +634,14 @@ public class ObjectFactory {
      */
     public GetOneUsuarioByIdResponse createGetOneUsuarioByIdResponse() {
         return new GetOneUsuarioByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link UsuarioInfo }
+     * 
+     */
+    public UsuarioInfo createUsuarioInfo() {
+        return new UsuarioInfo();
     }
 
     /**

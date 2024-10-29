@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.model.Catalogo;
 import com.stockearte.tp3_grupo10.model.Producto;
-import com.stockearte.tp3_grupo10.model.Tienda;
 import com.stockearte.tp3_grupo10.service.ProductoService;
 import com.stockearte.tp3_grupo10.service.TiendaService;
 import com.stockearte.tp3_grupo10.soap.interfaces.CatalogoInfo;
@@ -65,8 +64,7 @@ public class CatalogoConverter {
 	}
 
 	// Convertir lista de CatalogoInfo a lista de Catalogo
-	public List<Catalogo> convertCatalogoInfosToCatalogos(List<CatalogoInfo> catalogoInfos, List<Tienda> tiendas,
-			List<Producto> productos) {
+	public List<Catalogo> convertCatalogoInfosToCatalogos(List<CatalogoInfo> catalogoInfos) {
 		List<Catalogo> catalogos = new ArrayList<>();
 		for (CatalogoInfo catalogoInfo : catalogoInfos) {
 			catalogos.add(convertCatalogoInfoToCatalogo(catalogoInfo));

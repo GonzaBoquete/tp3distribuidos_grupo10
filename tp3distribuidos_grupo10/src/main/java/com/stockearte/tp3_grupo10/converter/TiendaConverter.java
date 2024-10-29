@@ -1,12 +1,12 @@
 package com.stockearte.tp3_grupo10.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.model.Tienda;
 import com.stockearte.tp3_grupo10.soap.interfaces.TiendaInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class TiendaConverter {

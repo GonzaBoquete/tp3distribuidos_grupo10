@@ -102,8 +102,8 @@ public class OrdenDeCompraConverter {
 	}
 
 	// Convertir lista de ordenDeCompraInfo a lista de OrdenDeCompra
-	public List<OrdenDeCompra> convertInfoListToOrdenesDeCompra(List<OrdenDeCompraInfo> infoList, Tienda tienda,
-			List<ItemOrdenDeCompra> items) throws DatatypeConfigurationException {
+	public List<OrdenDeCompra> convertInfoListToOrdenesDeCompra(List<OrdenDeCompraInfo> infoList)
+			throws DatatypeConfigurationException {
 		List<OrdenDeCompra> ordenes = new ArrayList<>();
 		for (OrdenDeCompraInfo info : infoList) {
 			ordenes.add(convertInfoToOrdenDeCompra(info));
