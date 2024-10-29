@@ -57,11 +57,7 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> buscarUsuario(@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) Long codigoTienda) {
 		List<Usuario> usuarios;
-		if (codigoTienda != null) {
-			usuarios = usuarioService.buscarUsuario(nombre, codigoTienda);
-		} else {
-			usuarios = usuarioService.buscarUsuario(nombre);
-		}
+		usuarios = usuarioService.buscarUsuario(nombre, codigoTienda);
 		return ResponseEntity.ok(usuarios);
 	}
 }

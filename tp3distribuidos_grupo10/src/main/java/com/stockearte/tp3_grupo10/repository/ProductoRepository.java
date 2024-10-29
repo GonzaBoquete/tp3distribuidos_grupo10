@@ -9,6 +9,7 @@ import com.stockearte.tp3_grupo10.model.Producto;
 
 @Repository("productoRepository")
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
-	List<Producto> findByNombreContainingAndCodigoAndTalleAndColor(String nombre, Long codigo, String talle, String color);
+	List<Producto> findByNombreContainingAndCodigoAndTalleAndColor(String nombre, Long codigo, String talle,
+			String color);
 
 }

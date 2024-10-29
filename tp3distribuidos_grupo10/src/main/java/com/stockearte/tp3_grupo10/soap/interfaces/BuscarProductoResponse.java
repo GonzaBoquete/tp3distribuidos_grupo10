@@ -8,6 +8,8 @@
 
 package com.stockearte.tp3_grupo10.soap.interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="catalogoServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}catalogoServiceStatus"/&gt;
+ *         &lt;element name="productos" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}productoInfo" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "catalogoServiceStatus"
+    "productos"
 })
-@XmlRootElement(name = "deleteCatalogoResponse")
-public class DeleteCatalogoResponse {
+@XmlRootElement(name = "buscarProductoResponse")
+public class BuscarProductoResponse {
 
     @XmlElement(required = true)
-    protected CatalogoServiceStatus catalogoServiceStatus;
+    protected List<ProductoInfo> productos;
 
     /**
-     * Obtiene el valor de la propiedad catalogoServiceStatus.
+     * Gets the value of the productos property.
      * 
-     * @return
-     *     possible object is
-     *     {@link CatalogoServiceStatus }
-     *     
-     */
-    public CatalogoServiceStatus getCatalogoServiceStatus() {
-        return catalogoServiceStatus;
-    }
-
-    /**
-     * Define el valor de la propiedad catalogoServiceStatus.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the productos property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CatalogoServiceStatus }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getProductos().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ProductoInfo }
+     * 
+     * 
      */
-    public void setCatalogoServiceStatus(CatalogoServiceStatus value) {
-        this.catalogoServiceStatus = value;
+    public List<ProductoInfo> getProductos() {
+        if (productos == null) {
+            productos = new ArrayList<ProductoInfo>();
+        }
+        return this.productos;
     }
 
 }

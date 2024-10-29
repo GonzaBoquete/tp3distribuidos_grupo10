@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="productoServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}productoServiceStatus"/&gt;
+ *         &lt;element name="ordenDeCompraServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}ordenDeCompraServiceStatus"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "productoServiceStatus"
+    "ordenDeCompraServiceStatus"
 })
-@XmlRootElement(name = "deleteProductoResponse")
-public class DeleteProductoResponse {
+@XmlRootElement(name = "agregarItemOrdenDeCompraResponse")
+public class AgregarItemOrdenDeCompraResponse {
 
     @XmlElement(required = true)
-    protected ProductoServiceStatus productoServiceStatus;
+    protected OrdenDeCompraServiceStatus ordenDeCompraServiceStatus;
 
     /**
-     * Obtiene el valor de la propiedad productoServiceStatus.
+     * Obtiene el valor de la propiedad ordenDeCompraServiceStatus.
      * 
      * @return
      *     possible object is
-     *     {@link ProductoServiceStatus }
+     *     {@link OrdenDeCompraServiceStatus }
      *     
      */
-    public ProductoServiceStatus getProductoServiceStatus() {
-        return productoServiceStatus;
+    public OrdenDeCompraServiceStatus getOrdenDeCompraServiceStatus() {
+        return ordenDeCompraServiceStatus;
     }
 
     /**
-     * Define el valor de la propiedad productoServiceStatus.
+     * Define el valor de la propiedad ordenDeCompraServiceStatus.
      * 
      * @param value
      *     allowed object is
-     *     {@link ProductoServiceStatus }
+     *     {@link OrdenDeCompraServiceStatus }
      *     
      */
-    public void setProductoServiceStatus(ProductoServiceStatus value) {
-        this.productoServiceStatus = value;
+    public void setOrdenDeCompraServiceStatus(OrdenDeCompraServiceStatus value) {
+        this.ordenDeCompraServiceStatus = value;
     }
 
 }

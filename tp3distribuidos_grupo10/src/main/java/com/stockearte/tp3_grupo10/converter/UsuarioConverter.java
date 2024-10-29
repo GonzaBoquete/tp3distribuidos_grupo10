@@ -20,7 +20,7 @@ public class UsuarioConverter {
 		info.setContrasena(usuario.getContrasena());
 		info.setNombre(usuario.getNombre());
 		info.setApellido(usuario.getApellido());
-		info.setRol(usuario.getRol().getValue()); // Asumiendo que quieres el valor del enum
+		info.setRol(usuario.getRol().getValue()); 
 		return info;
 	}
 

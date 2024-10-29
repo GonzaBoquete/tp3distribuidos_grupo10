@@ -25,6 +25,7 @@
 		<xs:sequence>
 			<xs:element name="status" type="xs:string" />
 			<xs:element name="message" type="xs:string" />
+			<xs:element name="catalogo" type="catalogoInfo" />
 		</xs:sequence>
 	</xs:complexType>
 

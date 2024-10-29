@@ -1,14 +1,5 @@
 package com.stockearte.tp3_grupo10.converter;
 
-import org.springframework.stereotype.Component;
-
-import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
-import com.stockearte.tp3_grupo10.model.ItemOrdenDeCompra;
-import com.stockearte.tp3_grupo10.model.OrdenDeCompra;
-import com.stockearte.tp3_grupo10.model.Tienda;
-import com.stockearte.tp3_grupo10.soap.interfaces.EstadoOrdenInfo;
-import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo;
-
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -18,14 +9,35 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
+import com.stockearte.tp3_grupo10.model.ItemOrdenDeCompra;
+import com.stockearte.tp3_grupo10.model.OrdenDeCompra;
+import com.stockearte.tp3_grupo10.model.Tienda;
+import com.stockearte.tp3_grupo10.repository.ItemOrdenDeCompraRepository;
+import com.stockearte.tp3_grupo10.service.TiendaService;
+import com.stockearte.tp3_grupo10.soap.interfaces.EstadoOrdenInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo.ItemsOrdenCompra;
+
 @Component
 public class OrdenDeCompraConverter {
+
+	@Autowired
+	private TiendaService tiendaService;
+
+	@Autowired
+	private ItemOrdenDeCompraRepository itemOrdenDeCompraRepository;
 
 	// Convertir de OrdenDeCompra a ordenDeCompraInfo
 	public OrdenDeCompraInfo convertOrdenDeCompraToInfo(OrdenDeCompra ordenDeCompra)
 			throws DatatypeConfigurationException {
 		OrdenDeCompraInfo info = new OrdenDeCompraInfo();
 		info.setId(ordenDeCompra.getId());
+
+		// Casteo fechas
 		GregorianCalendar gcal = GregorianCalendar.from(ordenDeCompra.getFecha().atStartOfDay(ZoneId.systemDefault()));
 		XMLGregorianCalendar xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
 		info.setFecha(xcal);
@@ -53,10 +65,11 @@ public class OrdenDeCompraConverter {
 	}
 
 	// Convertir de ordenDeCompraInfo a OrdenDeCompra
-	public OrdenDeCompra convertInfoToOrdenDeCompra(OrdenDeCompraInfo info, Tienda tienda,
-			List<ItemOrdenDeCompra> items) throws DatatypeConfigurationException {
+	public OrdenDeCompra convertInfoToOrdenDeCompra(OrdenDeCompraInfo info) throws DatatypeConfigurationException {
 		OrdenDeCompra ordenDeCompra = new OrdenDeCompra();
 		ordenDeCompra.setId(info.getId());
+
+		// Casteo fechas
 		GregorianCalendar gcal = GregorianCalendar.from(ordenDeCompra.getFecha().atStartOfDay(ZoneId.systemDefault()));
 		XMLGregorianCalendar xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
 		ordenDeCompra.setFecha(xcal.toGregorianCalendar().toZonedDateTime().toLocalDate());
@@ -67,11 +80,12 @@ public class OrdenDeCompraConverter {
 		}
 
 		// Establecer tienda
-		ordenDeCompra.setTienda(tienda);
+		ordenDeCompra.setTienda(this.getTiendaService().getOneById(info.getIdTienda()));
 
 		// Establecer itemsOrdenCompra
-		if (items != null) {
-			ordenDeCompra.setItemsOrdenCompra(items);
+		for (ItemsOrdenCompra item : info.getItemsOrdenCompra()) {
+			ordenDeCompra.getItemsOrdenCompra()
+					.add(this.getItemOrdenDeCompraRepository().getReferenceById(item.getItemOrdenDeCompraId()));
 		}
 
 		return ordenDeCompra;
@@ -92,8 +106,24 @@ public class OrdenDeCompraConverter {
 			List<ItemOrdenDeCompra> items) throws DatatypeConfigurationException {
 		List<OrdenDeCompra> ordenes = new ArrayList<>();
 		for (OrdenDeCompraInfo info : infoList) {
-			ordenes.add(convertInfoToOrdenDeCompra(info, tienda, items));
+			ordenes.add(convertInfoToOrdenDeCompra(info));
 		}
 		return ordenes;
+	}
+
+	public TiendaService getTiendaService() {
+		return tiendaService;
+	}
+
+	public void setTiendaService(TiendaService tiendaService) {
+		this.tiendaService = tiendaService;
+	}
+
+	public ItemOrdenDeCompraRepository getItemOrdenDeCompraRepository() {
+		return itemOrdenDeCompraRepository;
+	}
+
+	public void setItemOrdenDeCompraRepository(ItemOrdenDeCompraRepository itemOrdenDeCompraRepository) {
+		this.itemOrdenDeCompraRepository = itemOrdenDeCompraRepository;
 	}
 }

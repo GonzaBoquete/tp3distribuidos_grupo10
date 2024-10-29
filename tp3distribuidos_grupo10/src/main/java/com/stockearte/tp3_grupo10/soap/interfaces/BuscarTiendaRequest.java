@@ -10,7 +10,6 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="catalogoServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}catalogoServiceStatus"/&gt;
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="habilitada" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,45 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "catalogoServiceStatus"
+    "codigo",
+    "habilitada"
 })
-@XmlRootElement(name = "deleteCatalogoResponse")
-public class DeleteCatalogoResponse {
+@XmlRootElement(name = "buscarTiendaRequest")
+public class BuscarTiendaRequest {
 
-    @XmlElement(required = true)
-    protected CatalogoServiceStatus catalogoServiceStatus;
+    protected long codigo;
+    protected boolean habilitada;
 
     /**
-     * Obtiene el valor de la propiedad catalogoServiceStatus.
+     * Obtiene el valor de la propiedad codigo.
      * 
-     * @return
-     *     possible object is
-     *     {@link CatalogoServiceStatus }
-     *     
      */
-    public CatalogoServiceStatus getCatalogoServiceStatus() {
-        return catalogoServiceStatus;
+    public long getCodigo() {
+        return codigo;
     }
 
     /**
-     * Define el valor de la propiedad catalogoServiceStatus.
+     * Define el valor de la propiedad codigo.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link CatalogoServiceStatus }
-     *     
      */
-    public void setCatalogoServiceStatus(CatalogoServiceStatus value) {
-        this.catalogoServiceStatus = value;
+    public void setCodigo(long value) {
+        this.codigo = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad habilitada.
+     * 
+     */
+    public boolean isHabilitada() {
+        return habilitada;
+    }
+
+    /**
+     * Define el valor de la propiedad habilitada.
+     * 
+     */
+    public void setHabilitada(boolean value) {
+        this.habilitada = value;
     }
 
 }

@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
@@ -24,8 +24,9 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="usuario" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}usuarioInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,29 +37,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "usuarioServiceStatus", propOrder = {
-    "code",
-    "message"
+    "status",
+    "message",
+    "usuario"
 })
 public class UsuarioServiceStatus {
 
-    protected int code;
+    @XmlElement(required = true)
+    protected String status;
     @XmlElement(required = true)
     protected String message;
+    @XmlElement(required = true)
+    protected UsuarioInfo usuario;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Obtiene el valor de la propiedad status.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getCode() {
-        return code;
+    public String getStatus() {
+        return status;
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Define el valor de la propiedad status.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setCode(int value) {
-        this.code = value;
+    public void setStatus(String value) {
+        this.status = value;
     }
 
     /**
@@ -83,6 +96,30 @@ public class UsuarioServiceStatus {
      */
     public void setMessage(String value) {
         this.message = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad usuario.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UsuarioInfo }
+     *     
+     */
+    public UsuarioInfo getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * Define el valor de la propiedad usuario.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link UsuarioInfo }
+     *     
+     */
+    public void setUsuario(UsuarioInfo value) {
+        this.usuario = value;
     }
 
 }

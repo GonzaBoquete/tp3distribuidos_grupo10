@@ -1,10 +1,13 @@
 package com.stockearte.tp3_grupo10.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.model.ItemOrdenDeCompra;
 import com.stockearte.tp3_grupo10.model.OrdenDeCompra;
 import com.stockearte.tp3_grupo10.model.Producto;
+import com.stockearte.tp3_grupo10.service.OrdenDeCompraService;
+import com.stockearte.tp3_grupo10.service.ProductoService;
 import com.stockearte.tp3_grupo10.soap.interfaces.ItemOrdenDeCompraInfo;
 
 import java.util.ArrayList;
@@ -12,6 +15,12 @@ import java.util.List;
 
 @Component
 public class ItemOrdenDeCompraConverter {
+
+	@Autowired
+	private ProductoService productoService;
+
+	@Autowired
+	private OrdenDeCompraService ordenDeCompraService;
 
 	// Convertir de ItemOrdenDeCompra a ItemOrdenDeCompraInfo
 	public ItemOrdenDeCompraInfo convertItemOrdenDeCompraToInfo(ItemOrdenDeCompra item) {
@@ -30,12 +39,11 @@ public class ItemOrdenDeCompraConverter {
 	}
 
 	// Convertir de ItemOrdenDeCompraInfo a ItemOrdenDeCompra
-	public ItemOrdenDeCompra convertInfoToItemOrdenDeCompra(ItemOrdenDeCompraInfo itemInfo, Producto producto,
-			OrdenDeCompra ordenDeCompra) {
+	public ItemOrdenDeCompra convertInfoToItemOrdenDeCompra(ItemOrdenDeCompraInfo itemInfo) {
 		ItemOrdenDeCompra item = new ItemOrdenDeCompra();
 		item.setCantidad(itemInfo.getCantidad());
-		item.setProducto(producto);
-		item.setOrdenDeCompra(ordenDeCompra);
+		item.setProducto(this.getProductoService().getOneById(itemInfo.getProductoCodigo()));
+		item.setOrdenDeCompra(this.getOrdenDeCompraService().getOneById(itemInfo.getOrdenDeCompraId()));
 
 		return item;
 	}
@@ -54,14 +62,24 @@ public class ItemOrdenDeCompraConverter {
 			List<Producto> productos, List<OrdenDeCompra> ordenes) {
 		List<ItemOrdenDeCompra> items = new ArrayList<>();
 		for (ItemOrdenDeCompraInfo itemInfo : itemInfos) {
-			Producto producto = productos.stream().filter(p -> p.getCodigo() == itemInfo.getProductoCodigo())
-					.findFirst().orElse(null);
-
-			OrdenDeCompra ordenDeCompra = ordenes.stream().filter(o -> o.getId() == itemInfo.getOrdenDeCompraId())
-					.findFirst().orElse(null);
-
-			items.add(convertInfoToItemOrdenDeCompra(itemInfo, producto, ordenDeCompra));
+			items.add(convertInfoToItemOrdenDeCompra(itemInfo));
 		}
 		return items;
+	}
+
+	public ProductoService getProductoService() {
+		return productoService;
+	}
+
+	public void setProductoService(ProductoService productoService) {
+		this.productoService = productoService;
+	}
+
+	public OrdenDeCompraService getOrdenDeCompraService() {
+		return ordenDeCompraService;
+	}
+
+	public void setOrdenDeCompraService(OrdenDeCompraService ordenDeCompraService) {
+		this.ordenDeCompraService = ordenDeCompraService;
 	}
 }

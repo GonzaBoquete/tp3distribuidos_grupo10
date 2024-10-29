@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
@@ -269,6 +269,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateTiendaDeFiltroRequest }
+     * 
+     */
+    public UpdateTiendaDeFiltroRequest createUpdateTiendaDeFiltroRequest() {
+        return new UpdateTiendaDeFiltroRequest();
+    }
+
+    /**
+     * Create an instance of {@link UpdateTiendaDeFiltroResponse }
+     * 
+     */
+    public UpdateTiendaDeFiltroResponse createUpdateTiendaDeFiltroResponse() {
+        return new UpdateTiendaDeFiltroResponse();
+    }
+
+    /**
      * Create an instance of {@link DeleteFiltroRequest }
      * 
      */
@@ -309,19 +325,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetOneOrdenDeCompraByCodeRequest }
+     * Create an instance of {@link GetOneOrdenDeCompraByIdRequest }
      * 
      */
-    public GetOneOrdenDeCompraByCodeRequest createGetOneOrdenDeCompraByCodeRequest() {
-        return new GetOneOrdenDeCompraByCodeRequest();
+    public GetOneOrdenDeCompraByIdRequest createGetOneOrdenDeCompraByIdRequest() {
+        return new GetOneOrdenDeCompraByIdRequest();
     }
 
     /**
-     * Create an instance of {@link GetOneOrdenDeCompraByCodeResponse }
+     * Create an instance of {@link GetOneOrdenDeCompraByIdResponse }
      * 
      */
-    public GetOneOrdenDeCompraByCodeResponse createGetOneOrdenDeCompraByCodeResponse() {
-        return new GetOneOrdenDeCompraByCodeResponse();
+    public GetOneOrdenDeCompraByIdResponse createGetOneOrdenDeCompraByIdResponse() {
+        return new GetOneOrdenDeCompraByIdResponse();
     }
 
     /**
@@ -341,19 +357,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateOrdenDeCompraRequest }
+     * Create an instance of {@link AgregarItemOrdenDeCompraRequest }
      * 
      */
-    public UpdateOrdenDeCompraRequest createUpdateOrdenDeCompraRequest() {
-        return new UpdateOrdenDeCompraRequest();
+    public AgregarItemOrdenDeCompraRequest createAgregarItemOrdenDeCompraRequest() {
+        return new AgregarItemOrdenDeCompraRequest();
     }
 
     /**
-     * Create an instance of {@link UpdateOrdenDeCompraResponse }
+     * Create an instance of {@link AgregarItemOrdenDeCompraResponse }
      * 
      */
-    public UpdateOrdenDeCompraResponse createUpdateOrdenDeCompraResponse() {
-        return new UpdateOrdenDeCompraResponse();
+    public AgregarItemOrdenDeCompraResponse createAgregarItemOrdenDeCompraResponse() {
+        return new AgregarItemOrdenDeCompraResponse();
+    }
+
+    /**
+     * Create an instance of {@link EliminarItemOrdenDeCompraRequest }
+     * 
+     */
+    public EliminarItemOrdenDeCompraRequest createEliminarItemOrdenDeCompraRequest() {
+        return new EliminarItemOrdenDeCompraRequest();
+    }
+
+    /**
+     * Create an instance of {@link EliminarItemOrdenDeCompraResponse }
+     * 
+     */
+    public EliminarItemOrdenDeCompraResponse createEliminarItemOrdenDeCompraResponse() {
+        return new EliminarItemOrdenDeCompraResponse();
     }
 
     /**
@@ -394,14 +426,6 @@ public class ObjectFactory {
      */
     public AddProductoResponse createAddProductoResponse() {
         return new AddProductoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ProductoServiceStatus }
-     * 
-     */
-    public ProductoServiceStatus createProductoServiceStatus() {
-        return new ProductoServiceStatus();
     }
 
     /**
@@ -453,19 +477,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteProductoRequest }
+     * Create an instance of {@link ProductoServiceStatus }
      * 
      */
-    public DeleteProductoRequest createDeleteProductoRequest() {
-        return new DeleteProductoRequest();
+    public ProductoServiceStatus createProductoServiceStatus() {
+        return new ProductoServiceStatus();
     }
 
     /**
-     * Create an instance of {@link DeleteProductoResponse }
+     * Create an instance of {@link BuscarProductoRequest }
      * 
      */
-    public DeleteProductoResponse createDeleteProductoResponse() {
-        return new DeleteProductoResponse();
+    public BuscarProductoRequest createBuscarProductoRequest() {
+        return new BuscarProductoRequest();
+    }
+
+    /**
+     * Create an instance of {@link BuscarProductoResponse }
+     * 
+     */
+    public BuscarProductoResponse createBuscarProductoResponse() {
+        return new BuscarProductoResponse();
     }
 
     /**
@@ -549,19 +581,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteTiendaRequest }
+     * Create an instance of {@link BuscarTiendaRequest }
      * 
      */
-    public DeleteTiendaRequest createDeleteTiendaRequest() {
-        return new DeleteTiendaRequest();
+    public BuscarTiendaRequest createBuscarTiendaRequest() {
+        return new BuscarTiendaRequest();
     }
 
     /**
-     * Create an instance of {@link DeleteTiendaResponse }
+     * Create an instance of {@link BuscarTiendaResponse }
      * 
      */
-    public DeleteTiendaResponse createDeleteTiendaResponse() {
-        return new DeleteTiendaResponse();
+    public BuscarTiendaResponse createBuscarTiendaResponse() {
+        return new BuscarTiendaResponse();
     }
 
     /**

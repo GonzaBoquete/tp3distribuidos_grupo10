@@ -11,24 +11,25 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para tiendaInfo complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="tiendaInfo"&gt;
+ * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="direccion" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="provincia" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="habilitada" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="talle" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="foto" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="color" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,23 +39,25 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "tiendaInfo", propOrder = {
+@XmlType(name = "", propOrder = {
     "codigo",
-    "direccion",
-    "ciudad",
-    "provincia",
-    "habilitada"
+    "nombre",
+    "talle",
+    "foto",
+    "color"
 })
-public class TiendaInfo {
+@XmlRootElement(name = "buscarProductoRequest")
+public class BuscarProductoRequest {
 
     protected long codigo;
     @XmlElement(required = true)
-    protected String direccion;
+    protected String nombre;
     @XmlElement(required = true)
-    protected String ciudad;
+    protected String talle;
     @XmlElement(required = true)
-    protected String provincia;
-    protected boolean habilitada;
+    protected String foto;
+    @XmlElement(required = true)
+    protected String color;
 
     /**
      * Obtiene el valor de la propiedad codigo.
@@ -73,91 +76,99 @@ public class TiendaInfo {
     }
 
     /**
-     * Obtiene el valor de la propiedad direccion.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDireccion() {
-        return direccion;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * Define el valor de la propiedad direccion.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDireccion(String value) {
-        this.direccion = value;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad ciudad.
+     * Obtiene el valor de la propiedad talle.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCiudad() {
-        return ciudad;
+    public String getTalle() {
+        return talle;
     }
 
     /**
-     * Define el valor de la propiedad ciudad.
+     * Define el valor de la propiedad talle.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCiudad(String value) {
-        this.ciudad = value;
+    public void setTalle(String value) {
+        this.talle = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad provincia.
+     * Obtiene el valor de la propiedad foto.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getProvincia() {
-        return provincia;
+    public String getFoto() {
+        return foto;
     }
 
     /**
-     * Define el valor de la propiedad provincia.
+     * Define el valor de la propiedad foto.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setProvincia(String value) {
-        this.provincia = value;
+    public void setFoto(String value) {
+        this.foto = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad habilitada.
+     * Obtiene el valor de la propiedad color.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isHabilitada() {
-        return habilitada;
+    public String getColor() {
+        return color;
     }
 
     /**
-     * Define el valor de la propiedad habilitada.
+     * Define el valor de la propiedad color.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setHabilitada(boolean value) {
-        this.habilitada = value;
+    public void setColor(String value) {
+        this.color = value;
     }
 
 }

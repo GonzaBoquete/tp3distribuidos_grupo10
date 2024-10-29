@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
@@ -26,6 +26,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="producto" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}productoInfo"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,7 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "productoServiceStatus", propOrder = {
     "status",
-    "message"
+    "message",
+    "producto"
 })
 public class ProductoServiceStatus {
 
@@ -45,6 +47,8 @@ public class ProductoServiceStatus {
     protected String status;
     @XmlElement(required = true)
     protected String message;
+    @XmlElement(required = true)
+    protected ProductoInfo producto;
 
     /**
      * Obtiene el valor de la propiedad status.
@@ -92,6 +96,30 @@ public class ProductoServiceStatus {
      */
     public void setMessage(String value) {
         this.message = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad producto.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ProductoInfo }
+     *     
+     */
+    public ProductoInfo getProducto() {
+        return producto;
+    }
+
+    /**
+     * Define el valor de la propiedad producto.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ProductoInfo }
+     *     
+     */
+    public void setProducto(ProductoInfo value) {
+        this.producto = value;
     }
 
 }

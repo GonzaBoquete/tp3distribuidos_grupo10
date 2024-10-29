@@ -2,12 +2,14 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
 package com.stockearte.tp3_grupo10.soap.interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -25,8 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="idTienda" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="tiendas" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}tiendaInfo" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,54 +38,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "codigo",
-    "idTienda"
+    "tiendas"
 })
-@XmlRootElement(name = "updateOrdenDeCompraRequest")
-public class UpdateOrdenDeCompraRequest {
+@XmlRootElement(name = "buscarTiendaResponse")
+public class BuscarTiendaResponse {
 
     @XmlElement(required = true)
-    protected String codigo;
-    protected long idTienda;
+    protected List<TiendaInfo> tiendas;
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Gets the value of the tiendas property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCodigo() {
-        return codigo;
-    }
-
-    /**
-     * Define el valor de la propiedad codigo.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the tiendas property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCodigo(String value) {
-        this.codigo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad idTienda.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTiendas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TiendaInfo }
+     * 
      * 
      */
-    public long getIdTienda() {
-        return idTienda;
-    }
-
-    /**
-     * Define el valor de la propiedad idTienda.
-     * 
-     */
-    public void setIdTienda(long value) {
-        this.idTienda = value;
+    public List<TiendaInfo> getTiendas() {
+        if (tiendas == null) {
+            tiendas = new ArrayList<TiendaInfo>();
+        }
+        return this.tiendas;
     }
 
 }

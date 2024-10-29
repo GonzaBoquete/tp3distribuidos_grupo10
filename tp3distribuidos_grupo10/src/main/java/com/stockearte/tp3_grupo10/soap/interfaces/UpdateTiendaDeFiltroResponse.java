@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.27 a las 08:24:50 PM ART 
+// Generado el: 2024.10.28 a las 07:31:15 PM ART 
 //
 
 
@@ -10,6 +10,7 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="filtroServiceStatus" type="{http://www.stockearte.com/tp3_grupo10/soap/interfaces}filtroServiceStatus"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,27 +36,36 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "codigo"
+    "filtroServiceStatus"
 })
-@XmlRootElement(name = "deleteTiendaRequest")
-public class DeleteTiendaRequest {
+@XmlRootElement(name = "UpdateTiendaDeFiltroResponse")
+public class UpdateTiendaDeFiltroResponse {
 
-    protected long codigo;
+    @XmlElement(required = true)
+    protected FiltroServiceStatus filtroServiceStatus;
 
     /**
-     * Obtiene el valor de la propiedad codigo.
+     * Obtiene el valor de la propiedad filtroServiceStatus.
      * 
+     * @return
+     *     possible object is
+     *     {@link FiltroServiceStatus }
+     *     
      */
-    public long getCodigo() {
-        return codigo;
+    public FiltroServiceStatus getFiltroServiceStatus() {
+        return filtroServiceStatus;
     }
 
     /**
-     * Define el valor de la propiedad codigo.
+     * Define el valor de la propiedad filtroServiceStatus.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link FiltroServiceStatus }
+     *     
      */
-    public void setCodigo(long value) {
-        this.codigo = value;
+    public void setFiltroServiceStatus(FiltroServiceStatus value) {
+        this.filtroServiceStatus = value;
     }
 
 }

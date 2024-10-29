@@ -34,6 +34,7 @@
 		<xs:sequence>
 			<xs:element name="status" type="xs:string" />
 			<xs:element name="message" type="xs:string" />
+			<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -59,15 +60,15 @@
 	</xs:element>
 
 	<!-- Get OrdenDeCompra by Code -->
-	<xs:element name="getOneOrdenDeCompraByCodeRequest">
+	<xs:element name="getOneOrdenDeCompraByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:string" />
+				<xs:element name="id" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="getOneOrdenDeCompraByCodeResponse">
+	<xs:element name="getOneOrdenDeCompraByIdResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
@@ -89,17 +90,37 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Update OrdenDeCompra -->
-	<xs:element name="updateOrdenDeCompraRequest">
+	<!-- Agregar item a OrdenDeCompra -->
+	<xs:element name="agregarItemOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:string" />
-				<xs:element name="idTienda" type="xs:long" />
+				<xs:element name="id" type="xs:long" />
+				<xs:element name="cantidad" type="xs:int" />
+				<xs:element name="codigoProducto" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="updateOrdenDeCompraResponse">
+	<xs:element name="agregarItemOrdenDeCompraResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenDeCompraServiceStatus"
+					type="ordenDeCompraServiceStatus" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Eliminar item a OrdenDeCompra -->
+	<xs:element name="eliminarItemOrdenDeCompraRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:long" />
+				<xs:element name="idItemOrdenDeCompra" type="xs:long" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="eliminarItemOrdenDeCompraResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
@@ -112,7 +133,7 @@
 	<xs:element name="deleteOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:string" />
+				<xs:element name="id" type="xs:long" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
