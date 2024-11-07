@@ -6,12 +6,13 @@
 	<!-- Catalogo Complex Type -->
 	<xs:complexType name="catalogoInfo">
 		<xs:sequence>
-			<xs:element name="idCatalogo" type="xs:long" />
-			<xs:element name="idTienda" type="xs:long" />
+			<xs:element name="idCatalogo" type="xs:long" minOccurs="0" />
+			<xs:element name="idTienda" type="xs:long" minOccurs="0" />
 			<xs:element name="productos" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="productoCodigo" type="xs:string" />
+						<xs:element name="productoCodigo" type="xs:string"
+							minOccurs="0" />
 						<!-- Agrega otros elementos según los atributos de
 						Producto -->
 					</xs:sequence>
@@ -23,9 +24,9 @@
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="catalogoServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="catalogo" type="catalogoInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="catalogo" type="catalogoInfo" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -35,7 +36,7 @@
 	<xs:element name="addCatalogoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="idTienda" type="xs:long" />
+				<xs:element name="idTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -44,8 +45,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogoServiceStatus"
-					type="catalogoServiceStatus" />
-				<xs:element name="catalogo" type="catalogoInfo" />
+					type="catalogoServiceStatus" minOccurs="0" />
+				<xs:element name="catalogo" type="catalogoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -54,7 +55,7 @@
 	<xs:element name="getOneCatalogoByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="idCatalogo" type="xs:long" />
+				<xs:element name="idCatalogo" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -62,7 +63,7 @@
 	<xs:element name="getOneCatalogoByIdResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="catalogo" type="catalogoInfo" />
+				<xs:element name="catalogo" type="catalogoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -76,7 +77,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogos" type="catalogoInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -85,8 +86,8 @@
 	<xs:element name="updateTiendaDeCatalogoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="idCatalogo" type="xs:long" />
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="idCatalogo" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -95,7 +96,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogoServiceStatus"
-					type="catalogoServiceStatus" />
+					type="catalogoServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -104,7 +105,7 @@
 	<xs:element name="deleteCatalogoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="idCatalogo" type="xs:long" />
+				<xs:element name="idCatalogo" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -113,7 +114,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogoServiceStatus"
-					type="catalogoServiceStatus" />
+					type="catalogoServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -122,8 +123,8 @@
 	<xs:element name="agregarProductoACatalogoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoCatalogo" type="xs:long" />
-				<xs:element name="codigoProducto" type="xs:long" />
+				<xs:element name="codigoCatalogo" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -132,8 +133,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogoServiceStatus"
-					type="catalogoServiceStatus" />
-				<xs:element name="catalogo" type="catalogoInfo" />
+					type="catalogoServiceStatus" minOccurs="0" />
+				<xs:element name="catalogo" type="catalogoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -142,8 +143,8 @@
 	<xs:element name="eliminarProductoDeCatalogoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoCatalogo" type="xs:long" />
-				<xs:element name="codigoProducto" type="xs:long" />
+				<xs:element name="codigoCatalogo" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -152,8 +153,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="catalogoServiceStatus"
-					type="catalogoServiceStatus" />
-				<xs:element name="catalogo" type="catalogoInfo" />
+					type="catalogoServiceStatus" minOccurs="0" />
+				<xs:element name="catalogo" type="catalogoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

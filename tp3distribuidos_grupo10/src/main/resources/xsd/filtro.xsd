@@ -6,22 +6,24 @@
 	<!-- Filtro Complex Type -->
 	<xs:complexType name="filtroInfo">
 		<xs:sequence>
-			<xs:element name="id" type="xs:long" /> <!-- Refleja el atributo 'id'
+			<xs:element name="id" type="xs:long" minOccurs="0" /> <!-- Refleja el
+			atributo 'id'
 			de Filtro -->
-			<xs:element name="nombre" type="xs:string" /> <!-- Refleja el
+			<xs:element name="nombre" type="xs:string" minOccurs="0" /> <!--
+			Refleja el
 			atributo 'nombre' de Filtro -->
-			<xs:element name="idUsuario" type="xs:long" />
-			<xs:element name="codigoTienda" type="xs:long" />
-			<xs:element name="codigoProducto" type="xs:long" />
+			<xs:element name="idUsuario" type="xs:long" minOccurs="0" />
+			<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
+			<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="filtroServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="filtro" type="filtroInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="filtro" type="filtroInfo" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -31,10 +33,10 @@
 	<xs:element name="addFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" />
-				<xs:element name="idUsuario" type="xs:long" />
-				<xs:element name="codigoTienda" type="xs:long" />
-				<xs:element name="codigoProducto" type="xs:long" />
+				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
+				<xs:element name="idUsuario" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -43,8 +45,8 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"
-					type="filtroServiceStatus" />
-				<xs:element name="filtro" type="filtroInfo" />
+					type="filtroServiceStatus" minOccurs="0" />
+				<xs:element name="filtro" type="filtroInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -53,7 +55,7 @@
 	<xs:element name="getOneFiltroByCodeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:string" />
+				<xs:element name="codigo" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -61,7 +63,7 @@
 	<xs:element name="getOneFiltroByCodeResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtro" type="filtroInfo" />
+				<xs:element name="filtro" type="filtroInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -70,7 +72,7 @@
 	<xs:element name="getOneFiltroByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -78,7 +80,7 @@
 	<xs:element name="getOneFiltroByIdResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="filtro" type="filtroInfo" />
+				<xs:element name="filtro" type="filtroInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -92,7 +94,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtros" type="filtroInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -101,8 +103,8 @@
 	<xs:element name="updateProductoDeFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" />
-				<xs:element name="codigoProducto" type="xs:long" />
+				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -111,7 +113,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"
-					type="filtroServiceStatus" />
+					type="filtroServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -120,8 +122,8 @@
 	<xs:element name="UpdateTiendaDeFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" />
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -130,7 +132,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"
-					type="filtroServiceStatus" />
+					type="filtroServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -139,7 +141,7 @@
 	<xs:element name="deleteFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" />
+				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -148,7 +150,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"
-					type="filtroServiceStatus" />
+					type="filtroServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

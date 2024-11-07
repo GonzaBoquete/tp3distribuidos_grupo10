@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.29 a las 08:04:33 PM ART 
+// Generado el: 2024.11.06 a las 11:09:13 PM ART 
 //
 
 
@@ -24,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,21 +40,29 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "getOneTiendaByCodeRequest")
 public class GetOneTiendaByCodeRequest {
 
-    protected long codigo;
+    protected Long codigo;
 
     /**
      * Obtiene el valor de la propiedad codigo.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
     /**
      * Define el valor de la propiedad codigo.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setCodigo(long value) {
+    public void setCodigo(Long value) {
         this.codigo = value;
     }
 

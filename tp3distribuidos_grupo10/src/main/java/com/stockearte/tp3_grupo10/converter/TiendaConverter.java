@@ -14,22 +14,26 @@ public class TiendaConverter {
 	// Convertir de Tienda a TiendaInfo
 	public TiendaInfo convertTiendaToInfo(Tienda tienda) {
 		TiendaInfo info = new TiendaInfo();
-		info.setCodigo(tienda.getCodigo());
-		info.setDireccion(tienda.getDireccion());
-		info.setCiudad(tienda.getCiudad());
-		info.setProvincia(tienda.getProvincia());
-		info.setHabilitada(tienda.isHabilitada());
+		if (tienda != null) {
+			info.setCodigo(tienda.getCodigo());
+			info.setDireccion(tienda.getDireccion());
+			info.setCiudad(tienda.getCiudad());
+			info.setProvincia(tienda.getProvincia());
+			info.setHabilitada(tienda.isHabilitada());
+		}
 		return info;
 	}
 
 	// Convertir de TiendaInfo a Tienda
 	public Tienda convertInfoToTienda(TiendaInfo info) {
 		Tienda tienda = new Tienda();
-		tienda.setCodigo(info.getCodigo());
-		tienda.setDireccion(info.getDireccion());
-		tienda.setCiudad(info.getCiudad());
-		tienda.setProvincia(info.getProvincia());
-		tienda.setHabilitada(info.isHabilitada());
+		if (info != null) {
+			tienda.setCodigo(info.getCodigo());
+			tienda.setDireccion(info.getDireccion());
+			tienda.setCiudad(info.getCiudad());
+			tienda.setProvincia(info.getProvincia());
+			tienda.setHabilitada(info.isHabilitada());
+		}
 		return tienda;
 	}
 

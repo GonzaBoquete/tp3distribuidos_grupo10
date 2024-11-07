@@ -13,21 +13,25 @@ public class ProductoConverter {
 
 	public ProductoInfo convertProductoToProductoInfo(Producto producto) {
 		ProductoInfo productoInfo = new ProductoInfo();
-		productoInfo.setCodigo(producto.getCodigo());
-		productoInfo.setNombre(producto.getNombre());
-		productoInfo.setTalle(producto.getTalle());
-		productoInfo.setFoto(producto.getFoto());
-		productoInfo.setColor(producto.getColor());
+		if (producto != null) {
+			productoInfo.setCodigo(producto.getCodigo());
+			productoInfo.setNombre(producto.getNombre());
+			productoInfo.setTalle(producto.getTalle());
+			productoInfo.setFoto(producto.getFoto());
+			productoInfo.setColor(producto.getColor());
+		}
 		return productoInfo;
 	}
 
 	public Producto convertProductoInfoToProducto(ProductoInfo productoInfo) {
 		Producto producto = new Producto();
-		producto.setCodigo(productoInfo.getCodigo());
-		producto.setNombre(productoInfo.getNombre());
-		producto.setTalle(productoInfo.getTalle());
-		producto.setFoto(productoInfo.getFoto());
-		producto.setColor(productoInfo.getColor());
+		if (productoInfo != null) {
+			producto.setCodigo(productoInfo.getCodigo());
+			producto.setNombre(productoInfo.getNombre());
+			producto.setTalle(productoInfo.getTalle());
+			producto.setFoto(productoInfo.getFoto());
+			producto.setColor(productoInfo.getColor());
+		}
 		return producto;
 	}
 

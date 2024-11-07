@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.29 a las 08:04:33 PM ART 
+// Generado el: 2024.11.06 a las 11:09:13 PM ART 
 //
 
 
@@ -10,7 +10,6 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -24,13 +23,13 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="nombreUsuario" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="contrasena" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="rol" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="habilitado" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="nombreUsuario" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="contrasena" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="rol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="habilitado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -51,32 +50,35 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class UsuarioInfo {
 
-    protected long id;
-    @XmlElement(required = true)
+    protected Long id;
     protected String nombreUsuario;
-    @XmlElement(required = true)
     protected String contrasena;
-    @XmlElement(required = true)
     protected String nombre;
-    @XmlElement(required = true)
     protected String apellido;
-    @XmlElement(required = true)
     protected String rol;
-    protected boolean habilitado;
+    protected Boolean habilitado;
 
     /**
      * Obtiene el valor de la propiedad id.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * Define el valor de la propiedad id.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setId(long value) {
+    public void setId(Long value) {
         this.id = value;
     }
 
@@ -203,16 +205,24 @@ public class UsuarioInfo {
     /**
      * Obtiene el valor de la propiedad habilitado.
      * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
      */
-    public boolean isHabilitado() {
+    public Boolean isHabilitado() {
         return habilitado;
     }
 
     /**
      * Define el valor de la propiedad habilitado.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
      */
-    public void setHabilitado(boolean value) {
+    public void setHabilitado(Boolean value) {
         this.habilitado = value;
     }
 

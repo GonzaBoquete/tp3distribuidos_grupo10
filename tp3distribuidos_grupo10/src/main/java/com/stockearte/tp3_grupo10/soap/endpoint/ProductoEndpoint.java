@@ -20,6 +20,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllProductosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneProductoByCodeResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.ProductoInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoResponse;
 
@@ -82,6 +83,7 @@ public class ProductoEndpoint {
 	@ResponsePayload
 	public UpdateProductoResponse updateProducto(@RequestPayload UpdateProductoRequest request) {
 		UpdateProductoResponse response = new UpdateProductoResponse();
+		response.setProductoServiceStatus(new ProductoServiceStatus());
 		try {
 			Producto producto = this.getProductoService().update(request.getCodigo(), request.getNombre(),
 					request.getTalle(), request.getFoto(), request.getColor());

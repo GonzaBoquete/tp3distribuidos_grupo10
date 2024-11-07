@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.model.Filtro;
-import com.stockearte.tp3_grupo10.model.Producto;
-import com.stockearte.tp3_grupo10.model.Tienda;
-import com.stockearte.tp3_grupo10.model.Usuario;
 import com.stockearte.tp3_grupo10.service.ProductoService;
 import com.stockearte.tp3_grupo10.service.TiendaService;
 import com.stockearte.tp3_grupo10.service.UsuarioService;
@@ -30,30 +27,32 @@ public class FiltroConverter {
 	// Convertir de Filtro a FiltroInfo
 	public FiltroInfo convertFiltroToFiltroInfo(Filtro filtro) {
 		FiltroInfo filtroInfo = new FiltroInfo();
-		filtroInfo.setId(filtro.getId());
-		filtroInfo.setNombre(filtro.getNombre());
+		if (filtro != null) {
+			filtroInfo.setId(filtro.getId());
+			filtroInfo.setNombre(filtro.getNombre());
 
-		if (filtro.getUsuario() != null) {
-			filtroInfo.setIdUsuario(filtro.getUsuario().getId());
+			if (filtro.getUsuario() != null) {
+				filtroInfo.setIdUsuario(filtro.getUsuario().getId());
+			}
+			if (filtro.getTienda() != null) {
+				filtroInfo.setCodigoTienda(filtro.getTienda().getCodigo());
+			}
+			if (filtro.getProducto() != null) {
+				filtroInfo.setCodigoProducto(filtro.getProducto().getCodigo());
+			}
 		}
-		if (filtro.getTienda() != null) {
-			filtroInfo.setCodigoTienda(filtro.getTienda().getCodigo());
-		}
-		if (filtro.getProducto() != null) {
-			filtroInfo.setCodigoProducto(filtro.getProducto().getCodigo());
-		}
-
 		return filtroInfo;
 	}
 
 	// Convertir de FiltroInfo a Filtro
 	public Filtro convertFiltroInfoToFiltro(FiltroInfo filtroInfo) {
 		Filtro filtro = new Filtro();
-		filtro.setNombre(filtroInfo.getNombre());
-		filtro.setUsuario(this.getUsuarioService().getOneById(filtroInfo.getIdUsuario()));
-		filtro.setTienda(this.getTiendaService().getOneById(filtroInfo.getCodigoTienda()));
-		filtro.setProducto(this.getProductoService().getOneById(filtroInfo.getCodigoProducto()));
-
+		if (filtroInfo != null) {
+			filtro.setNombre(filtroInfo.getNombre());
+			filtro.setUsuario(this.getUsuarioService().getOneById(filtroInfo.getIdUsuario()));
+			filtro.setTienda(this.getTiendaService().getOneById(filtroInfo.getCodigoTienda()));
+			filtro.setProducto(this.getProductoService().getOneById(filtroInfo.getCodigoProducto()));
+		}
 		return filtro;
 	}
 

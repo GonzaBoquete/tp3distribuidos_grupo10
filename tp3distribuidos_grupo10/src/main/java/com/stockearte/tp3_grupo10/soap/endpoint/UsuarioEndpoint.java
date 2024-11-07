@@ -22,9 +22,11 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.LoginRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.LoginResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.UsuarioServiceStatus;
 
 @Endpoint
 public class UsuarioEndpoint {
@@ -61,6 +63,7 @@ public class UsuarioEndpoint {
 	@ResponsePayload
 	public AddUsuarioResponse addUsuario(@RequestPayload AddUsuarioRequest request) {
 		AddUsuarioResponse response = new AddUsuarioResponse();
+		response.setUsuarioServiceStatus(new UsuarioServiceStatus());
 		response.getUsuarioServiceStatus()
 				.setUsuario(this.getUsuarioConverter()
 						.convertUsuarioToInfo(this.getUsuarioService().add(request.getNombreUsuario(),
@@ -73,6 +76,7 @@ public class UsuarioEndpoint {
 	@ResponsePayload
 	public UpdateUsuarioResponse updateUsuario(@RequestPayload UpdateUsuarioRequest request) {
 		UpdateUsuarioResponse response = new UpdateUsuarioResponse();
+		response.setUsuarioServiceStatus(new UsuarioServiceStatus());
 		try {
 			Usuario usuario = this.getUsuarioService().update(request.getId(), request.getNombreUsuario(),
 					request.getContrasena(), request.getNombre(), request.getApellido(), Rol.valueOf(request.getRol()),
@@ -90,6 +94,7 @@ public class UsuarioEndpoint {
 	@ResponsePayload
 	public LoginResponse login(@RequestPayload LoginRequest request) {
 		LoginResponse response = new LoginResponse();
+		response.setUsuarioServiceStatus(new UsuarioServiceStatus());
 		try {
 			Usuario usuario = this.getUsuarioService().login(request.getNombreUsuario(), request.getContrasena());
 			response.getUsuarioServiceStatus().setStatus("OK");

@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.10.29 a las 08:04:33 PM ART 
+// Generado el: 2024.11.06 a las 11:09:13 PM ART 
 //
 
 
@@ -10,7 +10,6 @@ package com.stockearte.tp3_grupo10.soap.interfaces;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -25,11 +24,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
- *         &lt;element name="direccion" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="provincia" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="habilitada" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="codigo" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="direccion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="provincia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="habilitada" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,28 +48,33 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "updateTiendaRequest")
 public class UpdateTiendaRequest {
 
-    protected long codigo;
-    @XmlElement(required = true)
+    protected Long codigo;
     protected String direccion;
-    @XmlElement(required = true)
     protected String ciudad;
-    @XmlElement(required = true)
     protected String provincia;
-    protected boolean habilitada;
+    protected Boolean habilitada;
 
     /**
      * Obtiene el valor de la propiedad codigo.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
     /**
      * Define el valor de la propiedad codigo.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setCodigo(long value) {
+    public void setCodigo(Long value) {
         this.codigo = value;
     }
 
@@ -149,16 +153,24 @@ public class UpdateTiendaRequest {
     /**
      * Obtiene el valor de la propiedad habilitada.
      * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
      */
-    public boolean isHabilitada() {
+    public Boolean isHabilitada() {
         return habilitada;
     }
 
     /**
      * Define el valor de la propiedad habilitada.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
      */
-    public void setHabilitada(boolean value) {
+    public void setHabilitada(Boolean value) {
         this.habilitada = value;
     }
 

@@ -19,7 +19,9 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.TiendaInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaResponse;
 
@@ -69,6 +71,7 @@ public class TiendaEndpoint {
 	@ResponsePayload
 	public AddTiendaResponse addTienda(@RequestPayload AddTiendaRequest request) {
 		AddTiendaResponse response = new AddTiendaResponse();
+		response.setTiendaServiceStatus(new TiendaServiceStatus());
 		response.getTiendaServiceStatus().setTienda(
 				this.getTiendaConverter().convertTiendaToInfo(this.getTiendaService().add(request.getCodigoTienda(),
 						request.getDireccion(), request.getCiudad(), request.getProvincia(), request.isHabilitada())));
@@ -79,6 +82,7 @@ public class TiendaEndpoint {
 	@ResponsePayload
 	public UpdateTiendaResponse updateTienda(@RequestPayload UpdateTiendaRequest request) {
 		UpdateTiendaResponse response = new UpdateTiendaResponse();
+		response.setTiendaServiceStatus(new TiendaServiceStatus());
 		try {
 			Tienda tienda = this.getTiendaService().update(request.getCodigo(), request.getDireccion(),
 					request.getCiudad(), request.getProvincia(), request.isHabilitada());

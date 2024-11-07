@@ -6,22 +6,22 @@
 	<!-- Service Status -->
 	<xs:complexType name="usuarioServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="usuario" type="usuarioInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="usuario" type="usuarioInfo" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Usuario Info -->
 	<xs:complexType name="usuarioInfo">
 		<xs:sequence>
-			<xs:element name="id" type="xs:long" />
-			<xs:element name="nombreUsuario" type="xs:string" />
-			<xs:element name="contrasena" type="xs:string" />
-			<xs:element name="nombre" type="xs:string" />
-			<xs:element name="apellido" type="xs:string" />
-			<xs:element name="rol" type="xs:string" />
-			<xs:element name="habilitado" type="xs:boolean" />
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="nombreUsuario" type="xs:string" minOccurs="0" />
+			<xs:element name="contrasena" type="xs:string" minOccurs="0" />
+			<xs:element name="nombre" type="xs:string" minOccurs="0" />
+			<xs:element name="apellido" type="xs:string" minOccurs="0" />
+			<xs:element name="rol" type="xs:string" minOccurs="0" />
+			<xs:element name="habilitado" type="xs:boolean" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -29,13 +29,13 @@
 	<xs:element name="addUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="nombreUsuario" type="xs:string" />
-				<xs:element name="contrasena" type="xs:string" />
-				<xs:element name="nombre" type="xs:string" />
-				<xs:element name="apellido" type="xs:string" />
-				<xs:element name="rol" type="xs:string" />
-				<xs:element name="habilitado" type="xs:boolean" />
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="nombreUsuario" type="xs:string" minOccurs="0" />
+				<xs:element name="contrasena" type="xs:string" minOccurs="0" />
+				<xs:element name="nombre" type="xs:string" minOccurs="0" />
+				<xs:element name="apellido" type="xs:string" minOccurs="0" />
+				<xs:element name="rol" type="xs:string" minOccurs="0" />
+				<xs:element name="habilitado" type="xs:boolean" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -44,7 +44,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
-					type="usuarioServiceStatus" />
+					type="usuarioServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -53,7 +53,7 @@
 	<xs:element name="getOneUsuarioByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -61,7 +61,7 @@
 	<xs:element name="getOneUsuarioByIdResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="usuario" type="usuarioInfo" />
+				<xs:element name="usuario" type="usuarioInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -75,7 +75,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuarios" type="usuarioInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -84,14 +84,14 @@
 	<xs:element name="updateUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
-				<xs:element name="nombreUsuario" type="xs:string" />
-				<xs:element name="contrasena" type="xs:string" />
-				<xs:element name="nombre" type="xs:string" />
-				<xs:element name="apellido" type="xs:string" />
-				<xs:element name="rol" type="xs:string" />
-				<xs:element name="habilitado" type="xs:boolean" />
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
+				<xs:element name="nombreUsuario" type="xs:string" minOccurs="0" />
+				<xs:element name="contrasena" type="xs:string" minOccurs="0" />
+				<xs:element name="nombre" type="xs:string" minOccurs="0" />
+				<xs:element name="apellido" type="xs:string" minOccurs="0" />
+				<xs:element name="rol" type="xs:string" minOccurs="0" />
+				<xs:element name="habilitado" type="xs:boolean" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -100,7 +100,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
-					type="usuarioServiceStatus" />
+					type="usuarioServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -109,7 +109,7 @@
 	<xs:element name="deleteUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -118,7 +118,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
-					type="usuarioServiceStatus" />
+					type="usuarioServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -127,8 +127,8 @@
 	<xs:element name="loginRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="nombreUsuario" type="xs:string" />
-				<xs:element name="contrasena" type="xs:string" />
+				<xs:element name="nombreUsuario" type="xs:string" minOccurs="0" />
+				<xs:element name="contrasena" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -137,7 +137,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuarioServiceStatus"
-					type="usuarioServiceStatus" />
+					type="usuarioServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -146,8 +146,8 @@
 	<xs:element name="buscarUsuarioRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="nombreUsuario" type="xs:string" />
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="nombreUsuario" type="xs:string" minOccurs="0" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -156,7 +156,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="usuario" type="usuarioInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
