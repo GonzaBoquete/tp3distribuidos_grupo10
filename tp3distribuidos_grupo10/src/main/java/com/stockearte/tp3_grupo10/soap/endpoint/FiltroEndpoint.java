@@ -13,9 +13,11 @@ import com.stockearte.tp3_grupo10.model.Filtro;
 import com.stockearte.tp3_grupo10.service.FiltroService;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.CatalogoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.FiltroInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.FiltroServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllFiltrosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeRequest;
@@ -82,6 +84,7 @@ public class FiltroEndpoint {
 	public UpdateProductoDeFiltroResponse updateProductoDeFiltro(
 			@RequestPayload UpdateProductoDeFiltroRequest request) {
 		UpdateProductoDeFiltroResponse response = new UpdateProductoDeFiltroResponse();
+		response.setFiltroServiceStatus(new FiltroServiceStatus());
 		try {
 			Filtro filtro = this.getFiltroService().updateProducto(request.getCodigoFiltro(),
 					request.getCodigoProducto());
@@ -98,6 +101,7 @@ public class FiltroEndpoint {
 	@ResponsePayload
 	public UpdateTiendaDeFiltroResponse updateTiendaDeFiltro(@RequestPayload UpdateTiendaDeFiltroRequest request) {
 		UpdateTiendaDeFiltroResponse response = new UpdateTiendaDeFiltroResponse();
+		response.setFiltroServiceStatus(new FiltroServiceStatus());
 		try {
 			Filtro filtro = this.getFiltroService().updateTienda(request.getCodigoFiltro(), request.getCodigoTienda());
 			response.getFiltroServiceStatus().setStatus("OK");
@@ -113,6 +117,7 @@ public class FiltroEndpoint {
 	@ResponsePayload
 	public DeleteFiltroResponse deleteFiltro(@RequestPayload DeleteFiltroRequest request) {
 		DeleteFiltroResponse response = new DeleteFiltroResponse();
+		response.setFiltroServiceStatus(new FiltroServiceStatus());
 		try {
 			this.getFiltroService().delete(request.getCodigoFiltro());
 			response.getFiltroServiceStatus().setStatus("OK");

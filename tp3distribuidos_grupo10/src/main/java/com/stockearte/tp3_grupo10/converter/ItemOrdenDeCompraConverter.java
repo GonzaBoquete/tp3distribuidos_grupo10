@@ -25,26 +25,28 @@ public class ItemOrdenDeCompraConverter {
 	// Convertir de ItemOrdenDeCompra a ItemOrdenDeCompraInfo
 	public ItemOrdenDeCompraInfo convertItemOrdenDeCompraToInfo(ItemOrdenDeCompra item) {
 		ItemOrdenDeCompraInfo itemInfo = new ItemOrdenDeCompraInfo();
-		itemInfo.setId(item.getId());
-		itemInfo.setCantidad(item.getCantidad());
+		if (item != null) {
+			itemInfo.setId(item.getId());
+			itemInfo.setCantidad(item.getCantidad());
 
-		if (item.getProducto() != null) {
-			itemInfo.setProductoCodigo(item.getProducto().getCodigo());
+			if (item.getProducto() != null) {
+				itemInfo.setProductoCodigo(item.getProducto().getCodigo());
+			}
+			if (item.getOrdenDeCompra() != null) {
+				itemInfo.setOrdenDeCompraId(item.getOrdenDeCompra().getId());
+			}
 		}
-		if (item.getOrdenDeCompra() != null) {
-			itemInfo.setOrdenDeCompraId(item.getOrdenDeCompra().getId());
-		}
-
 		return itemInfo;
 	}
 
 	// Convertir de ItemOrdenDeCompraInfo a ItemOrdenDeCompra
 	public ItemOrdenDeCompra convertInfoToItemOrdenDeCompra(ItemOrdenDeCompraInfo itemInfo) {
 		ItemOrdenDeCompra item = new ItemOrdenDeCompra();
-		item.setCantidad(itemInfo.getCantidad());
-		item.setProducto(this.getProductoService().getOneById(itemInfo.getProductoCodigo()));
-		item.setOrdenDeCompra(this.getOrdenDeCompraService().getOneById(itemInfo.getOrdenDeCompraId()));
-
+		if (itemInfo != null) {
+			item.setCantidad(itemInfo.getCantidad());
+			item.setProducto(this.getProductoService().getOneById(itemInfo.getProductoCodigo()));
+			item.setOrdenDeCompra(this.getOrdenDeCompraService().getOneById(itemInfo.getOrdenDeCompraId()));
+		}
 		return item;
 	}
 

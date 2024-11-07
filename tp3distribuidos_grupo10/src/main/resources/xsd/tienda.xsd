@@ -1,25 +1,25 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
-           elementFormDefault="qualified">
+	targetNamespace="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	xmlns="http://www.stockearte.com/tp3_grupo10/soap/interfaces"
+	elementFormDefault="qualified">
 
 	<!-- Tienda Complex Type -->
 	<xs:complexType name="tiendaInfo">
 		<xs:sequence>
-			<xs:element name="codigo" type="xs:long" />
-			<xs:element name="direccion" type="xs:string" />
-			<xs:element name="ciudad" type="xs:string" />
-			<xs:element name="provincia" type="xs:string" />
-			<xs:element name="habilitada" type="xs:boolean" />
+			<xs:element name="codigo" type="xs:long" minOccurs="0" />
+			<xs:element name="direccion" type="xs:string" minOccurs="0" />
+			<xs:element name="ciudad" type="xs:string" minOccurs="0" />
+			<xs:element name="provincia" type="xs:string" minOccurs="0" />
+			<xs:element name="habilitada" type="xs:boolean" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="tiendaServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="tienda" type="tiendaInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="tienda" type="tiendaInfo" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -29,11 +29,11 @@
 	<xs:element name="addTiendaRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoTienda" type="xs:long" />
-				<xs:element name="direccion" type="xs:string" />
-				<xs:element name="ciudad" type="xs:string" />
-				<xs:element name="provincia" type="xs:string" />
-				<xs:element name="habilitada" type="xs:boolean" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
+				<xs:element name="direccion" type="xs:string" minOccurs="0" />
+				<xs:element name="ciudad" type="xs:string" minOccurs="0" />
+				<xs:element name="provincia" type="xs:string" minOccurs="0" />
+				<xs:element name="habilitada" type="xs:boolean" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -41,7 +41,8 @@
 	<xs:element name="addTiendaResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+				<xs:element name="tiendaServiceStatus"
+					type="tiendaServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -50,7 +51,7 @@
 	<xs:element name="getOneTiendaByCodeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -58,7 +59,7 @@
 	<xs:element name="getOneTiendaByCodeResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tienda" type="tiendaInfo" />
+				<xs:element name="tienda" type="tiendaInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -72,7 +73,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="tiendas" type="tiendaInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -81,11 +82,11 @@
 	<xs:element name="updateTiendaRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
-				<xs:element name="direccion" type="xs:string" />
-				<xs:element name="ciudad" type="xs:string" />
-				<xs:element name="provincia" type="xs:string" />
-				<xs:element name="habilitada" type="xs:boolean" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
+				<xs:element name="direccion" type="xs:string" minOccurs="0" />
+				<xs:element name="ciudad" type="xs:string" minOccurs="0" />
+				<xs:element name="provincia" type="xs:string" minOccurs="0" />
+				<xs:element name="habilitada" type="xs:boolean" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -93,7 +94,8 @@
 	<xs:element name="updateTiendaResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="tiendaServiceStatus" type="tiendaServiceStatus" />
+				<xs:element name="tiendaServiceStatus"
+					type="tiendaServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -102,8 +104,8 @@
 	<xs:element name="buscarTiendaRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
-				<xs:element name="habilitada" type="xs:boolean" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
+				<xs:element name="habilitada" type="xs:boolean" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -112,7 +114,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="tiendas" type="tiendaInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

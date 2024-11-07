@@ -15,24 +15,27 @@ public class UsuarioConverter {
 	// Convertir de Usuario a UsuarioInfo
 	public UsuarioInfo convertUsuarioToInfo(Usuario usuario) {
 		UsuarioInfo info = new UsuarioInfo();
-		info.setId(usuario.getId());
-		info.setNombreUsuario(usuario.getNombreUsuario());
-		info.setContrasena(usuario.getContrasena());
-		info.setNombre(usuario.getNombre());
-		info.setApellido(usuario.getApellido());
-		info.setRol(usuario.getRol().getValue()); 
+		if (usuario != null) {
+			info.setId(usuario.getId());
+			info.setNombreUsuario(usuario.getNombreUsuario());
+			info.setContrasena(usuario.getContrasena());
+			info.setNombre(usuario.getNombre());
+			info.setApellido(usuario.getApellido());
+			info.setRol(usuario.getRol().getValue());
+		}
 		return info;
 	}
 
 	// Convertir de UsuarioInfo a Usuario
 	public Usuario convertInfoToUsuario(UsuarioInfo info) {
 		Usuario usuario = new Usuario();
-		usuario.setNombreUsuario(info.getNombreUsuario());
-		usuario.setContrasena(info.getContrasena());
-		usuario.setNombre(info.getNombre());
-		usuario.setApellido(info.getApellido());
-		usuario.setRol(Rol.valueOf(info.getRol()));
-
+		if (info != null) {
+			usuario.setNombreUsuario(info.getNombreUsuario());
+			usuario.setContrasena(info.getContrasena());
+			usuario.setNombre(info.getNombre());
+			usuario.setApellido(info.getApellido());
+			usuario.setRol(Rol.valueOf(info.getRol()));
+		}
 		return usuario;
 	}
 

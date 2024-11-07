@@ -21,11 +21,13 @@ import com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarItemOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarItemOrdenDeCompraResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.FiltroServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraServiceStatus;
 
 @Endpoint
 public class OrdenDeCompraEndpoint {
@@ -65,6 +67,7 @@ public class OrdenDeCompraEndpoint {
 	public AddOrdenDeCompraResponse addOrdenDeCompra(@RequestPayload AddOrdenDeCompraRequest request)
 			throws DatatypeConfigurationException {
 		AddOrdenDeCompraResponse response = new AddOrdenDeCompraResponse();
+		response.setOrdenDeCompraServiceStatus(new OrdenDeCompraServiceStatus());
 		response.getOrdenDeCompraServiceStatus().setOrdenDeCompra(this.getOrdenDeCompraConverter()
 				.convertOrdenDeCompraToInfo(this.getOrdenDeCompraService().add(request.getCodigoTienda())));
 		return response;
@@ -74,6 +77,7 @@ public class OrdenDeCompraEndpoint {
 	@ResponsePayload
 	public DeleteOrdenDeCompraResponse deleteOrdenDeCompra(@RequestPayload DeleteOrdenDeCompraRequest request) {
 		DeleteOrdenDeCompraResponse response = new DeleteOrdenDeCompraResponse();
+		response.setOrdenDeCompraServiceStatus(new OrdenDeCompraServiceStatus());
 		try {
 			this.getOrdenDeCompraService().delete(request.getId());
 			response.getOrdenDeCompraServiceStatus().setStatus("OK");
@@ -91,6 +95,7 @@ public class OrdenDeCompraEndpoint {
 	public AgregarItemOrdenDeCompraResponse agregarItemOrdenDeCompra(
 			@RequestPayload AgregarItemOrdenDeCompraRequest request) {
 		AgregarItemOrdenDeCompraResponse response = new AgregarItemOrdenDeCompraResponse();
+		response.setOrdenDeCompraServiceStatus(new OrdenDeCompraServiceStatus());
 		try {
 			OrdenDeCompra ordenDeCompra = this.getOrdenDeCompraService().agregarItemOrdenDeCompra(request.getId(),
 					request.getCantidad(), request.getCodigoProducto());
@@ -109,6 +114,7 @@ public class OrdenDeCompraEndpoint {
 	public EliminarItemOrdenDeCompraResponse eliminarItemOrdenDeCompra(
 			@RequestPayload EliminarItemOrdenDeCompraRequest request) {
 		EliminarItemOrdenDeCompraResponse response = new EliminarItemOrdenDeCompraResponse();
+		response.setOrdenDeCompraServiceStatus(new OrdenDeCompraServiceStatus());
 		try {
 			OrdenDeCompra ordenDeCompra = this.getOrdenDeCompraService().eliminarItemOrdenDeCompra(request.getId(),
 					request.getIdItemOrdenDeCompra());

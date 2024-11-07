@@ -18,6 +18,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.CatalogoInfo;
+import com.stockearte.tp3_grupo10.soap.interfaces.CatalogoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoRequest;
@@ -26,6 +27,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoResponse;
 
@@ -76,6 +78,7 @@ public class CatalogoEndpoint {
 	@ResponsePayload
 	public DeleteCatalogoResponse deleteCatalogo(@RequestPayload DeleteCatalogoRequest request) {
 		DeleteCatalogoResponse response = new DeleteCatalogoResponse();
+		response.setCatalogoServiceStatus(new CatalogoServiceStatus());
 		try {
 			this.getCatalogoService().delete(request.getIdCatalogo());
 			response.getCatalogoServiceStatus().setStatus("OK");
@@ -92,6 +95,7 @@ public class CatalogoEndpoint {
 	public UpdateTiendaDeCatalogoResponse updateTiendaDeCatalogo(
 			@RequestPayload UpdateTiendaDeCatalogoRequest request) {
 		UpdateTiendaDeCatalogoResponse response = new UpdateTiendaDeCatalogoResponse();
+		response.setCatalogoServiceStatus(new CatalogoServiceStatus());
 		try {
 			this.getCatalogoService().updateTienda(request.getIdCatalogo(), request.getCodigoTienda());
 			response.getCatalogoServiceStatus().setStatus("OK");
@@ -108,6 +112,7 @@ public class CatalogoEndpoint {
 	public AgregarProductoACatalogoResponse agregarProductoACatalogo(
 			@RequestPayload AgregarProductoACatalogoRequest request) {
 		AgregarProductoACatalogoResponse response = new AgregarProductoACatalogoResponse();
+		response.setCatalogoServiceStatus(new CatalogoServiceStatus());
 		try {
 			Catalogo catalogo = this.getCatalogoService().agregarProducto(request.getCodigoCatalogo(),
 					request.getCodigoProducto());
@@ -126,6 +131,7 @@ public class CatalogoEndpoint {
 	public EliminarProductoDeCatalogoResponse eliminarProductoDeCatalogo(
 			@RequestPayload EliminarProductoDeCatalogoRequest request) {
 		EliminarProductoDeCatalogoResponse response = new EliminarProductoDeCatalogoResponse();
+		response.setCatalogoServiceStatus(new CatalogoServiceStatus());
 		try {
 			Catalogo catalogo = this.getCatalogoService().eliminarProducto(request.getCodigoCatalogo(),
 					request.getCodigoProducto());

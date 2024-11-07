@@ -6,19 +6,20 @@
 	<!-- ItemOrdenDeCompra Info -->
 	<xs:complexType name="itemOrdenDeCompraInfo">
 		<xs:sequence>
-			<xs:element name="id" type="xs:long" />
-			<xs:element name="cantidad" type="xs:int" />
-			<xs:element name="productoCodigo" type="xs:long" />
-			<xs:element name="ordenDeCompraId" type="xs:long" />
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="cantidad" type="xs:int" minOccurs="0" />
+			<xs:element name="productoCodigo" type="xs:long" minOccurs="0" />
+			<xs:element name="ordenDeCompraId" type="xs:long" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="itemOrdenDeCompraServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="itemOrdenDeCompra" type="itemOrdenDeCompraInfo"/>
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="itemOrdenDeCompra" type="itemOrdenDeCompraInfo"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 

@@ -1,17 +1,21 @@
 package com.stockearte.tp3_grupo10.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.stockearte.tp3_grupo10.enumerators.Rol;
 import com.stockearte.tp3_grupo10.model.Tienda;
 import com.stockearte.tp3_grupo10.model.Usuario;
 import com.stockearte.tp3_grupo10.repository.UsuarioRepository;
+
+import jakarta.persistence.criteria.Predicate;
 
 @Service("usuarioService")
 public class UsuarioServiceImpl implements UsuarioService {
@@ -96,12 +100,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public List<Usuario> buscarUsuario(String nombre, Long codigoTienda) {
-		Tienda tienda = getTiendaService().getOneById(codigoTienda);
-		if (tienda != null) {
-			return usuarioRepository.findByNombreAndTienda(nombre, tienda);
-		} else {
-			return usuarioRepository.findByNombre(nombre);
-		}
+		return usuarioRepository.findAll((Specification<Usuario>) (root, query, criteriaBuilder) -> {
+			List<Predicate> predicates = new ArrayList<>();
+
+			if (nombre != null && !nombre.isEmpty()) {
+				predicates.add(criteriaBuilder.like(root.get("nombreUsuario"), "%" + nombre + "%"));
+			}
+
+			if (codigoTienda != null) {
+				Tienda tienda = tiendaService.getOneById(codigoTienda);
+				if (tienda != null) {
+					predicates.add(criteriaBuilder.equal(root.get("tienda"), tienda));
+				}
+			}
+
+			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+		});
 	}
 
 	public TiendaService getTiendaService() {

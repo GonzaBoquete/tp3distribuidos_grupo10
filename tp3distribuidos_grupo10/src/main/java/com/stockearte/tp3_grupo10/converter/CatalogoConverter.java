@@ -25,31 +25,35 @@ public class CatalogoConverter {
 	// Convertir de Catalogo a CatalogoInfo
 	public CatalogoInfo convertCatalogoToCatalogoInfo(Catalogo catalogo) {
 		CatalogoInfo catalogoInfo = new CatalogoInfo();
-		catalogoInfo.setIdCatalogo(catalogo.getId());
+		if (catalogo != null) {
+			catalogoInfo.setIdCatalogo(catalogo.getId());
 
-		if (catalogo.getTienda() != null) {
-			catalogoInfo.setIdTienda(catalogo.getTienda().getCodigo());
+			if (catalogo.getTienda() != null) {
+				catalogoInfo.setIdTienda(catalogo.getTienda().getCodigo());
+			}
+
+			// Inicializamos la lista de productos en CatalogoInfo y añadimos cada elemento
+			// uno a uno
+			for (Producto producto : catalogo.getProducto()) {
+				CatalogoInfo.Productos productoInfo = new CatalogoInfo.Productos();
+				productoInfo.setProductoCodigo(String.valueOf(producto.getCodigo())); // Convertimos el código a String
+																						// si
+																						// es necesario
+				catalogoInfo.getProductos().add(productoInfo);
+			}
 		}
-
-		// Inicializamos la lista de productos en CatalogoInfo y añadimos cada elemento
-		// uno a uno
-		for (Producto producto : catalogo.getProducto()) {
-			CatalogoInfo.Productos productoInfo = new CatalogoInfo.Productos();
-			productoInfo.setProductoCodigo(String.valueOf(producto.getCodigo())); // Convertimos el código a String si
-																					// es necesario
-			catalogoInfo.getProductos().add(productoInfo);
-		}
-
 		return catalogoInfo;
 	}
 
 	// Convertir de CatalogoInfo a Catalogo
 	public Catalogo convertCatalogoInfoToCatalogo(CatalogoInfo catalogoInfo) {
 		Catalogo catalogo = new Catalogo();
-		catalogo.setTienda(this.getTiendaService().getOneById(catalogoInfo.getIdTienda()));
-		for (Productos producto : catalogoInfo.getProductos()) {
-			catalogo.getProducto()
-					.add(this.getProductoService().getOneById(Long.parseLong(producto.getProductoCodigo())));
+		if (catalogoInfo != null) {
+			catalogo.setTienda(this.getTiendaService().getOneById(catalogoInfo.getIdTienda()));
+			for (Productos producto : catalogoInfo.getProductos()) {
+				catalogo.getProducto()
+						.add(this.getProductoService().getOneById(Long.parseLong(producto.getProductoCodigo())));
+			}
 		}
 		return catalogo;
 	}

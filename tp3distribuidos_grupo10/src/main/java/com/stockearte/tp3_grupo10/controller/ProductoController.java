@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stockearte.tp3_grupo10.converter.ProductoConverter;
 import com.stockearte.tp3_grupo10.model.Producto;
-import com.stockearte.tp3_grupo10.service.ProductoService;
 import com.stockearte.tp3_grupo10.soap.endpoint.ProductoEndpoint;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddProductoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.BuscarProductoRequest;
@@ -23,9 +22,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoRequest;
 @RestController
 @RequestMapping("/api/producto")
 public class ProductoController {
-
-	@Autowired
-	private ProductoService productoService;
 
 	@Autowired
 	private ProductoEndpoint productoEndpoint;

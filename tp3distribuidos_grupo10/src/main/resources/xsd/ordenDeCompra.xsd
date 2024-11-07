@@ -6,15 +6,16 @@
 	<!-- OrdenDeCompra Complex Type -->
 	<xs:complexType name="ordenDeCompraInfo">
 		<xs:sequence>
-			<xs:element name="id" type="xs:long" />
-			<xs:element name="fecha" type="xs:date" />
-			<xs:element name="estado" type="EstadoOrdenInfo" />
-			<xs:element name="idTienda" type="xs:long" />
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="fecha" type="xs:date" minOccurs="0" />
+			<xs:element name="estado" type="EstadoOrdenInfo" minOccurs="0" />
+			<xs:element name="idTienda" type="xs:long" minOccurs="0" />
 			<xs:element name="itemsOrdenCompra" minOccurs="0"
 				maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="itemOrdenDeCompraId" type="xs:long" />
+						<xs:element name="itemOrdenDeCompraId" type="xs:long"
+							minOccurs="0" />
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -32,9 +33,10 @@
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="ordenDeCompraServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="ordenDeCompra" type="ordenDeCompraInfo"
+				minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -44,7 +46,7 @@
 	<xs:element name="addOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoTienda" type="xs:long" />
+				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -53,7 +55,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
-					type="ordenDeCompraServiceStatus" />
+					type="ordenDeCompraServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -62,7 +64,7 @@
 	<xs:element name="getOneOrdenDeCompraByIdRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -70,7 +72,8 @@
 	<xs:element name="getOneOrdenDeCompraByIdResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo" />
+				<xs:element name="ordenDeCompra" type="ordenDeCompraInfo"
+					minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -84,7 +87,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenesDeCompra" type="ordenDeCompraInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -93,9 +96,9 @@
 	<xs:element name="agregarItemOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
-				<xs:element name="cantidad" type="xs:int" />
-				<xs:element name="codigoProducto" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
+				<xs:element name="cantidad" type="xs:int" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -104,7 +107,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
-					type="ordenDeCompraServiceStatus" />
+					type="ordenDeCompraServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -113,8 +116,9 @@
 	<xs:element name="eliminarItemOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
-				<xs:element name="idItemOrdenDeCompra" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
+				<xs:element name="idItemOrdenDeCompra" type="xs:long"
+					minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -123,7 +127,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
-					type="ordenDeCompraServiceStatus" />
+					type="ordenDeCompraServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -132,7 +136,7 @@
 	<xs:element name="deleteOrdenDeCompraRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="id" type="xs:long" />
+				<xs:element name="id" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -141,7 +145,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="ordenDeCompraServiceStatus"
-					type="ordenDeCompraServiceStatus" />
+					type="ordenDeCompraServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

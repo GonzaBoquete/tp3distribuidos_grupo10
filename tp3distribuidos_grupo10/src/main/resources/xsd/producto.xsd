@@ -6,20 +6,20 @@
 	<!-- Producto Complex Type -->
 	<xs:complexType name="productoInfo">
 		<xs:sequence>
-			<xs:element name="codigo" type="xs:long" />
-			<xs:element name="nombre" type="xs:string" />
-			<xs:element name="talle" type="xs:string" />
-			<xs:element name="foto" type="xs:string" />
-			<xs:element name="color" type="xs:string" />
+			<xs:element name="codigo" type="xs:long" minOccurs="0" />
+			<xs:element name="nombre" type="xs:string" minOccurs="0" />
+			<xs:element name="talle" type="xs:string" minOccurs="0" />
+			<xs:element name="foto" type="xs:string" minOccurs="0" />
+			<xs:element name="color" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="productoServiceStatus">
 		<xs:sequence>
-			<xs:element name="status" type="xs:string" />
-			<xs:element name="message" type="xs:string" />
-			<xs:element name="producto" type="productoInfo" />
+			<xs:element name="status" type="xs:string" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+			<xs:element name="producto" type="productoInfo" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -29,7 +29,7 @@
 	<xs:element name="addProductoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="producto" type="productoInfo" />
+				<xs:element name="producto" type="productoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -37,7 +37,7 @@
 	<xs:element name="addProductoResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="producto" type="productoInfo" />
+				<xs:element name="producto" type="productoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -46,7 +46,7 @@
 	<xs:element name="getOneProductoByCodeRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -54,7 +54,7 @@
 	<xs:element name="getOneProductoByCodeResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="producto" type="productoInfo" />
+				<xs:element name="producto" type="productoInfo" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -68,7 +68,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="productos" type="productoInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -77,11 +77,11 @@
 	<xs:element name="updateProductoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
-				<xs:element name="nombre" type="xs:string" />
-				<xs:element name="talle" type="xs:string" />
-				<xs:element name="foto" type="xs:string" />
-				<xs:element name="color" type="xs:string" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
+				<xs:element name="nombre" type="xs:string" minOccurs="0" />
+				<xs:element name="talle" type="xs:string" minOccurs="0" />
+				<xs:element name="foto" type="xs:string" minOccurs="0" />
+				<xs:element name="color" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -90,7 +90,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="productoServiceStatus"
-					type="productoServiceStatus" />
+					type="productoServiceStatus" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -99,11 +99,11 @@
 	<xs:element name="buscarProductoRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigo" type="xs:long" />
-				<xs:element name="nombre" type="xs:string" />
-				<xs:element name="talle" type="xs:string" />
-				<xs:element name="foto" type="xs:string" />
-				<xs:element name="color" type="xs:string" />
+				<xs:element name="codigo" type="xs:long" minOccurs="0" />
+				<xs:element name="nombre" type="xs:string" minOccurs="0" />
+				<xs:element name="talle" type="xs:string" minOccurs="0" />
+				<xs:element name="foto" type="xs:string" minOccurs="0" />
+				<xs:element name="color" type="xs:string" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -112,7 +112,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="productos" type="productoInfo"
-					maxOccurs="unbounded" />
+					maxOccurs="unbounded" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

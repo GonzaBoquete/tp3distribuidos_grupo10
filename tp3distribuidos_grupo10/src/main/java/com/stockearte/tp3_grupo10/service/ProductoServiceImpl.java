@@ -1,15 +1,19 @@
 package com.stockearte.tp3_grupo10.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.repository.ProductoRepository;
+
+import jakarta.persistence.criteria.Predicate;
 
 @Service("productoService")
 public class ProductoServiceImpl implements ProductoService {
@@ -17,7 +21,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Autowired
 	@Qualifier("productoRepository")
 	private ProductoRepository productoRepository;
-	
+
 	@Override
 	public Producto add(Long codigoProducto, String nombre, String talle, String foto, String color) {
 		Producto producto = this.getOneById(codigoProducto);
@@ -58,10 +62,27 @@ public class ProductoServiceImpl implements ProductoService {
 			throw new ServiceException("No existe un producto con ese codigo");
 		}
 	}
-	
+
 	@Override
 	public List<Producto> buscarProducto(String nombre, Long codigo, String talle, String color) {
-		return productoRepository.findByNombreContainingAndCodigoAndTalleAndColor(nombre, codigo, talle, color);
+		return productoRepository.findAll((Specification<Producto>) (root, query, criteriaBuilder) -> {
+			List<Predicate> predicates = new ArrayList<>();
+
+			if (nombre != null && !nombre.isEmpty()) {
+				predicates.add(criteriaBuilder.like(root.get("nombre"), "%" + nombre + "%"));
+			}
+			if (codigo != null) {
+				predicates.add(criteriaBuilder.equal(root.get("codigo"), codigo));
+			}
+			if (talle != null && !talle.isEmpty()) {
+				predicates.add(criteriaBuilder.like(root.get("talle"), "%" + talle + "%"));
+			}
+			if (color != null && !color.isEmpty()) {
+				predicates.add(criteriaBuilder.like(root.get("color"), "%" + color + "%"));
+			}
+
+			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+		});
 	}
 
 }
