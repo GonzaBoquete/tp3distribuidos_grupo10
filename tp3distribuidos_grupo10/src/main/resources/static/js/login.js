@@ -11,16 +11,15 @@ function login(event) {
         },
         body: `nombreUsuario=${encodeURIComponent(nombreUsuario)}&contrasena=${encodeURIComponent(contrasena)}`
     })
-    .then(response => {
-        if (response.ok) {
-            
-            window.location.href = "/home"; 
-        } else {
+    .then(response => response.json()) 
+    .then(data => {
+        if (data.nombreUsuario === null) {
             document.getElementById("error").innerText = "Usuario o contraseña incorrectos.";
+        } else {
+            window.location.href = "/home"; 
         }
     })
     .catch(error => {
-        
         document.getElementById("error").innerText = "Ocurrió un error al iniciar sesión.";
         console.error("Error:", error);
     });
