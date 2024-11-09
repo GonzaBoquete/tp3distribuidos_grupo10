@@ -43,6 +43,7 @@ public class ItemOrdenDeCompraConverter {
 	public ItemOrdenDeCompra convertInfoToItemOrdenDeCompra(ItemOrdenDeCompraInfo itemInfo) {
 		ItemOrdenDeCompra item = new ItemOrdenDeCompra();
 		if (itemInfo != null) {
+			item.setId(itemInfo.getId());
 			item.setCantidad(itemInfo.getCantidad());
 			item.setProducto(this.getProductoService().getOneById(itemInfo.getProductoCodigo()));
 			item.setOrdenDeCompra(this.getOrdenDeCompraService().getOneById(itemInfo.getOrdenDeCompraId()));
