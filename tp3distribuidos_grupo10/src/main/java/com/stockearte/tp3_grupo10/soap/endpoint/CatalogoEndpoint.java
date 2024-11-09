@@ -27,7 +27,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoResponse;
 

@@ -42,8 +42,7 @@ public class OrdenDeCompra {
 	@OneToMany(mappedBy = "OrdenDeCompra", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemOrdenDeCompra> itemsOrdenCompra;
 
-	public OrdenDeCompra(LocalDate fecha, EstadoOrden estado, Tienda tienda,
-			List<ItemOrdenDeCompra> itemsOrdenCompra) {
+	public OrdenDeCompra(LocalDate fecha, EstadoOrden estado, Tienda tienda, List<ItemOrdenDeCompra> itemsOrdenCompra) {
 		super();
 		this.fecha = fecha;
 		this.estado = estado;

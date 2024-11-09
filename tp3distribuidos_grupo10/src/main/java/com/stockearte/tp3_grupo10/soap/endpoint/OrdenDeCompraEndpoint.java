@@ -21,7 +21,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarItemOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarItemOrdenDeCompraResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.FiltroServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdRequest;

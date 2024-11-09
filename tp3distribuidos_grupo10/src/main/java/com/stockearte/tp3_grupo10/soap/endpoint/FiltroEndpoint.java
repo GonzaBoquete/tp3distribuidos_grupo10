@@ -13,7 +13,6 @@ import com.stockearte.tp3_grupo10.model.Filtro;
 import com.stockearte.tp3_grupo10.service.FiltroService;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.CatalogoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteFiltroResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.FiltroInfo;
