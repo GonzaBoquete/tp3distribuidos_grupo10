@@ -24,3 +24,23 @@ function login(event) {
         console.error("Error:", error);
     });
 }
+
+
+function logout() {
+    fetch("/api/usuario/logout", { 
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = "/login";  // Redirigir al login después de cerrar sesión
+        } else {
+            console.error("Error al cerrar sesión");
+        }
+    })
+    .catch(error => {
+        console.error("Ocurrió un error al cerrar sesión:", error);
+    });
+}

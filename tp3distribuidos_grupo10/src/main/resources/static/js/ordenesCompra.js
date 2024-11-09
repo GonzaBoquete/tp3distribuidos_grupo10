@@ -16,8 +16,8 @@ async function fetchOrdenes() {
                 row.innerHTML = `
                     <td>${orden.id}</td>
                     <td>${orden.fecha}</td>
-                    <td>${orden.tienda.codigo}</td> <!-- Mostrar solo el ID de la tienda -->
-                    <td>${totalCantidad}</td> <!-- Cantidad total de los ítems -->
+                    <td>${orden.tienda.codigo}</td> 
+                    <td>${totalCantidad}</td> 
                     <td>${orden.estado}</td>
                 `;
 

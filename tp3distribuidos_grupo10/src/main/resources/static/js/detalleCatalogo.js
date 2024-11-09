@@ -12,9 +12,12 @@ function fetchCatalogoDetail(idCatalogo) {
 
       // Mostrar la información del catálogo
       let catalogoHTML = `
-        <p><strong>ID Catálogo:</strong> ${catalogo.idCatalogo}</p>
-        <p><strong>ID Tienda:</strong> ${catalogo.idTienda}</p>
-        <h3>Productos en el catálogo:</h3>
+        <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">ID Catálogo: ${catalogo.id}</h5>
+          <p class="card-text"><strong>ID Tienda:</strong> ${catalogo.tienda.codigo}</p>
+          <h6 class="mt-3">Productos en el catálogo:</h6>
+          <ul class="list-group">
       `;
 
       // Generar la lista de productos
@@ -22,13 +25,22 @@ function fetchCatalogoDetail(idCatalogo) {
         catalogoHTML += "<ul>";
         catalogo.productos.forEach(producto => {
           catalogoHTML += `
-            <li>
-              <p><strong>Código:</strong> ${producto.codigo}</p>
-              <p><strong>Nombre:</strong> ${producto.nombre}</p>
-              <p><strong>Talle:</strong> ${producto.talle}</p>
-              <p><strong>Color:</strong> ${producto.color}</p>
-              ${producto.foto ? `<img src="${producto.foto}" alt="Foto de ${producto.nombre}" style="max-width: 100px;">` : "<p>Sin foto disponible</p>"}
-            </li>
+             <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <div>
+                <p><strong>Código:</strong> ${producto.codigo}</p>
+                <p><strong>Nombre:</strong> ${producto.nombre}</p>
+                <p><strong>Talle:</strong> ${producto.talle}</p>
+                <p><strong>Color:</strong> ${producto.color}</p>
+              </div>
+              <div>
+                ${producto.foto ? 
+                  `<img src="${producto.foto}" alt="Foto de ${producto.nombre}" style="max-width: 100px; border-radius: 8px;">` 
+                  : "<p>Sin foto disponible</p>"
+                }
+              </div>
+            </div>
+          </li>
           `;
         });
         catalogoHTML += "</ul>";
