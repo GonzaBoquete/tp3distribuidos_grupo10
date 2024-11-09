@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   fetchAllCatalogos();  // Llamar a la función que obtiene todos los catálogos
+  
+  // Añadir evento al botón de creación de catálogo
+  const createButton = document.getElementById("create-catalogo");
+  createButton.addEventListener("click", crearCatalogo);
 });
 
 function fetchAllCatalogos() {
