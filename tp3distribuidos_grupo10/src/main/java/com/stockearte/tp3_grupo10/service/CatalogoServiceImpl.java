@@ -95,6 +95,9 @@ public class CatalogoServiceImpl implements CatalogoService {
 	@Override
 	public Catalogo getOneById(Long idCatalogo) {
 		Optional<Catalogo> catalogo = getCatalogoRepository().findById(idCatalogo);
+		if (catalogo.isEmpty()) {
+			throw new ServiceException("No se encontro el catalogo");
+		}
 		return catalogo.isEmpty() ? null : catalogo.get();
 	}
 
