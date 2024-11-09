@@ -107,6 +107,12 @@ public class UsuarioController {
 	    }
 	}
 
+	@PostMapping("/logout")
+	public ResponseEntity<String> logout(HttpSession session) {
+	    session.invalidate();
+	    return ResponseEntity.ok("Sesión cerrada correctamente");
+	}
+
 	@GetMapping("/buscar")
 	public ResponseEntity<List<Usuario>> buscarUsuario(@RequestParam(required = false) String nombre,
 			@RequestParam(required = false) Long codigoTienda) {

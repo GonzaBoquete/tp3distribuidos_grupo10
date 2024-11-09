@@ -11,10 +11,18 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #353A40;">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-4 ms-3">Stockearte</span>
-      </a>
-    </nav>
+		    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+		        <span class="fs-4 ms-3">Stockearte</span>
+		    </a>
+		    <div id="navbarSupportedContent">
+		        <ul class="nav">
+		            <!-- Cambié el <button> por <a> para un comportamiento más estándar -->
+		            <li class="nav-item">
+		                <a href="javascript:void(0)" class="btn nav-link link-secondary text-white-50" onclick="logout()">Cerrar sesión</a>
+		            </li>
+		        </ul>
+		    </div>
+		</nav>
   </header>
 
    <div class="container mt-4">
@@ -25,5 +33,6 @@
     <a href="/catalogo" class="btn btn-secondary mb-3 mt-2">Volver a la lista de catálogos</a>
   </div>
   <script src="/js/detalleCatalogo.js"></script>
+   <script src="/js/login.js"></script>
 </body>
 </html>

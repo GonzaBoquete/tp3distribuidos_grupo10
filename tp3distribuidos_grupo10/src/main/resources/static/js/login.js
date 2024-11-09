@@ -11,36 +11,43 @@ function login(event) {
         },
         body: `nombreUsuario=${encodeURIComponent(nombreUsuario)}&contrasena=${encodeURIComponent(contrasena)}`
     })
-    .then(response => response.json()) 
-    .then(data => {
-        if (data.nombreUsuario === null) {
-            document.getElementById("error").innerText = "Usuario o contraseña incorrectos.";
+    .then(response => {
+        if (response.ok) {
+            return response.json(); 
         } else {
-            window.location.href = "/home"; 
+            throw new Error("Error de autenticación");
         }
     })
+    .then(data => {
+        if (data.nombreUsuario === null || data.nombre === null) {
+            throw new Error("Usuario o contraseña incorrectos.");
+        }
+
+        window.location.href = "/home";
+    })
     .catch(error => {
-        document.getElementById("error").innerText = "Ocurrió un error al iniciar sesión.";
+        document.getElementById("error").innerText = error.message;
         console.error("Error:", error);
     });
 }
 
-
 function logout() {
-    fetch("/api/usuario/logout", { 
-        method: "POST", 
+    fetch("/api/usuario/logout", {
+        method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         }
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = "/login";  // Redirigir al login después de cerrar sesión
+            window.location.href = "/login";
         } else {
-            console.error("Error al cerrar sesión");
+            throw new Error("Error al cerrar sesión");
         }
     })
     .catch(error => {
         console.error("Ocurrió un error al cerrar sesión:", error);
     });
 }
+
+
