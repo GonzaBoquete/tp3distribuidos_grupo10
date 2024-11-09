@@ -3,15 +3,20 @@ package com.stockearte.tp3_grupo10.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.stockearte.tp3_grupo10.enumerators.Rol;
 import com.stockearte.tp3_grupo10.model.Usuario;
+import com.stockearte.tp3_grupo10.service.TiendaService;
 import com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo;
 
 @Component
 public class UsuarioConverter {
 
+	@Autowired
+	private TiendaService tiendaService;
+	
 	// Convertir de Usuario a UsuarioInfo
 	public UsuarioInfo convertUsuarioToInfo(Usuario usuario) {
 		UsuarioInfo info = new UsuarioInfo();
@@ -21,7 +26,10 @@ public class UsuarioConverter {
 			info.setContrasena(usuario.getContrasena());
 			info.setNombre(usuario.getNombre());
 			info.setApellido(usuario.getApellido());
-			info.setRol(usuario.getRol().getValue());
+			info.setRol(usuario.getRol().toString());
+			if (usuario != null && usuario.getTienda() != null) {
+				info.setCodigoTienda(usuario.getTienda().getCodigo());
+			}
 		}
 		return info;
 	}
@@ -35,6 +43,9 @@ public class UsuarioConverter {
 			usuario.setNombre(info.getNombre());
 			usuario.setApellido(info.getApellido());
 			usuario.setRol(Rol.valueOf(info.getRol()));
+			if (info.getCodigoTienda() != null) {
+				usuario.setTienda(getTiendaService().getOneById(info.getCodigoTienda()));
+			}
 		}
 		return usuario;
 	}
@@ -55,5 +66,13 @@ public class UsuarioConverter {
 			usuarios.add(convertInfoToUsuario(info));
 		}
 		return usuarios;
+	}
+
+	public TiendaService getTiendaService() {
+		return tiendaService;
+	}
+
+	public void setTiendaService(TiendaService tiendaService) {
+		this.tiendaService = tiendaService;
 	}
 }

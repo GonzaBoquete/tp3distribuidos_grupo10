@@ -22,7 +22,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneUsuarioByIdResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.LoginRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.LoginResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateUsuarioResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.UsuarioInfo;

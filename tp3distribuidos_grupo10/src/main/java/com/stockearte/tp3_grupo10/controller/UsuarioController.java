@@ -40,7 +40,7 @@ public class UsuarioController {
 		addUsuarioRequest.setContrasena(contrasena);
 		addUsuarioRequest.setNombre(nombre);
 		addUsuarioRequest.setApellido(apellido);
-		addUsuarioRequest.setRol(rol.getValue());
+		addUsuarioRequest.setRol(rol.toString());
 		addUsuarioRequest.setHabilitado(habilitado);
 		addUsuarioRequest.setCodigoTienda(codigoTienda);
 		Usuario usuario = usuarioConverter.convertInfoToUsuario(
@@ -75,7 +75,7 @@ public class UsuarioController {
 		updateUsuarioRequest.setContrasena(contrasena);
 		updateUsuarioRequest.setNombre(nombre);
 		updateUsuarioRequest.setApellido(apellido);
-		updateUsuarioRequest.setRol(rol.getValue());
+		updateUsuarioRequest.setRol(rol.toString());
 		updateUsuarioRequest.setHabilitado(habilitado);
 		updateUsuarioRequest.setCodigoTienda(codigoTienda);
 		Usuario usuario = usuarioConverter.convertInfoToUsuario(
