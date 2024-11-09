@@ -12,18 +12,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class WebController {
     
 	
-	/*@GetMapping("/home")
-    public String showHomePage(HttpSession session, RedirectAttributes redirectAttributes) {
-        if (session.getAttribute("usuario") == null) {
-            return "redirect:/login";
-        }
-        return "home"; 
-    } */ // activar cuando funcione login
-	
 	@GetMapping("/home")
+	public String showHomePage(HttpSession session) {
+	    if (session.getAttribute("usuario") == null) {
+	        return "redirect:/login"; 
+	    }
+	    return "home";
+	}  // activar cuando funcione login
+	
+	/*@GetMapping("/home")
     public String homeProveedor() {
         return "home"; 
-    }
+    }*/
 	
 	
 	@GetMapping("/")
