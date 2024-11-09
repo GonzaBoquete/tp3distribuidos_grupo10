@@ -14,24 +14,16 @@
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-4 ms-3">Stockearte</span>
       </a>
-      <div id="navbarSupportedContent">
-        <ul class="nav">
-          <form action="{{ url_for('logout') }}" method="post">
-            <button class="btn nav-link link-secondary text-white-50" type="submit">Cerrar sesión</button>
-          </form>
-        </ul>
-      </div>
     </nav>
   </header>
 
-  <div class="container mt-4">
+   <div class="container mt-4">
     <h1>Detalle del Catálogo</h1>
     <div id="catalogo-detail" class="mt-3">
       <!-- Los detalles del catálogo se cargarán aquí -->
     </div>
     <a href="/catalogo" class="btn btn-secondary mb-3 mt-2">Volver a la lista de catálogos</a>
   </div>
-
   <script src="/js/detalleCatalogo.js"></script>
 </body>
 </html>

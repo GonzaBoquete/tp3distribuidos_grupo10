@@ -18,7 +18,7 @@ public class WebController {
             return "redirect:/login";
         }
         return "home"; 
-    }*/ // activar cuando funcione login
+    } */ // activar cuando funcione login
 	
 	@GetMapping("/home")
     public String homeProveedor() {
