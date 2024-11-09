@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS stockearte;
-USE stockearte;
+CREATE DATABASE IF NOT EXISTS stockearte_3;
+USE stockearte_3;
 CREATE TABLE IF NOT EXISTS tienda (
     codigo BIGINT PRIMARY KEY,  -- Código único de tienda
     direccion VARCHAR(255) NOT NULL, -- Dirección de la tienda
