@@ -48,6 +48,7 @@ public class FiltroConverter {
 	public Filtro convertFiltroInfoToFiltro(FiltroInfo filtroInfo) {
 		Filtro filtro = new Filtro();
 		if (filtroInfo != null) {
+			filtro.setId(filtroInfo.getId());
 			filtro.setNombre(filtroInfo.getNombre());
 			filtro.setUsuario(this.getUsuarioService().getOneById(filtroInfo.getIdUsuario()));
 			filtro.setTienda(this.getTiendaService().getOneById(filtroInfo.getCodigoTienda()));

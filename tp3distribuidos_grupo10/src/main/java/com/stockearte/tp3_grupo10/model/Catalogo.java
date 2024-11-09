@@ -43,6 +43,10 @@ public class Catalogo {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public Long getId() {
 		return id;
 	}

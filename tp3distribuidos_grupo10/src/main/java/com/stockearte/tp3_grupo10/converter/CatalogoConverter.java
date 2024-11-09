@@ -45,6 +45,7 @@ public class CatalogoConverter {
 	public Catalogo convertCatalogoInfoToCatalogo(CatalogoInfo catalogoInfo) {
 		Catalogo catalogo = new Catalogo();
 		if (catalogoInfo != null) {
+			catalogo.setId(catalogoInfo.getIdCatalogo());
 			catalogo.setTienda(this.getTiendaService().getOneById(catalogoInfo.getIdTienda()));
 			if (catalogoInfo.getProductos() != null) {
 				for (Productos producto : catalogoInfo.getProductos()) {

@@ -38,6 +38,7 @@ public class UsuarioConverter {
 	public Usuario convertInfoToUsuario(UsuarioInfo info) {
 		Usuario usuario = new Usuario();
 		if (info != null) {
+			usuario.setId(info.getId());
 			usuario.setNombreUsuario(info.getNombreUsuario());
 			usuario.setContrasena(info.getContrasena());
 			usuario.setNombre(info.getNombre());
