@@ -56,8 +56,8 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 			if (producto == null) {
 				throw new ServiceException("No se encontro la tienda");
 			}
-			foundOrdenDeCompra.get().getItemsOrdenCompra()
-					.add(new ItemOrdenDeCompra(cantidad, producto, foundOrdenDeCompra.get()));
+			foundOrdenDeCompra.get().getItemsOrdenCompra().add(getItemOrdenDeCompraRepository()
+					.save(new ItemOrdenDeCompra(cantidad, producto, foundOrdenDeCompra.get())));
 			return getOrdenDeCompraRepository().save(foundOrdenDeCompra.get());
 		} else {
 			throw new ServiceException("No se encontro la orden de compra");
@@ -89,6 +89,9 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 	@Override
 	public OrdenDeCompra getOneById(Long idOrdenDeCompra) {
 		Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
+		if(ordenDeCompra.isEmpty()) {
+			throw new ServiceException("No se encontro la orden de compra");
+		}
 		return ordenDeCompra.isEmpty() ? null : ordenDeCompra.get();
 	}
 

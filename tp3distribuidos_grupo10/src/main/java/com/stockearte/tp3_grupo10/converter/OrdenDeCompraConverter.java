@@ -72,10 +72,12 @@ public class OrdenDeCompraConverter {
 			ordenDeCompra.setId(info.getId());
 
 			// Casteo fechas
-			GregorianCalendar gcal = GregorianCalendar
-					.from(ordenDeCompra.getFecha().atStartOfDay(ZoneId.systemDefault()));
-			XMLGregorianCalendar xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-			ordenDeCompra.setFecha(xcal.toGregorianCalendar().toZonedDateTime().toLocalDate());
+			if (ordenDeCompra.getFecha() != null) {
+				GregorianCalendar gcal = GregorianCalendar
+						.from(ordenDeCompra.getFecha().atStartOfDay(ZoneId.systemDefault()));
+				XMLGregorianCalendar xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+				ordenDeCompra.setFecha(xcal.toGregorianCalendar().toZonedDateTime().toLocalDate());
+			}
 
 			// Establecer estado
 			if (info.getEstado() != null) {

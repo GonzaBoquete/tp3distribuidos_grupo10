@@ -90,15 +90,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario login(String nombreUsuario, String contrasena) {
 		Optional<Usuario> optionalUser = usuarioRepository.findByNombreUsuario(nombreUsuario);
-		if (optionalUser.isPresent()) {
+		if (!optionalUser.isEmpty()) {
 			Usuario user = optionalUser.get();
 			if (user.getContrasena().equals(contrasena)) {
 				return user;
 			} else {
-				throw new RuntimeException("Contraseña incorrecta");
+				throw new ServiceException("Contraseña incorrecta");
 			}
 		} else {
-			throw new RuntimeException("Usuario no encontrado");
+			throw new ServiceException("Usuario no encontrado");
 		}
 	}
 

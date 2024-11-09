@@ -1,5 +1,7 @@
 package com.stockearte.tp3_grupo10.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "item_orden_compra")
+@JsonIgnoreProperties({"ordenDeCompra"})
 public class ItemOrdenDeCompra {
 	
 	@Id

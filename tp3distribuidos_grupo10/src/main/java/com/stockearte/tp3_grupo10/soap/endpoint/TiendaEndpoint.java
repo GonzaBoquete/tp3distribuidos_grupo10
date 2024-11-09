@@ -19,7 +19,6 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllTiendasResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneTiendaByCodeResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.ProductoServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.TiendaInfo;
 import com.stockearte.tp3_grupo10.soap.interfaces.TiendaServiceStatus;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaRequest;
