@@ -34,25 +34,29 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (!foundUsuario.isEmpty()) {
 			throw new ServiceException("Ya existe un usuario con ese nombre de usuario.");
 		} else {
+			Usuario usuario = new Usuario();
 			Tienda tienda = getTiendaService().getOneById(codigoTienda);
 			if (tienda != null) {
-				foundUsuario.get().setTienda(tienda);
+				usuario.setTienda(tienda);
 			} else {
 				throw new ServiceException("No se encontro la tienda");
 			}
-			foundUsuario.get().setNombreUsuario(nombreUsuario);
-			foundUsuario.get().setContrasena(contrasena);
-			foundUsuario.get().setNombre(nombre);
-			foundUsuario.get().setApellido(apellido);
-			foundUsuario.get().setRol(rol);
-			foundUsuario.get().setHabilitado(habilitado);
-			return usuarioRepository.save(foundUsuario.get());
+			usuario.setNombreUsuario(nombreUsuario);
+			usuario.setContrasena(contrasena);
+			usuario.setNombre(nombre);
+			usuario.setApellido(apellido);
+			usuario.setRol(rol);
+			usuario.setHabilitado(habilitado);
+			return usuarioRepository.save(usuario);
 		}
 	}
 
 	@Override
 	public Usuario getOneById(Long id) {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
+		if(usuario.isEmpty()) {
+			throw new ServiceException("No se encontro el usuario");
+		}
 		return usuario.isEmpty() ? null : usuario.get();
 	}
 

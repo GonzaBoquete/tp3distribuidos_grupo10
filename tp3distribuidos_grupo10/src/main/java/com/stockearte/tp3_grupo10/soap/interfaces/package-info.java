@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.11.06 a las 11:09:13 PM ART 
+// Generado el: 2024.11.08 a las 11:22:26 PM ART 
 //
 
 @jakarta.xml.bind.annotation.XmlSchema(namespace = "http://www.stockearte.com/tp3_grupo10/soap/interfaces", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)

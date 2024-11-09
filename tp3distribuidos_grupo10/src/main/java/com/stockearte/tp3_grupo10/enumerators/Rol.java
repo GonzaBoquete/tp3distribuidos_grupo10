@@ -14,4 +14,13 @@ public enum Rol {
 		return value;
 	}
 	
+	public static Rol fromValue(String value) {
+        for (Rol rol : Rol.values()) {
+            if (rol.getValue().equalsIgnoreCase(value)) {
+                return rol;
+            }
+        }
+        throw new IllegalArgumentException("No existe el Rol: " + value);
+    }
+	
 }

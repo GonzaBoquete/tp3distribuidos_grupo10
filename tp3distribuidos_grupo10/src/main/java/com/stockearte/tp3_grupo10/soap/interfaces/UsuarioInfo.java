@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
 // Visite https://eclipse-ee4j.github.io/jaxb-ri 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2024.11.06 a las 11:09:13 PM ART 
+// Generado el: 2024.11.08 a las 11:22:26 PM ART 
 //
 
 
@@ -29,6 +29,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="rol" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="codigoTienda" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *         &lt;element name="habilitado" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -46,6 +47,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "nombre",
     "apellido",
     "rol",
+    "codigoTienda",
     "habilitado"
 })
 public class UsuarioInfo {
@@ -56,6 +58,7 @@ public class UsuarioInfo {
     protected String nombre;
     protected String apellido;
     protected String rol;
+    protected Long codigoTienda;
     protected Boolean habilitado;
 
     /**
@@ -200,6 +203,30 @@ public class UsuarioInfo {
      */
     public void setRol(String value) {
         this.rol = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad codigoTienda.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getCodigoTienda() {
+        return codigoTienda;
+    }
+
+    /**
+     * Define el valor de la propiedad codigoTienda.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setCodigoTienda(Long value) {
+        this.codigoTienda = value;
     }
 
     /**
