@@ -8,23 +8,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.stockearte.tp3_grupo10.enumerators.Rol;
+import com.stockearte.tp3_grupo10.model.Tienda;
+import com.stockearte.tp3_grupo10.model.Usuario;
+
 @Controller
 public class WebController {
     
 	
-	/*@GetMapping("/home")
-    public String showHomePage(HttpSession session, RedirectAttributes redirectAttributes) {
-        if (session.getAttribute("usuario") == null) {
-            return "redirect:/login";
-        }
-        return "home"; 
-    } */ // activar cuando funcione login
-	
 	@GetMapping("/home")
-    public String homeProveedor() {
-        return "home"; 
-    }
-	
+	public String showHomePage(HttpSession session, Model model) {
+	    if (session.getAttribute("usuario") == null) {
+	        return "redirect:/login";  
+	    }
+	    Usuario usuario = (Usuario) session.getAttribute("usuario"); 
+	    String rol = usuario.getRol().name(); 
+	    model.addAttribute("rol", rol);
+	    Tienda tienda = usuario.getTienda();
+	    model.addAttribute("tienda", tienda);
+
+	    return "home";  
+	}
 	
 	@GetMapping("/")
     public String redirectToHome() {
@@ -50,5 +54,10 @@ public class WebController {
 	public String detalleCatalogo(@PathVariable("id") Long idCatalogo, Model model) {
 	    model.addAttribute("idCatalogo", idCatalogo);
 	    return "detalleCatalogo";
+	}
+	
+	@GetMapping("/crearCatalogo")
+	public String crearCatalogo() {
+	    return "crearCatalogo";
 	}
 }

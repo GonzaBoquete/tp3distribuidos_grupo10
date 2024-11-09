@@ -1,8 +1,10 @@
 package com.stockearte.tp3_grupo10.controller;
 
 import java.util.List;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -84,13 +86,31 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<Usuario> login(@RequestParam String nombreUsuario, @RequestParam String contrasena) {
-		LoginRequest loginRequest = new LoginRequest();
-		loginRequest.setNombreUsuario(nombreUsuario);
-		loginRequest.setContrasena(contrasena);
-		Usuario usuario = usuarioConverter
-				.convertInfoToUsuario(usuarioEndpoint.login(loginRequest).getUsuarioServiceStatus().getUsuario());
-		return ResponseEntity.ok(usuario);
+	public ResponseEntity<Usuario> login(
+	    @RequestParam String nombreUsuario, 
+	    @RequestParam String contrasena,
+	    HttpSession session) {
+
+	    LoginRequest loginRequest = new LoginRequest();
+	    loginRequest.setNombreUsuario(nombreUsuario);
+	    loginRequest.setContrasena(contrasena);
+
+	    Usuario usuario = usuarioConverter
+	            .convertInfoToUsuario(usuarioEndpoint.login(loginRequest).getUsuarioServiceStatus().getUsuario());
+
+	    // Guardar el usuario en la sesión si el login es exitoso
+	    if (usuario != null) {
+	        session.setAttribute("usuario", usuario);
+	        return ResponseEntity.ok(usuario);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Retorna un error 401 si no es exitoso
+	    }
+	}
+
+	@PostMapping("/logout")
+	public ResponseEntity<String> logout(HttpSession session) {
+	    session.invalidate();
+	    return ResponseEntity.ok("Sesión cerrada correctamente");
 	}
 
 	@GetMapping("/buscar")

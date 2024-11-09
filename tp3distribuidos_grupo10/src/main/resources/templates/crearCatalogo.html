@@ -16,7 +16,6 @@
 		    </a>
 		    <div id="navbarSupportedContent">
 		        <ul class="nav">
-		            <!-- Cambié el <button> por <a> para un comportamiento más estándar -->
 		            <li class="nav-item">
 		                <a href="javascript:void(0)" class="btn nav-link link-secondary text-white-50" onclick="logout()">Cerrar sesión</a>
 		            </li>
@@ -24,16 +23,15 @@
 		    </div>
 		</nav>
     </header>
-    <div class="container text-center ">
-        <h1>Bienvenido</h1>
-        <h2 class="mb-2">Selecciona una opción para continuar:</h2>
-        <ul>
-            <li><a href="/ordenesCompra"><button class="btn btn-danger m-1 btn-lg">Ver Ordenes de Compra</button></a></li>
-            <li th:if="${rol == 'TIENDA'}">
-                <a href="/catalogo"><button class="btn btn-danger m-1 btn-lg">Ver Catalogo de Productos</button></a>
-            </li>
-        </ul>
+
+    <div class="container mt-4">
+        <h1>Crear Catalogo</h1>
+
+        
+        <a href="/home" class="btn btn-secondary mb-3">Volver al Home</a>
     </div>
+
+    <script src="/js/catalogo.js"></script>
      <script src="/js/login.js"></script>
 </body>
 </html>
