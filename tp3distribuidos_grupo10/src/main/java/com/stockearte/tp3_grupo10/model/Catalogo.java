@@ -1,5 +1,6 @@
 package com.stockearte.tp3_grupo10.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -38,6 +39,7 @@ public class Catalogo {
 
 	public Catalogo() {
 		super();
+		this.productos = new ArrayList<>();
 		// TODO Auto-generated constructor stub
 	}
 
