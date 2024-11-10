@@ -1,37 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <title>Stockearte</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+		crossorigin="anonymous"></script>
+	<title>Stockearte</title>
+	<style>
+		/* Estilos para ocultar el formulario por defecto */
+		#catalogForm {
+			display: none;
+			border: 1px solid #ccc;
+			padding: 20px;
+			margin-top: 20px;
+			background-color: #f9f9f9;
+			width: 300px;
+		}
+	</style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #353A40;">
-		    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-		        <span class="fs-4 ms-3">Stockearte</span>
-		    </a>
-		    <div id="navbarSupportedContent">
-		        <ul class="nav">
-		            <li class="nav-item">
-		                <a href="javascript:void(0)" class="btn nav-link link-secondary text-white-50" onclick="logout()">Cerrar sesión</a>
-		            </li>
-		        </ul>
-		    </div>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: #353A40;">
+			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+				<span class="fs-4 ms-3">Stockearte</span>
+			</a>
+			<div id="navbarSupportedContent">
+				<ul class="nav">
+					<li class="nav-item">
+						<a href="javascript:void(0)" class="btn nav-link link-secondary text-white-50"
+							onclick="logout()">Cerrar sesión</a>
+					</li>
+				</ul>
+			</div>
 		</nav>
-    </header>
+	</header>
 
-    <div class="container mt-4">
-        <h1>Crear Catalogo</h1>
+	<div class="container mt-4">
+		<h1>Crear Catalogo</h1>
 
-        
-        <a href="/catalogo" class="btn btn-secondary mb-3">Volver a Catalogos</a>
-    </div>
+		<a href="javascript:void(0);" class="btn btn-primary mb-3 mt-2" onclick="toggleForm()">Añadir Catalogo</a>
+		<!-- Formulario para crear el catálogo -->
+		<div id="catalogForm" class="card p-4 shadow-sm">
+			<h2 class="mb-3">Nuevo Catálogo</h2>
+			<form action="/api/catalogo/add" method="POST" onsubmit="submitForm(event)">
+				<div class="mb-3">
+					<label for="nombre" class="form-label">Codigo de la Tienda:</label>
+					<input type="number" class="form-control" id="idTienda" name="idTienda" required>
+				</div>
 
-    <script src="/js/catalogo.js"></script>
-     <script src="/js/login.js"></script>
+				<div class="d-flex justify-content-end">
+					<button type="button" class="btn btn-secondary me-2" onclick="toggleForm()">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Crear</button>
+				</div>
+			</form>
+		</div>
+		
+		<div id="message" class="alert alert-success d-none mt-3" role="alert"></div>
+
+
+		<a href="/catalogo" class="btn btn-secondary mb-3 mt-2">Volver a Catalogos</a>
+	</div>
+
+	<script src="/js/catalogo.js"></script>
+	<script src="/js/login.js"></script>
 </body>
-</html>
+
