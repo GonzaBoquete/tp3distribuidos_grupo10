@@ -24,7 +24,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest;
 
 @RestController
-@RequestMapping("/api/catalogo")
+@RequestMapping("/api/catalogo") 
 public class CatalogoController {
 
 	@Autowired
