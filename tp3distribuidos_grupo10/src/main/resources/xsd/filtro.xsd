@@ -6,17 +6,24 @@
 	<!-- Filtro Complex Type -->
 	<xs:complexType name="filtroInfo">
 		<xs:sequence>
-			<xs:element name="id" type="xs:long" minOccurs="0" /> <!-- Refleja el
-			atributo 'id'
-			de Filtro -->
-			<xs:element name="nombre" type="xs:string" minOccurs="0" /> <!--
-			Refleja el
-			atributo 'nombre' de Filtro -->
+			<xs:element name="id" type="xs:long" minOccurs="0" />
+			<xs:element name="nombre" type="xs:string" minOccurs="0" />
 			<xs:element name="idUsuario" type="xs:long" minOccurs="0" />
 			<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 			<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
+			<xs:element name="fechaDesde" type="xs:date" minOccurs="0" />
+			<xs:element name="fechaHasta" type="xs:date" minOccurs="0" />
+			<xs:element name="estado" type="EstadoOrdenInfoFilter" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:simpleType name="EstadoOrdenInfoFilter">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SOLICITADA" />
+			<xs:enumeration value="RECHAZADA" />
+			<xs:enumeration value="ACEPTADA" />
+		</xs:restriction>
+	</xs:simpleType>
 
 	<!-- Service Status Complex Type -->
 	<xs:complexType name="filtroServiceStatus">
@@ -37,6 +44,10 @@
 				<xs:element name="idUsuario" type="xs:long" minOccurs="0" />
 				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
 				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
+				<xs:element name="fechaDesde" type="xs:date" minOccurs="0" />
+				<xs:element name="fechaHasta" type="xs:date" minOccurs="0" />
+				<xs:element name="estado" type="EstadoOrdenInfoFilter"
+					minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -99,36 +110,21 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Update Producto de Filtro -->
-	<xs:element name="updateProductoDeFiltroRequest">
+	<!-- Update Filtro -->
+	<xs:element name="updateFiltroRequest">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
-				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<xs:element name="updateProductoDeFiltroResponse">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="filtroServiceStatus"
-					type="filtroServiceStatus" minOccurs="0" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Update Tienda de Filtro -->
-	<xs:element name="UpdateTiendaDeFiltroRequest">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="codigoFiltro" type="xs:string" minOccurs="0" />
+				<xs:element name="nombre" type="xs:string" minOccurs="0" />
 				<xs:element name="codigoTienda" type="xs:long" minOccurs="0" />
+				<xs:element name="codigoProducto" type="xs:long" minOccurs="0" />
+				<xs:element name="fechaDesde" type="xs:date" minOccurs="0" />
+				<xs:element name="fechaHasta" type="xs:date" minOccurs="0" />
+				<xs:element name="estado" type="EstadoOrdenInfoFilter" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="UpdateTiendaDeFiltroResponse">
+	<xs:element name="updateFiltroResponse">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="filtroServiceStatus"

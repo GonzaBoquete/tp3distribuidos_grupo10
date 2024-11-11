@@ -1,5 +1,6 @@
 package com.stockearte.tp3_grupo10.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
 import com.stockearte.tp3_grupo10.model.Filtro;
 import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.model.Tienda;
@@ -31,7 +33,8 @@ public class FiltroServiceImpl implements FiltroService {
 	private UsuarioService usuarioService;
 
 	@Override
-	public Filtro add(String codigoFiltro, Long idUsuario, Long codigoTienda, Long codigoProducto) {
+	public Filtro add(String codigoFiltro, Long idUsuario, Long codigoTienda, Long codigoProducto, LocalDate fechaDesde,
+			LocalDate fechaHasta, EstadoOrden estado) {
 		Filtro filtro = new Filtro();
 		if (this.getOneByCode(codigoFiltro) != null) {
 			throw new ServiceException("Ya existe un filtro con ese nombre");
@@ -56,11 +59,15 @@ public class FiltroServiceImpl implements FiltroService {
 		} else {
 			throw new ServiceException("No se encontro el producto");
 		}
+		filtro.setFechaDesde(fechaDesde);
+		filtro.setFechaHasta(fechaHasta);
+		filtro.setEstado(estado);
 		return filtroRepository.save(filtro);
 	}
 
 	@Override
-	public Filtro updateTienda(String codigoFiltro, Long codigoTienda) {
+	public Filtro updateFiltro(String codigoFiltro, Long codigoTienda, Long codigoProducto,
+			LocalDate fechaDesde, LocalDate fechaHasta, EstadoOrden estado) {
 		Filtro foundFiltro = this.getOneByCode(codigoFiltro);
 		if (foundFiltro != null) {
 			Tienda tienda = getTiendaService().getOneById(codigoTienda);
@@ -69,24 +76,17 @@ public class FiltroServiceImpl implements FiltroService {
 			} else {
 				throw new ServiceException("No se encontro la tienda");
 			}
-			return filtroRepository.save(foundFiltro);
-		}  else {
-			throw new ServiceException("No se encontro el filtro");
-		}
-	}
-	
-	@Override
-	public Filtro updateProducto(String codigoFiltro, Long codigoProducto) {
-		Filtro foundFiltro = this.getOneByCode(codigoFiltro);
-		if (foundFiltro != null) {
 			Producto producto = getProductoService().getOneById(codigoProducto);
 			if (producto != null) {
 				foundFiltro.setProducto(producto);
 			} else {
 				throw new ServiceException("No se encontro el producto");
 			}
+			foundFiltro.setFechaDesde(fechaDesde);
+			foundFiltro.setFechaHasta(fechaHasta);
+			foundFiltro.setEstado(estado);
 			return filtroRepository.save(foundFiltro);
-		}  else {
+		} else {
 			throw new ServiceException("No se encontro el filtro");
 		}
 	}
@@ -96,7 +96,7 @@ public class FiltroServiceImpl implements FiltroService {
 		Filtro foundFiltro = this.getOneByCode(codigoFiltro);
 		if (foundFiltro != null) {
 			filtroRepository.delete(foundFiltro);
-		}  else {
+		} else {
 			throw new ServiceException("No se encontro el filtro");
 		}
 	}
