@@ -25,6 +25,8 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.GetOrdenesDeCompraByFilterRequest;
+import com.stockearte.tp3_grupo10.soap.interfaces.GetOrdenesDeCompraByFilterResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraInfo;
 import com.stockearte.tp3_grupo10.soap.interfaces.OrdenDeCompraServiceStatus;
 
@@ -55,6 +57,19 @@ public class OrdenDeCompraEndpoint {
 		GetAllOrdenesDeCompraResponse response = new GetAllOrdenesDeCompraResponse();
 		List<OrdenDeCompraInfo> ordenesDeCompra = this.getOrdenDeCompraConverter()
 				.convertOrdenesDeCompraToInfoList(this.getOrdenDeCompraService().getAll());
+		for (OrdenDeCompraInfo ordenDeCompra : ordenesDeCompra) {
+			response.getOrdenesDeCompra().add(ordenDeCompra);
+		}
+		return response;
+	}
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOrdenesDeCompraByFilterRequest")
+	@ResponsePayload
+	public GetOrdenesDeCompraByFilterResponse getOrdenesDeCompraByFilter(
+			@RequestPayload GetOrdenesDeCompraByFilterRequest request) throws DatatypeConfigurationException {
+		GetOrdenesDeCompraByFilterResponse response = new GetOrdenesDeCompraByFilterResponse();
+		List<OrdenDeCompraInfo> ordenesDeCompra = this.getOrdenDeCompraConverter().convertOrdenesDeCompraToInfoList(
+				this.getOrdenDeCompraService().getByFilter(request.getNombreFiltro()));
 		for (OrdenDeCompraInfo ordenDeCompra : ordenesDeCompra) {
 			response.getOrdenesDeCompra().add(ordenDeCompra);
 		}

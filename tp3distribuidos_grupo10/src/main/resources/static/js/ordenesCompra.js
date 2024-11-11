@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Llamada automática a la función para cargar las órdenes de compra al cargar la página
+    fetchOrdenes();
+});
+
 async function fetchOrdenes() {
     try {
         const response = await fetch('http://localhost:8080/api/ordenDeCompra/getAll');

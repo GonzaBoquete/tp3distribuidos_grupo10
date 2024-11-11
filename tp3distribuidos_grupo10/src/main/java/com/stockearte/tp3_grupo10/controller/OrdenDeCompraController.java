@@ -21,6 +21,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.DeleteOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarItemOrdenDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllOrdenesDeCompraRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneOrdenDeCompraByIdRequest;
+import com.stockearte.tp3_grupo10.soap.interfaces.GetOrdenesDeCompraByFilterRequest;
 
 @RestController
 @RequestMapping("/api/ordenDeCompra")
@@ -82,6 +83,17 @@ public class OrdenDeCompraController {
 		GetAllOrdenesDeCompraRequest getAllOrdenesDeCompraRequest = new GetAllOrdenesDeCompraRequest();
 		List<OrdenDeCompra> ordenesDeCompra = ordenDeCompraConverter.convertInfoListToOrdenesDeCompra(
 				ordenDeCompraEndpoint.getAllOrdenesDeCompra(getAllOrdenesDeCompraRequest).getOrdenesDeCompra());
+		return ResponseEntity.ok(ordenesDeCompra);
+	}
+
+	@GetMapping("/getByFilter")
+	public ResponseEntity<List<OrdenDeCompra>> getOrdenesDeCompraByFilter(@RequestParam String nombreFiltro)
+			throws DatatypeConfigurationException {
+		GetOrdenesDeCompraByFilterRequest getOrdenesDeCompraByFilterRequest = new GetOrdenesDeCompraByFilterRequest();
+		getOrdenesDeCompraByFilterRequest.setNombreFiltro(nombreFiltro);
+		List<OrdenDeCompra> ordenesDeCompra = ordenDeCompraConverter
+				.convertInfoListToOrdenesDeCompra(ordenDeCompraEndpoint
+						.getOrdenesDeCompraByFilter(getOrdenesDeCompraByFilterRequest).getOrdenesDeCompra());
 		return ResponseEntity.ok(ordenesDeCompra);
 	}
 

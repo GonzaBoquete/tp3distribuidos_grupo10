@@ -1,21 +1,26 @@
 package com.stockearte.tp3_grupo10.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
+import com.stockearte.tp3_grupo10.model.Filtro;
 import com.stockearte.tp3_grupo10.model.ItemOrdenDeCompra;
 import com.stockearte.tp3_grupo10.model.OrdenDeCompra;
 import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.model.Tienda;
 import com.stockearte.tp3_grupo10.repository.ItemOrdenDeCompraRepository;
 import com.stockearte.tp3_grupo10.repository.OrdenDeCompraRepository;
+
+import jakarta.persistence.criteria.Predicate;
 
 @Service("ordenDeCompraService")
 public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
@@ -33,6 +38,9 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 
 	@Autowired
 	private TiendaService tiendaService;
+
+	@Autowired
+	private FiltroService filtroService;
 
 	@Override
 	public OrdenDeCompra add(Long codigoTienda) {
@@ -89,10 +97,48 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 	@Override
 	public OrdenDeCompra getOneById(Long idOrdenDeCompra) {
 		Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraRepository().findById(idOrdenDeCompra);
-		if(ordenDeCompra.isEmpty()) {
+		if (ordenDeCompra.isEmpty()) {
 			throw new ServiceException("No se encontro la orden de compra");
 		}
 		return ordenDeCompra.isEmpty() ? null : ordenDeCompra.get();
+	}
+
+	@Override
+	public List<OrdenDeCompra> getByFilter(String nombreFiltro) {
+		Filtro filtro = this.getFiltroService().getOneByCode(nombreFiltro);
+		if (filtro == null) {
+			return this.getAll();
+		} else {
+			return ordenDeCompraRepository.findAll((Specification<OrdenDeCompra>) (root, query, criteriaBuilder) -> {
+				List<Predicate> predicates = new ArrayList<>();
+
+				if (filtro.getTienda().getCodigo() != null) {
+					predicates.add(
+							criteriaBuilder.equal(root.get("tienda").get("codigo"), filtro.getTienda().getCodigo()));
+				}
+
+				if (filtro.getProducto().getCodigo() != null) {
+					predicates.add(criteriaBuilder.equal(root.join("itemsOrdenCompra").get("producto").get("codigo"),
+							filtro.getProducto().getCodigo()));
+				}
+
+				if (filtro.getEstado() != null) {
+					predicates.add(criteriaBuilder.equal(root.get("estado"), filtro.getEstado().toString()));
+				}
+
+				// Condición para filtrar por rango de fechas
+				if (filtro.getFechaDesde() != null && filtro.getFechaHasta() != null) {
+					predicates.add(
+							criteriaBuilder.between(root.get("fecha"), filtro.getFechaDesde(), filtro.getFechaHasta()));
+				} else if (filtro.getFechaDesde() != null) {
+					predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("fecha"), filtro.getFechaDesde()));
+				} else if (filtro.getFechaHasta() != null) {
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("fecha"), filtro.getFechaHasta()));
+				}
+
+				return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+			});
+		}
 	}
 
 	@Override
@@ -130,6 +176,14 @@ public class OrdenDeCompraServiceImpl implements OrdenDeCompraService {
 
 	public void setItemOrdenDeCompraRepository(ItemOrdenDeCompraRepository itemOrdenDeCompraRepository) {
 		this.itemOrdenDeCompraRepository = itemOrdenDeCompraRepository;
+	}
+
+	public FiltroService getFiltroService() {
+		return filtroService;
+	}
+
+	public void setFiltroService(FiltroService filtroService) {
+		this.filtroService = filtroService;
 	}
 
 }
