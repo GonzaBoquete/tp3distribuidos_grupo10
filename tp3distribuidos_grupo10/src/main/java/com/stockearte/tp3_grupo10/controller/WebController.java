@@ -41,9 +41,18 @@ public class WebController {
 	}
 	
 	@GetMapping("/ordenesCompra")
-    public String ordenesCompra() {
-        return "ordenesCompra"; 
-    }
+	public String ordenesCompra(HttpSession session, Model model) {
+	 
+	    Usuario usuario = (Usuario) session.getAttribute("usuario");
+	    Long idUsuario = usuario.getId();
+	    if (idUsuario == null) {
+	        return "redirect:/login"; 
+	    }
+	    model.addAttribute("idUsuario", idUsuario);
+	   
+	    return "ordenesCompra"; 
+	}
+
 	
 	@GetMapping("/catalogo")
     public String catalogo() {
