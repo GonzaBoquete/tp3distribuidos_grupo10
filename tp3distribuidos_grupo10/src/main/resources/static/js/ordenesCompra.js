@@ -12,13 +12,16 @@ async function fetchOrdenes() {
 
                 // Mostrar ID, fecha, tienda (ID de la tienda), cantidad total y estado
                 const totalCantidad = orden.itemsOrdenCompra.reduce((total, item) => total + item.cantidad, 0);
-                
+
                 row.innerHTML = `
                     <td>${orden.id}</td>
                     <td>${orden.fecha}</td>
-                    <td>${orden.tienda.codigo}</td> 
-                    <td>${totalCantidad}</td> 
+                    <td>${orden.tienda.codigo}</td>
+                    <td>${totalCantidad}</td>
                     <td>${orden.estado}</td>
+                    <td>
+                        <a href="/ordenCompra/${orden.id}" class="btn btn-info">Ver detalle</a>
+                    </td>
                 `;
 
                 tableBody.appendChild(row);
