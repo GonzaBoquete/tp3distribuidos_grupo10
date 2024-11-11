@@ -66,3 +66,8 @@ function submitForm(event) {
 			document.getElementById("message").classList.replace("alert-success", "alert-danger");
 		});
 }
+
+function exportarCatalogos() {
+            // Redirigir al endpoint que devuelve el archivo PDF
+            window.location.href = "http://localhost:8080/api/catalogo/exportar";
+        }

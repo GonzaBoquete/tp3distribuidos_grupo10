@@ -144,6 +144,7 @@ public class CatalogoEndpoint {
 		return response;
 	}
 
+
 	public void setCatalogoService(CatalogoService catalogoService) {
 		this.catalogoService = catalogoService;
 	}
