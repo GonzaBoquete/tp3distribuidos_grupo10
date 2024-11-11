@@ -60,4 +60,11 @@ public class WebController {
 	public String crearCatalogo() {
 	    return "crearCatalogo";
 	}
+	
+	@GetMapping("/ordenCompra/{id}")
+	public String detalleOrdenCompra(@PathVariable("id") Long idOrdenCompra, Model model) {
+	    model.addAttribute("idOrdenCompra", idOrdenCompra);
+	    return "detalleOrdenCompra";
+	}
+
 }
