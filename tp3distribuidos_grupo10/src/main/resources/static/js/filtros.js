@@ -88,37 +88,54 @@ async function guardarFiltro() {
     }
 }
 function cargarFiltrosUsuario() {
-    fetch('/api/filtro/getAll')  // Traemos todos los filtros
+    fetch('/api/filtro/getAll')  
         .then(response => response.json())
         .then(filtros => {
-            console.log(filtros);  // Verifica qué datos estás recibiendo
+            console.log(filtros);  
             if (!filtros || filtros.length === 0) {
                 console.log('No se recibieron filtros.');
                 return;
             }
 
-            // Filtramos los filtros por el idUsuario
+         
             const filtrosFiltrados = filtros.filter(filtro => filtro.usuario.id === idUsuario);
 
-            // Verificamos si se han filtrado resultados
+          
             if (filtrosFiltrados.length === 0) {
                 console.log('No se encontraron filtros para el idUsuario:', idUsuario);
             }
 
-            // Referencia al select de filtros
+            
             const filtroSelect = document.getElementById('filtro');
-            filtroSelect.innerHTML = '<option value="">Seleccione un Filtro</option>';  // Reseteamos el select
+            filtroSelect.innerHTML = '<option value="">Seleccione un Filtro</option>';  
 
-            // Agregamos los filtros correspondientes al select
+           
             filtrosFiltrados.forEach(filtro => {
                 const option = document.createElement('option');
                 option.value = filtro.id;
-                option.textContent = filtro.nombre;  // Solo mostramos el atributo "nombre"
+                option.textContent = filtro.nombre;  
                 filtroSelect.appendChild(option);
+            });
+
+            filtroSelect.addEventListener('change', function() {
+                const selectedFiltroId = filtroSelect.value;
+                if (selectedFiltroId) {
+                    const filtroSeleccionado = filtrosFiltrados.find(filtro => filtro.id == selectedFiltroId);
+
+                    if (filtroSeleccionado) {
+                        // Rellenar los valores de los filtros en el formulario
+                        document.getElementById('codigoProducto').value = filtroSeleccionado.producto.codigo || '';
+                        document.getElementById('fechaDesde').value = filtroSeleccionado.fechaDesde || '';
+                        document.getElementById('fechaHasta').value = filtroSeleccionado.fechaHasta || '';
+                        document.getElementById('estado').value = filtroSeleccionado.estado || '';
+                        document.getElementById('tienda').value = filtroSeleccionado.tienda.codigo || '';
+                    }
+                }
             });
         })
         .catch(error => console.error('Error al cargar filtros:', error));
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
