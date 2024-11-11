@@ -19,4 +19,8 @@ public interface CatalogoService {
 	Catalogo agregarProducto(Long codigoCatalogo, Long codigoProducto);
 	
 	Catalogo eliminarProducto(Long codigoCatalogo, Long codigoProducto);
+	
+	byte[] exportCatalogosToPdf();
+	
+	
 }

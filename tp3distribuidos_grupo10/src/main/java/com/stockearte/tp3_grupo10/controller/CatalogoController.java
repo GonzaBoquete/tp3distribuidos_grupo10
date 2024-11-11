@@ -1,11 +1,15 @@
 package com.stockearte.tp3_grupo10.controller;
 
 import java.util.List;
+import org.springframework.http.MediaType;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stockearte.tp3_grupo10.converter.CatalogoConverter;
 import com.stockearte.tp3_grupo10.model.Catalogo;
+import com.stockearte.tp3_grupo10.service.CatalogoService;
 import com.stockearte.tp3_grupo10.soap.endpoint.CatalogoEndpoint;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoRequest;
@@ -23,8 +28,9 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest;
 
+
 @RestController
-@RequestMapping("/api/catalogo") 
+@RequestMapping("/api/catalogo")
 public class CatalogoController {
 
 	@Autowired
@@ -32,6 +38,9 @@ public class CatalogoController {
 
 	@Autowired
 	private CatalogoConverter catalogoConverter;
+
+	@Autowired
+	private CatalogoService catalogoService;
 
 	@PostMapping("/add")
 	public ResponseEntity<Catalogo> addCatalogo(@RequestParam Long idTienda) throws DatatypeConfigurationException {
@@ -100,5 +109,16 @@ public class CatalogoController {
 				catalogoEndpoint.eliminarProductoDeCatalogo(eliminarProductoDeCatalogoRequest)
 						.getCatalogoServiceStatus().getCatalogo());
 		return ResponseEntity.ok(catalogo);
+	}
+
+	@GetMapping("/exportToPdf")
+	public ResponseEntity<byte[]> exportToPdf() {
+		byte[] pdfContent = catalogoService.exportCatalogosToPdf();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_PDF);
+		headers.setContentDispositionFormData("filename", "catalogos.pdf");
+
+		return ResponseEntity.ok().headers(headers).body(pdfContent);
 	}
 }

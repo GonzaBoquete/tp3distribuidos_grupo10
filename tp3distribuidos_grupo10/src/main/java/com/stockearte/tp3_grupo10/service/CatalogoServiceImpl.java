@@ -1,13 +1,20 @@
 package com.stockearte.tp3_grupo10.service;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.stockearte.tp3_grupo10.model.Catalogo;
 import com.stockearte.tp3_grupo10.model.Producto;
 import com.stockearte.tp3_grupo10.model.Tienda;
@@ -104,6 +111,43 @@ public class CatalogoServiceImpl implements CatalogoService {
 	@Override
 	public List<Catalogo> getAll() {
 		return (List<Catalogo>) getCatalogoRepository().findAll();
+	}
+
+	public byte[] exportCatalogosToPdf() {
+		List<Catalogo> catalogos = catalogoRepository.findAll(); // Obtiene todos los catálogos
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		Document document = new Document();
+
+		try {
+			// Usa el ByteArrayOutputStream en PdfWriter
+			PdfWriter.getInstance(document, baos);
+			document.open();
+
+			document.add(new Paragraph("Listado de Catálogos"));
+
+			// Crear una tabla con 3 columnas (ID, Tienda, Productos)
+			PdfPTable table = new PdfPTable(3); // 3 columnas
+			table.addCell("ID");
+			table.addCell("Tienda");
+			table.addCell("Productos");
+
+			// Añadir los datos de cada catálogo a la tabla
+			for (Catalogo catalogo : catalogos) {
+				table.addCell(catalogo.getId().toString());
+				table.addCell(catalogo.getTienda().getCodigo().toString());
+				table.addCell(
+						catalogo.getProducto().stream().map(Producto::getNombre).collect(Collectors.joining(", ")));
+			}
+
+			document.add(table); // Añadir la tabla al documento
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		} finally {
+			document.close();
+		}
+
+		return baos.toByteArray(); // Retorna el PDF como arreglo de bytes
 	}
 
 	public TiendaService getTiendaService() {
