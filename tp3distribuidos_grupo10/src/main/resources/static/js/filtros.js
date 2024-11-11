@@ -87,10 +87,42 @@ async function guardarFiltro() {
         alert('Hubo un error al guardar el filtro.');
     }
 }
+function cargarFiltrosUsuario() {
+    fetch('/api/filtro/getAll')  // Traemos todos los filtros
+        .then(response => response.json())
+        .then(filtros => {
+            console.log(filtros);  // Verifica qué datos estás recibiendo
+            if (!filtros || filtros.length === 0) {
+                console.log('No se recibieron filtros.');
+                return;
+            }
 
+            // Filtramos los filtros por el idUsuario
+            const filtrosFiltrados = filtros.filter(filtro => filtro.usuario.id === idUsuario);
+
+            // Verificamos si se han filtrado resultados
+            if (filtrosFiltrados.length === 0) {
+                console.log('No se encontraron filtros para el idUsuario:', idUsuario);
+            }
+
+            // Referencia al select de filtros
+            const filtroSelect = document.getElementById('filtro');
+            filtroSelect.innerHTML = '<option value="">Seleccione un Filtro</option>';  // Reseteamos el select
+
+            // Agregamos los filtros correspondientes al select
+            filtrosFiltrados.forEach(filtro => {
+                const option = document.createElement('option');
+                option.value = filtro.id;
+                option.textContent = filtro.nombre;  // Solo mostramos el atributo "nombre"
+                filtroSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar filtros:', error));
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
     cargarTiendas();  
-    cargarEstados();  
+    cargarEstados();
+    cargarFiltrosUsuario();
 });
