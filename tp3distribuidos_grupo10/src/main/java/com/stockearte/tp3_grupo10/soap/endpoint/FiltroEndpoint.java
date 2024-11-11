@@ -2,6 +2,9 @@ package com.stockearte.tp3_grupo10.soap.endpoint;
 
 import java.util.List;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -9,6 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.stockearte.tp3_grupo10.converter.FiltroConverter;
+import com.stockearte.tp3_grupo10.enumerators.EstadoOrden;
 import com.stockearte.tp3_grupo10.model.Filtro;
 import com.stockearte.tp3_grupo10.service.FiltroService;
 import com.stockearte.tp3_grupo10.soap.interfaces.AddFiltroRequest;
@@ -23,10 +27,8 @@ import com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByCodeResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneFiltroByIdResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroRequest;
-import com.stockearte.tp3_grupo10.soap.interfaces.UpdateProductoDeFiltroResponse;
-import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeFiltroRequest;
-import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeFiltroResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.UpdateFiltroRequest;
+import com.stockearte.tp3_grupo10.soap.interfaces.UpdateFiltroResponse;
 
 @Endpoint
 public class FiltroEndpoint {
@@ -40,7 +42,8 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOneFiltroByCodeRequest")
 	@ResponsePayload
-	public GetOneFiltroByCodeResponse GetOneFiltroByCode(@RequestPayload GetOneFiltroByCodeRequest request) {
+	public GetOneFiltroByCodeResponse GetOneFiltroByCode(@RequestPayload GetOneFiltroByCodeRequest request)
+			throws DatatypeConfigurationException {
 		GetOneFiltroByCodeResponse response = new GetOneFiltroByCodeResponse();
 		Filtro filtro = this.getFiltroService().getOneByCode(request.getCodigo());
 		response.setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
@@ -49,7 +52,8 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getOneFiltroByIdResponse")
 	@ResponsePayload
-	public GetOneFiltroByIdResponse GetOneFiltroById(@RequestPayload GetOneFiltroByIdRequest request) {
+	public GetOneFiltroByIdResponse GetOneFiltroById(@RequestPayload GetOneFiltroByIdRequest request)
+			throws DatatypeConfigurationException {
 		GetOneFiltroByIdResponse response = new GetOneFiltroByIdResponse();
 		Filtro filtro = this.getFiltroService().getOneById(request.getId());
 		response.setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
@@ -58,7 +62,8 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllFiltrosRequest")
 	@ResponsePayload
-	public GetAllFiltrosResponse getAllFiltros(@RequestPayload GetAllFiltrosRequest request) {
+	public GetAllFiltrosResponse getAllFiltros(@RequestPayload GetAllFiltrosRequest request)
+			throws DatatypeConfigurationException {
 		GetAllFiltrosResponse response = new GetAllFiltrosResponse();
 		List<FiltroInfo> filtros = this.getFiltroConverter()
 				.convertFiltrosToFiltroInfos(this.getFiltroService().getAll());
@@ -70,45 +75,36 @@ public class FiltroEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "addFiltroRequest")
 	@ResponsePayload
-	public AddFiltroResponse addFiltro(@RequestPayload AddFiltroRequest request) {
+	public AddFiltroResponse addFiltro(@RequestPayload AddFiltroRequest request) throws DatatypeConfigurationException {
 		AddFiltroResponse response = new AddFiltroResponse();
+		XMLGregorianCalendar xmlGregorianCalendar1 = request.getFechaDesde();
+		XMLGregorianCalendar xmlGregorianCalendar2 = request.getFechaHasta();
+
 		response.setFiltro(this.getFiltroConverter()
 				.convertFiltroToFiltroInfo(this.getFiltroService().add(request.getCodigoFiltro(),
-						request.getIdUsuario(), request.getCodigoTienda(), request.getCodigoProducto())));
+						request.getIdUsuario(), request.getCodigoTienda(), request.getCodigoProducto(),
+						xmlGregorianCalendar1.toGregorianCalendar().toZonedDateTime().toLocalDate(),
+						xmlGregorianCalendar2.toGregorianCalendar().toZonedDateTime().toLocalDate(),
+						EstadoOrden.valueOf(request.getEstado().toString()))));
 		return response;
 	}
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateProductoDeFiltroRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateFiltroRequest")
 	@ResponsePayload
-	public UpdateProductoDeFiltroResponse updateProductoDeFiltro(
-			@RequestPayload UpdateProductoDeFiltroRequest request) {
-		UpdateProductoDeFiltroResponse response = new UpdateProductoDeFiltroResponse();
+	public UpdateFiltroResponse updateFiltro(@RequestPayload UpdateFiltroRequest request)
+			throws DatatypeConfigurationException {
+		UpdateFiltroResponse response = new UpdateFiltroResponse();
 		response.setFiltroServiceStatus(new FiltroServiceStatus());
-		try {
-			Filtro filtro = this.getFiltroService().updateProducto(request.getCodigoFiltro(),
-					request.getCodigoProducto());
-			response.getFiltroServiceStatus().setStatus("OK");
-			response.getFiltroServiceStatus().setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
-		} catch (Exception e) {
-			response.getFiltroServiceStatus().setStatus("ERROR");
-			response.getFiltroServiceStatus().setMessage(e.getLocalizedMessage());
-		}
-		return response;
-	}
+		XMLGregorianCalendar xmlGregorianCalendar1 = request.getFechaDesde();
+		XMLGregorianCalendar xmlGregorianCalendar2 = request.getFechaHasta();
 
-	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateTiendaDeFiltroRequest")
-	@ResponsePayload
-	public UpdateTiendaDeFiltroResponse updateTiendaDeFiltro(@RequestPayload UpdateTiendaDeFiltroRequest request) {
-		UpdateTiendaDeFiltroResponse response = new UpdateTiendaDeFiltroResponse();
-		response.setFiltroServiceStatus(new FiltroServiceStatus());
-		try {
-			Filtro filtro = this.getFiltroService().updateTienda(request.getCodigoFiltro(), request.getCodigoTienda());
-			response.getFiltroServiceStatus().setStatus("OK");
-			response.getFiltroServiceStatus().setFiltro(this.getFiltroConverter().convertFiltroToFiltroInfo(filtro));
-		} catch (Exception e) {
-			response.getFiltroServiceStatus().setStatus("ERROR");
-			response.getFiltroServiceStatus().setMessage(e.getLocalizedMessage());
-		}
+		response.getFiltroServiceStatus()
+				.setFiltro(this.getFiltroConverter()
+						.convertFiltroToFiltroInfo(this.getFiltroService().updateFiltro(request.getNombre(),
+								request.getCodigoTienda(), request.getCodigoProducto(),
+								xmlGregorianCalendar1.toGregorianCalendar().toZonedDateTime().toLocalDate(),
+								xmlGregorianCalendar2.toGregorianCalendar().toZonedDateTime().toLocalDate(),
+								EstadoOrden.valueOf(request.getEstado().toString()))));
 		return response;
 	}
 

@@ -65,6 +65,9 @@ CREATE TABLE IF NOT EXISTS filtro (
     usuario_id BIGINT(20) NOT NULL,
     tienda_codigo BIGINT(20) NOT NULL,
     producto_codigo BIGINT(20) NOT NULL,
+	fecha_desde DATE,		-- Fecha desde la cual filtramos
+	fecha_hasta DATE,		-- Fecha hasta la cual filtramos
+    estado VARCHAR(255),	-- Estado de la orden
     CONSTRAINT fk_filtro_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     CONSTRAINT fk_filtro_tienda FOREIGN KEY (tienda_codigo) REFERENCES tienda(codigo),
     CONSTRAINT fk_filtro_producto FOREIGN KEY (producto_codigo) REFERENCES producto(codigo)
