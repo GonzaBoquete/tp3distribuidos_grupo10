@@ -69,13 +69,11 @@
                             <!-- Opciones cargadas dinámicamente -->
                         </select>
                     </div>
-
-                    <div class="col-md-3 mb-3">
-                        <button type="submit" class="btn btn-primary mt-4">Aplicar Filtros</button>
-                    </div>
+					
+					<!-- Botón para guardar el filtro -->
+					
                 </div>
-                <!-- Botón para guardar el filtro -->
-				<button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#guardarFiltroModal">Guardar Filtro</button>
+				<button class="btn btn-success mt-1 mb-3" data-bs-toggle="modal" data-bs-target="#guardarFiltroModal">Guardar Filtro</button>
 				<!-- Filtro Filtros -->
 				<div class="col-md-3 mb-3">
 				    <label for="filtro" class="form-label">Filtro</label>
@@ -84,6 +82,8 @@
 				        <!-- Opciones cargadas dinámicamente -->
 				    </select>
 				</div>
+				<button type="button" class="btn btn-primary mt-1" onclick="fetchFilteredOrdenes()">Aplicar Filtros</button>
+                
 				<!-- Modal para guardar el filtro -->
 				<div class="modal fade" id="guardarFiltroModal" tabindex="-1" aria-labelledby="guardarFiltroModalLabel" aria-hidden="true">
 				    <div class="modal-dialog">
