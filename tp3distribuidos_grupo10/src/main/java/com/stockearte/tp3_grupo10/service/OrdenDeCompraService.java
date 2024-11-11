@@ -16,6 +16,8 @@ public interface OrdenDeCompraService {
 
 	List<OrdenDeCompra> getAll();
 	
+	List<OrdenDeCompra> getByFilter(String nombreFiltro);
+	
 	void delete(Long idOrdenDeCompra);
 	
 }
