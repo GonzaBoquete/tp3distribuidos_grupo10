@@ -15,6 +15,22 @@ function cargarTiendas() {
         .catch(error => console.error('Error al cargar tiendas:', error));
 }
 
+function cargarFiltros() {
+    fetch('/api/filtro/getAll')  
+        .then(response => response.json())
+        .then(filtros => {
+            const filtroSelect = document.getElementById('filtro');
+            filtroSelect.innerHTML = '<option value="">Seleccione un Filtro</option>';
+            filtros.forEach(filtro => {
+                    const option = document.createElement('option');
+                    option.value = filtro.nombre;  
+                    option.textContent = filtro.nombre;  
+                    filtroSelect.appendChild(option);
+                });
+        })
+        .catch(error => console.error('Error al cargar filtros:', error));
+}
+
 function cargarEstados() {
     const estadoSelect = document.getElementById('estado');
     estadoSelect.innerHTML = '<option value="">Seleccione un Estado</option>';
@@ -80,66 +96,19 @@ async function guardarFiltro() {
             const modal = bootstrap.Modal.getInstance(document.getElementById('guardarFiltroModal'));
             modal.hide();
         } else {
-            alert('Error al guardar el filtro');
+            console.log('Error al guardar el filtro');
+            const modal = bootstrap.Modal.getInstance(document.getElementById('guardarFiltroModal'));
+            modal.hide();
         }
     } catch (error) {
-        console.error('Error al guardar el filtro:', error);
-        alert('Hubo un error al guardar el filtro.');
+        console.log('Error al guardar el filtro');
+        const modal = bootstrap.Modal.getInstance(document.getElementById('guardarFiltroModal'));
+        modal.hide();
     }
 }
-function cargarFiltrosUsuario() {
-    fetch('/api/filtro/getAll')  
-        .then(response => response.json())
-        .then(filtros => {
-            console.log(filtros);  
-            if (!filtros || filtros.length === 0) {
-                console.log('No se recibieron filtros.');
-                return;
-            }
-
-         
-            const filtrosFiltrados = filtros.filter(filtro => filtro.usuario.id === idUsuario);
-
-          
-            if (filtrosFiltrados.length === 0) {
-                console.log('No se encontraron filtros para el idUsuario:', idUsuario);
-            }
-
-            
-            const filtroSelect = document.getElementById('filtro');
-            filtroSelect.innerHTML = '<option value="">Seleccione un Filtro</option>';  
-
-           
-            filtrosFiltrados.forEach(filtro => {
-                const option = document.createElement('option');
-                option.value = filtro.id;
-                option.textContent = filtro.nombre;  
-                filtroSelect.appendChild(option);
-            });
-
-            filtroSelect.addEventListener('change', function() {
-                const selectedFiltroId = filtroSelect.value;
-                if (selectedFiltroId) {
-                    const filtroSeleccionado = filtrosFiltrados.find(filtro => filtro.id == selectedFiltroId);
-
-                    if (filtroSeleccionado) {
-                        // Rellenar los valores de los filtros en el formulario
-                        document.getElementById('codigoProducto').value = filtroSeleccionado.producto.codigo || '';
-                        document.getElementById('fechaDesde').value = filtroSeleccionado.fechaDesde || '';
-                        document.getElementById('fechaHasta').value = filtroSeleccionado.fechaHasta || '';
-                        document.getElementById('estado').value = filtroSeleccionado.estado || '';
-                        document.getElementById('tienda').value = filtroSeleccionado.tienda.codigo || '';
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Error al cargar filtros:', error));
-}
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarTiendas();  
+    cargarTiendas(); 
+    cargarFiltros(); 
     cargarEstados();
-    cargarFiltrosUsuario();
 });
