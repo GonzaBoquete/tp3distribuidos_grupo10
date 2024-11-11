@@ -39,14 +39,14 @@ public class FiltroController {
 	private FiltroEndpoint filtroEndpoint;
 
 	@PostMapping("/add")
-	public ResponseEntity<Filtro> addFiltro(@RequestParam String codigoFiltro, @RequestParam Long idUsuario,
+	public ResponseEntity<Filtro> addFiltro(@RequestParam String nombreFiltro, @RequestParam Long idUsuario,
 			@RequestParam Long codigoTienda, @RequestParam Long codigoProducto, @RequestParam LocalDate fechaDesde,
 			@RequestParam LocalDate fechaHasta, @RequestParam EstadoOrden estado)
 			throws DatatypeConfigurationException {
 		AddFiltroRequest addFiltroRequest = new AddFiltroRequest();
 		GregorianCalendar gcal1 = GregorianCalendar.from(fechaDesde.atStartOfDay(ZoneId.systemDefault()));
 		GregorianCalendar gcal2 = GregorianCalendar.from(fechaHasta.atStartOfDay(ZoneId.systemDefault()));
-		addFiltroRequest.setCodigoFiltro(codigoFiltro);
+		addFiltroRequest.setCodigoFiltro(nombreFiltro);
 		addFiltroRequest.setIdUsuario(idUsuario);
 		addFiltroRequest.setCodigoTienda(codigoTienda);
 		addFiltroRequest.setCodigoProducto(codigoProducto);
@@ -85,13 +85,13 @@ public class FiltroController {
 	}
 
 	@PostMapping("/update")
-	public ResponseEntity<Filtro> updateFiltro(@RequestParam String codigoFiltro, @RequestParam Long codigoTienda,
+	public ResponseEntity<Filtro> updateFiltro(@RequestParam String nombreFiltro, @RequestParam Long codigoTienda,
 			@RequestParam Long codigoProducto, @RequestParam LocalDate fechaDesde, @RequestParam LocalDate fechaHasta,
 			@RequestParam EstadoOrden estado) throws DatatypeConfigurationException {
 		UpdateFiltroRequest updateFiltroRequest = new UpdateFiltroRequest();
 		GregorianCalendar gcal1 = GregorianCalendar.from(fechaDesde.atStartOfDay(ZoneId.systemDefault()));
 		GregorianCalendar gcal2 = GregorianCalendar.from(fechaHasta.atStartOfDay(ZoneId.systemDefault()));
-		updateFiltroRequest.setNombre(codigoFiltro);
+		updateFiltroRequest.setNombre(nombreFiltro);
 		updateFiltroRequest.setCodigoTienda(codigoTienda);
 		updateFiltroRequest.setCodigoProducto(codigoProducto);
 		updateFiltroRequest.setFechaDesde(DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal1));

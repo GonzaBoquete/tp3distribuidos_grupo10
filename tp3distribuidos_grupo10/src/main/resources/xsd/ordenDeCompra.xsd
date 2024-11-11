@@ -91,6 +91,24 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<!-- Get OrdenesDeCompra por Filtro-->
+	<xs:element name="getOrdenesDeCompraByFilterRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nombreFiltro" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOrdenesDeCompraByFilterResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ordenesDeCompra" type="ordenDeCompraInfo"
+					maxOccurs="unbounded" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<!-- Agregar item a OrdenDeCompra -->
 	<xs:element name="agregarItemOrdenDeCompraRequest">
