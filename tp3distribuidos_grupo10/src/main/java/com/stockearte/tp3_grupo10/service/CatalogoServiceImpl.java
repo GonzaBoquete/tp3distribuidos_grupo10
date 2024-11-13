@@ -1,7 +1,6 @@
 package com.stockearte.tp3_grupo10.service;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 

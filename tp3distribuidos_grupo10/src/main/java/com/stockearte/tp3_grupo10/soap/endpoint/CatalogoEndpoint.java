@@ -23,6 +23,8 @@ import com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoResponse;
+import com.stockearte.tp3_grupo10.soap.interfaces.ExportCatalogosToPdfRequest;
+import com.stockearte.tp3_grupo10.soap.interfaces.ExportCatalogosToPdfResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosResponse;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
@@ -144,6 +146,13 @@ public class CatalogoEndpoint {
 		return response;
 	}
 
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "exportCatalogosToPdfRequest")
+	@ResponsePayload
+	public ExportCatalogosToPdfResponse exportCatalogosToPDF(@RequestPayload ExportCatalogosToPdfRequest request) {
+		ExportCatalogosToPdfResponse response = new ExportCatalogosToPdfResponse();
+		response.setPdfFile(this.getCatalogoService().exportCatalogosToPdf());
+		return response;
+	}
 
 	public void setCatalogoService(CatalogoService catalogoService) {
 		this.catalogoService = catalogoService;

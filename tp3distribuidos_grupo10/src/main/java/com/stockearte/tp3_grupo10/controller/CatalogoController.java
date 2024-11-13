@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ContentDisposition;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +24,7 @@ import com.stockearte.tp3_grupo10.soap.interfaces.AddCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.AgregarProductoACatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.DeleteCatalogoRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.EliminarProductoDeCatalogoRequest;
+import com.stockearte.tp3_grupo10.soap.interfaces.ExportCatalogosToPdfRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetAllCatalogosRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.GetOneCatalogoByIdRequest;
 import com.stockearte.tp3_grupo10.soap.interfaces.UpdateTiendaDeCatalogoRequest;
@@ -114,16 +114,12 @@ public class CatalogoController {
 	@GetMapping("/exportar")
 	public ResponseEntity<byte[]> exportarCatalogosPdf() {
 		try {
-			// Llamar al servicio para exportar los catálogos a PDF
-			byte[] pdfBytes = catalogoService.exportCatalogosToPdf();
-
-			// Configurar los encabezados de la respuesta para que el navegador sepa que es
-			// un archivo PDF
+			ExportCatalogosToPdfRequest exportCatalogosToPdfRequest = new ExportCatalogosToPdfRequest();
+			
+			byte[] pdfBytes = catalogoEndpoint.exportCatalogosToPDF(exportCatalogosToPdfRequest).getPdfFile();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_PDF);
 			headers.setContentDisposition(ContentDisposition.builder("attachment").filename("catalogos.pdf").build());
-
-			// Devolver el archivo PDF como un array de bytes
 			return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
